@@ -1,0 +1,2697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grade 9 Science: Topics 1–3 Interactive Study Guide</title>
+<style>
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --primary-light: #eff6ff;
+  --accent: #8b5cf6;
+  --success: #16a34a;
+  --success-bg: #f0fdf4;
+  --danger: #dc2626;
+  --danger-bg: #fef2f2;
+  --warning: #d97706;
+  --warning-bg: #fffbeb;
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --border: #e2e8f0;
+  --border-focus: #3b82f6;
+  --radius: 12px;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.5;
+  padding-bottom: 60px;
+}
+
+/* Header & Top Bar */
+header {
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);
+  color: white;
+  padding: 2.2rem 1.5rem 1.8rem;
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.2);
+  margin-bottom: 0.75rem;
+  backdrop-filter: blur(4px);
+}
+
+h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.025em;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  opacity: 0.92;
+  max-width: 800px;
+  margin-bottom: 1.5rem;
+}
+
+/* Score Dashboard */
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 1rem;
+  border-radius: var(--radius);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.85;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.progress-track {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 4px;
+  margin-top: 6px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #10b981;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+/* Nav Tabs */
+.nav-tabs-wrapper {
+  background: white;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+
+.nav-tabs {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  overflow-x: auto;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem 0;
+  scrollbar-width: thin;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  border-radius: 6px 6px 0 0;
+}
+
+.tab-btn:hover {
+  color: var(--primary);
+  background: var(--primary-light);
+}
+
+.tab-btn.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+  background: var(--primary-light);
+}
+
+.tab-badge {
+  background: #e2e8f0;
+  color: #475569;
+  font-size: 0.75rem;
+  padding: 2px 7px;
+  border-radius: 10px;
+}
+
+.tab-btn.active .tab-badge {
+  background: var(--primary);
+  color: white;
+}
+
+/* Main Layout */
+.main-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Cards & Sections */
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-subtitle {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+/* Quick Reference Formulas Bar */
+.formula-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.formula-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid var(--primary);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.formula-card.warning-left {
+  border-left-color: var(--warning);
+}
+
+.formula-card.accent-left {
+  border-left-color: var(--accent);
+}
+
+.formula-card.success-left {
+  border-left-color: var(--success);
+}
+
+.formula-title {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #334155;
+  margin-bottom: 0.35rem;
+}
+
+.formula-eq {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #0f172a;
+  background: #ffffff;
+  padding: 0.35rem 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  display: inline-block;
+  margin: 0.25rem 0;
+}
+
+.formula-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Question Components */
+.question-block {
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.question-block.correct {
+  border-color: #86efac;
+  background: #f0fdf4;
+}
+
+.question-block.incorrect {
+  border-color: #fca5a5;
+  background: #fef2f2;
+}
+
+.q-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.q-num {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: var(--primary-light);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.q-topic {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.q-text {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 1rem;
+  line-height: 1.8;
+}
+
+/* Multiple Choice options */
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.mc-option {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  background: white;
+}
+
+.mc-option:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.mc-option.selected {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+
+.mc-option.correct-choice {
+  border-color: var(--success);
+  background: var(--success-bg);
+  font-weight: 600;
+  color: #166534;
+}
+
+.mc-option.wrong-choice {
+  border-color: var(--danger);
+  background: var(--danger-bg);
+  color: #991b1b;
+}
+
+.opt-letter {
+  font-weight: 700;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e2e8f0;
+  border-radius: 50%;
+  margin-right: 0.75rem;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.mc-option.selected .opt-letter {
+  background: var(--primary);
+  color: white;
+}
+
+.mc-option.correct-choice .opt-letter {
+  background: var(--success);
+  color: white;
+}
+
+.mc-option.wrong-choice .opt-letter {
+  background: var(--danger);
+  color: white;
+}
+
+/* Fill In the Blank Inputs */
+.fib-input {
+  display: inline-block;
+  padding: 0.35rem 0.65rem;
+  font-size: 1rem;
+  border: 2px solid #94a3b8;
+  border-radius: 6px;
+  outline: none;
+  min-width: 140px;
+  max-width: 220px;
+  margin: 0 4px;
+  font-weight: 700;
+  color: #0f172a;
+  background: #ffffff;
+  transition: all 0.2s ease;
+  vertical-align: middle;
+}
+
+.fib-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  background: #f8fafc;
+}
+
+.fib-input.correct {
+  border-color: var(--success) !important;
+  background-color: #ecfdf5 !important;
+  color: #065f46 !important;
+}
+
+.fib-input.incorrect {
+  border-color: var(--danger) !important;
+  background-color: #fff1f2 !important;
+  color: #9f1239 !important;
+}
+
+/* Calculation Input row */
+.calc-input-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.calc-input {
+  padding: 0.6rem 0.85rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: 2px solid #94a3b8;
+  border-radius: 8px;
+  width: 180px;
+  outline: none;
+  background: #ffffff;
+  color: #0f172a;
+}
+
+.calc-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.calc-input.correct {
+  border-color: var(--success) !important;
+  background-color: #ecfdf5 !important;
+}
+
+.calc-input.incorrect {
+  border-color: var(--danger) !important;
+  background-color: #fff1f2 !important;
+}
+
+/* Action Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  gap: 0.35rem;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+}
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+.btn-outline {
+  background: white;
+  border-color: #cbd5e1;
+  color: #475569;
+}
+.btn-outline:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+.btn-sm {
+  padding: 0.35rem 0.7rem;
+  font-size: 0.825rem;
+}
+
+.q-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-top: 0.75rem;
+}
+
+/* Feedback & Explanations */
+.feedback-box {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  display: none;
+}
+
+.feedback-box.show {
+  display: block;
+  animation: fadeIn 0.2s ease-in;
+}
+
+.feedback-box.correct {
+  background: #dcfce7;
+  color: #14532d;
+  border: 1px solid #bbf7d0;
+}
+
+.feedback-box.incorrect {
+  background: #fee2e2;
+  color: #7f1d1d;
+  border: 1px solid #fecaca;
+}
+
+.hint-box {
+  background: #fef9c3;
+  color: #713f12;
+  border: 1px solid #fef08a;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  margin-top: 0.75rem;
+  display: none;
+}
+
+/* SVG Schematic Graphics */
+.schematic-box {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.schematic-svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Interactive Calculator Widget */
+.calc-widget {
+  background: #1e293b;
+  color: white;
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.calc-widget h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  color: #60a5fa;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  align-items: end;
+}
+
+.calc-field label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin-bottom: 0.25rem;
+}
+
+.calc-field input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #475569;
+  background: #0f172a;
+  color: white;
+  font-family: monospace;
+  font-size: 1rem;
+}
+
+/* Review Notes Tab */
+.notes-topic-heading {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #1e3a8a;
+  border-bottom: 2px solid #bfdbfe;
+  padding-bottom: 0.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.concept-box {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.concept-box h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2563eb;
+  margin-bottom: 0.5rem;
+}
+
+.concept-box ul {
+  padding-left: 1.25rem;
+  font-size: 0.9rem;
+  color: #334155;
+}
+
+.concept-box li {
+  margin-bottom: 0.35rem;
+}
+
+/* Comparison Table */
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.styled-table thead tr {
+  background-color: #2563eb;
+  color: #ffffff;
+  text-align: left;
+  font-weight: 700;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f8fafc;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #2563eb;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  h1 { font-size: 1.6rem; }
+  .stats-bar { grid-template-columns: 1fr 1fr; }
+  .main-container { padding: 0 0.5rem; }
+  .fib-input { min-width: 120px; width: auto; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-container">
+    <div class="badge">Alberta Grade 9 Science • Unit D Preparation</div>
+    <h1>⚡ Topics 1–3 Interactive Mastery Guide</h1>
+    <p class="subtitle">Electric Charges, Current Electricity, Circuits, Resistance & Ohm's Law. Complete with self-checking practice, step-by-step math, and interactive circuit diagrams.</p>
+    
+    <div class="stats-bar">
+      <div class="stat-item">
+        <span class="stat-label">Progress</span>
+        <span class="stat-value" id="progressPercent">0%</span>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressBar"></div>
+        </div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Score</span>
+        <span class="stat-value" id="scoreDisplay">0 / 0</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Accuracy</span>
+        <span class="stat-value" id="accuracyDisplay">--%</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Test Readiness</span>
+        <span class="stat-value" id="readinessDisplay" style="color: #fde047;">Not Started</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="nav-tabs-wrapper">
+  <div class="nav-tabs">
+    <button class="tab-btn active" onclick="switchTab('notesTab')">
+      📖 <span>Quick Review & Notes</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('fibTab')">
+      ✏️ <span>Fill in the Blank</span> <span class="tab-badge" id="fibBadge">0/15</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('mcTab')">
+      🔘 <span>Multiple Choice</span> <span class="tab-badge" id="mcBadge">0/20</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('calcTab')">
+      🧮 <span>Calculations (Ohm's Law)</span> <span class="tab-badge" id="calcBadge">0/12</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('circuitTab')">
+      🔌 <span>Circuit Analysis</span> <span class="tab-badge" id="circuitBadge">0/8</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('calcToolTab')">
+      ⚙️ <span>Formula Tools</span>
+    </button>
+  </div>
+</div>
+
+<main class="main-container">
+
+  <!-- ==================== TAB 1: REVIEW & CORE NOTES ==================== -->
+  <div id="notesTab" class="tab-pane active">
+    
+    <!-- Quick Formulas Cheat Sheet -->
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">📐 Key Formulas & Units (Alberta PAT Side 2 Data Sheet)</div>
+          <div class="card-subtitle">Memorize these relationships and units cold before your test</div>
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="clearAllData()">Reset All Study Progress</button>
+      </div>
+      
+      <div class="formula-grid">
+        <div class="formula-card">
+          <div class="formula-title">Ohm's Law (Resistance)</div>
+          <div class="formula-eq">R = V / I</div>
+          <div class="formula-desc">V in Volts (V), I in Amperes (A), R in Ohms (Ω)</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-title">Ohm's Law (Voltage)</div>
+          <div class="formula-eq">V = I × R</div>
+          <div class="formula-desc">Potential difference across resistor or source</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-title">Ohm's Law (Current)</div>
+          <div class="formula-eq">I = V / R</div>
+          <div class="formula-desc">Rate of charge flow through conductor</div>
+        </div>
+        <div class="formula-card accent-left">
+          <div class="formula-title">Electric Power</div>
+          <div class="formula-eq">P = I × V</div>
+          <div class="formula-desc">P in Watts (W). Also: P = E / t</div>
+        </div>
+        <div class="formula-card accent-left">
+          <div class="formula-title">Electrical Energy</div>
+          <div class="formula-eq">E = P × t</div>
+          <div class="formula-desc">E in Joules (J), t in seconds (s). (1 min = 60 s)</div>
+        </div>
+        <div class="formula-card warning-left">
+          <div class="formula-title">Definition of Current</div>
+          <div class="formula-eq">I = q / t</div>
+          <div class="formula-desc">Charge q in Coulombs (C), time t in seconds (s)</div>
+        </div>
+        <div class="formula-card warning-left">
+          <div class="formula-title">Definition of Voltage</div>
+          <div class="formula-eq">ΔV = ΔE / q</div>
+          <div class="formula-desc">1 Volt = 1 Joule of energy per Coulomb of charge</div>
+        </div>
+        <div class="formula-card success-left">
+          <div class="formula-title">Metric Conversions</div>
+          <div class="formula-eq">1 A = 1000 mA</div>
+          <div class="formula-desc">Always convert mA to A (divide by 1000) for Ohm's Law!</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Core Topic Summaries -->
+    <h3 class="notes-topic-heading">Topic 1: Electric Charges & Static Electricity</h3>
+    <div class="notes-grid">
+      <div class="concept-box">
+        <h4>1. The Atom & Only Electrons Move</h4>
+        <ul>
+          <li><strong>Protons (+):</strong> Positive charge, locked rigidly inside nucleus with neutrons. <em>Protons NEVER move during charging in solids!</em></li>
+          <li><strong>Neutrons (0):</strong> Neutral, located in nucleus.</li>
+          <li><strong>Electrons (-):</strong> Negative charge, orbit in electron shells. Outer (valence) electrons can be transferred from atom to atom.</li>
+          <li><strong>Law of Charges:</strong> Like charges repel; opposite charges attract; charged objects attract neutral objects (via induction).</li>
+          <li><strong>Conservation of Charge:</strong> Total net charge of an isolated system remains constant.</li>
+        </ul>
+      </div>
+
+      <div class="concept-box">
+        <h4>2. Three Methods of Charging</h4>
+        <ul>
+          <li><strong>Friction:</strong> Two different neutral materials rubbed together. One material with higher electron affinity captures electrons from the other (e.g. wool rubs balloon → balloon gets negative, wool positive).</li>
+          <li><strong>Conduction (Contact):</strong> Charged object touches neutral object. Direct physical transfer of electrons until charge is shared.</li>
+          <li><strong>Induction:</strong> Charged object is brought <em>close</em> to a neutral object without touching. Causes electrons to shift (polarization/separation of charge). Leaves object temporarily charged unless grounded.</li>
+        </ul>
+      </div>
+
+      <div class="concept-box">
+        <h4>3. Conductors vs. Insulators vs. Semiconductors</h4>
+        <ul>
+          <li><strong>Conductors:</strong> Valence electrons move freely (copper, silver, gold, aluminum, saltwater). Excess charge distributes evenly across exterior.</li>
+          <li><strong>Insulators:</strong> Electrons tightly bound, cannot flow freely (rubber, glass, plastic, dry wood). Holds static charge localized in place.</li>
+          <li><strong>Semiconductors:</strong> Moderate conductivity (e.g., silicon, selenium). Selenium conducts light and insulates in the dark (used in photocopiers).</li>
+          <li><strong>Superconductors:</strong> Zero electrical resistance at extreme low temperatures.</li>
+        </ul>
+      </div>
+
+      <div class="concept-box">
+        <h4>4. Static Applications & Safety Hazards</h4>
+        <ul>
+          <li><strong>Electrostatic Spray Painting:</strong> Paint mist given negative charge; car body grounded/positive → attracts evenly, minimizes overspray.</li>
+          <li><strong>Electrostatic Precipitator:</strong> Smoke particles given negative charge, attracted to positive plates in smokestacks.</li>
+          <li><strong>Grounding:</strong> Connecting an object to Earth with a conductor; Earth acts as a massive reservoir that absorbs or supplies electrons.</li>
+          <li><strong>Hazards:</strong> Sparks at gas stations, electronic damage, lightning. Lightning rods and airplane static wicks safely dissipate charge.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="notes-topic-heading">Topic 2: Current Electricity & Circuit Fundamentals</h3>
+    <div class="notes-grid">
+      <div class="concept-box">
+        <h4>1. Current Electricity vs. Static</h4>
+        <ul>
+          <li><strong>Static Electricity:</strong> Charges build up and remain stationary until sudden discharge (brief spark/shock). Cannot power steady loads.</li>
+          <li><strong>Current Electricity:</strong> Continuous, controlled flow of electric charges through a complete closed circuit loop.</li>
+          <li><strong>Water Analogy:</strong> Voltage = water pump pressure; Current = volume rate of water flow; Wires = pipes; Resistor = narrow pipe constriction.</li>
+        </ul>
+      </div>
+
+      <div class="concept-box">
+        <h4>2. Conventional Current vs. Electron Flow</h4>
+        <ul>
+          <li><strong>Conventional Current:</strong> Proposed by Benjamin Franklin before electrons were discovered. Assumed positive fluid flows from <strong>Positive (+) to Negative (-)</strong>. Still used in standard engineering diagrams!</li>
+          <li><strong>Electron Flow:</strong> Physical reality in solid conductors: negatively charged electrons flow from <strong>Negative (-) to Positive (+)</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="concept-box">
+        <h4>3. 4 Circuit Elements & Meter Hookups</h4>
+        <ul>
+          <li><strong>Source:</strong> Supplies energy (battery, cell, generator).</li>
+          <li><strong>Conductor:</strong> Pathway for electrons (copper wires).</li>
+          <li><strong>Load:</strong> Converts electrical energy into other forms (bulb = light/heat, motor = mechanical, heater = thermal).</li>
+          <li><strong>Control:</strong> Switch that opens (breaks) or closes (completes) circuit.</li>
+          <li><strong>Ammeter:</strong> Measures Current ($I$ in Amps). <strong>ALWAYS hooked in SERIES</strong> (low internal resistance).</li>
+          <li><strong>Voltmeter:</strong> Measures Potential Difference ($V$ in Volts). <strong>ALWAYS hooked in PARALLEL</strong> across load/source (high internal resistance).</li>
+        </ul>
+      </div>
+
+      <div class="concept-box">
+        <h4>4. Drift Speed vs. Electric Field Speed</h4>
+        <ul>
+          <li><strong>Electron Drift Speed:</strong> Individual electrons drift slowly (~1 meter per hour) in a chaotic zigzag collision path.</li>
+          <li><strong>Electric Field Signal:</strong> Travels at nearly the <strong>speed of light</strong> through the entire circuit instantly when switch closes, commanding all electrons to start marching simultaneously!</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="notes-topic-heading">Topic 3: Resistance, Ohm's Law & Circuit Types</h3>
+    
+    <div class="card">
+      <div class="card-title">4 Factors Affecting Conductor Resistance</div>
+      <div class="formula-grid" style="margin-top: 1rem;">
+        <div class="formula-card">
+          <div class="formula-title">1. Material (Resistivity)</div>
+          <div class="formula-desc">Different metals hold electrons differently. Copper/silver = low R; Nichrome/tungsten = high R.</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-title">2. Thickness / Cross-Section</div>
+          <div class="formula-desc"><strong>Thicker wire = LOWER resistance</strong> (wider pipe allows more charges through at once).</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-title">3. Length of Wire</div>
+          <div class="formula-desc"><strong>Longer wire = HIGHER resistance</strong> (more collisions between electrons and atoms).</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-title">4. Temperature</div>
+          <div class="formula-desc"><strong>Hotter = HIGHER resistance</strong> (atoms vibrate vigorously, impeding electron drift). Colder = lower R.</div>
+        </div>
+      </div>
+    </div>
+
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Series Circuit</th>
+          <th>Parallel Circuit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Pathways</strong></td>
+          <td>Single pathway / loop for electrons</td>
+          <td>Multiple independent branches / pathways</td>
+        </tr>
+        <tr>
+          <td><strong>Current ($I$)</strong></td>
+          <td>Identical at all points: $I_T = I_1 = I_2 = I_3$</td>
+          <td>Divides between branches: $I_T = I_1 + I_2 + I_3$</td>
+        </tr>
+        <tr>
+          <td><strong>Voltage ($V$)</strong></td>
+          <td>Shared across components: $V_T = V_1 + V_2 + V_3$</td>
+          <td>Same across all parallel branches: $V_T = V_1 = V_2$</td>
+        </tr>
+        <tr>
+          <td><strong>Adding more loads</strong></td>
+          <td>Total resistance INCREASES; all bulbs grow dimmer</td>
+          <td>Total resistance DECREASES; bulb brightness unaffected</td>
+        </tr>
+        <tr>
+          <td><strong>If one bulb burns out</strong></td>
+          <td>Entire circuit opens; all devices turn off</td>
+          <td>Other branches remain on and unaffected</td>
+        </tr>
+        <tr>
+          <td><strong>Application</strong></td>
+          <td>Cheap decorative lights, safety switch loops</td>
+          <td>Standard household wiring & wall sockets</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <!-- ==================== TAB 2: FILL IN THE BLANK ==================== -->
+  <div id="fibTab" class="tab-pane">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">✏️ Fill in the Blank Mastery Drills</div>
+          <div class="card-subtitle">Click into each box and type your answer. Press Enter or click 'Check' on any question.</div>
+        </div>
+        <div style="display: flex; gap: 0.5rem;">
+          <button class="btn btn-primary btn-sm" onclick="checkAllFIB()">Check All Answers</button>
+          <button class="btn btn-outline btn-sm" onclick="resetFIB()">Reset Section</button>
+        </div>
+      </div>
+      
+      <div id="fibContainer">
+        <!-- Dynamically injected FIB Questions -->
+      </div>
+      
+      <div style="text-align: right; margin-top: 1rem;">
+        <button class="btn btn-primary" onclick="checkAllFIB()">Check All Fill-in Answers</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TAB 3: MULTIPLE CHOICE ==================== -->
+  <div id="mcTab" class="tab-pane">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">🔘 Multiple Choice Exam Practice</div>
+          <div class="card-subtitle">Test yourself against Alberta PAT & class quiz questions with detailed explanations</div>
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="resetMC()">Reset Section</button>
+      </div>
+      
+      <div id="mcContainer">
+        <!-- Dynamically injected MC Questions -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TAB 4: CALCULATIONS ==================== -->
+  <div id="calcTab" class="tab-pane">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">🧮 Ohm's Law & Circuit Calculations</div>
+          <div class="card-subtitle">Show your work! Enter your answer (numbers or with units like A, V, Ω, W, J) and hit Submit.</div>
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="resetCalc()">Reset Section</button>
+      </div>
+
+      <div id="calcContainer">
+        <!-- Dynamically injected Calculation Questions -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TAB 5: CIRCUIT ANALYSIS ==================== -->
+  <div id="circuitTab" class="tab-pane">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">🔌 Circuit Diagram Troubleshooting & Schematics</div>
+          <div class="card-subtitle">Analyze real schematic diagrams, switch positions, and component behaviors</div>
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="resetCircuits()">Reset Section</button>
+      </div>
+
+      <div id="circuitContainer">
+        <!-- Dynamically injected Circuit Questions with SVGs -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TAB 6: FORMULA TOOLS & CALCULATOR ==================== -->
+  <div id="calcToolTab" class="tab-pane">
+    <div class="calc-widget">
+      <h3>⚡ Interactive Ohm's Law Solver (V = I × R)</h3>
+      <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 1rem;">Enter any 2 values to instantly calculate the third.</p>
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label>Voltage (V)</label>
+          <input type="number" id="widgetV" placeholder="e.g. 12" oninput="solveOhms('V')">
+        </div>
+        <div class="calc-field">
+          <label>Current (I in Amps)</label>
+          <input type="number" id="widgetI" placeholder="e.g. 2.0" oninput="solveOhms('I')">
+        </div>
+        <div class="calc-field">
+          <label>Resistance (R in Ohms)</label>
+          <input type="number" id="widgetR" placeholder="e.g. 6.0" oninput="solveOhms('R')">
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="clearOhmWidget()" style="color: white; border-color: #475569;">Clear</button>
+      </div>
+      <div id="widgetResult" style="margin-top: 1rem; font-size: 0.95rem; color: #67e8f9; font-weight: 600;"></div>
+    </div>
+
+    <div class="calc-widget" style="background: #1e1b4b;">
+      <h3 style="color: #a78bfa;">⚡ Electric Power & Energy Calculator (P = IV, E = Pt)</h3>
+      <p style="font-size: 0.85rem; color: #c7d2fe; margin-bottom: 1rem;">Calculate power consumption and total energy in Joules.</p>
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label>Voltage (V)</label>
+          <input type="number" id="powV" placeholder="120" oninput="calcPowerEnergy()">
+        </div>
+        <div class="calc-field">
+          <label>Current (I in A)</label>
+          <input type="number" id="powI" placeholder="10" oninput="calcPowerEnergy()">
+        </div>
+        <div class="calc-field">
+          <label>Time (Seconds)</label>
+          <input type="number" id="powT" placeholder="90" oninput="calcPowerEnergy()">
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="clearPowerWidget()" style="color: white; border-color: #6366f1;">Clear</button>
+      </div>
+      <div id="powResult" style="margin-top: 1rem; font-size: 0.95rem; color: #c4b5fd; font-weight: 600;"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📖 Official Schematic Symbols Legend</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem; text-align: center;">
+        
+        <!-- Cell -->
+        <div style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; background: #fafafa;">
+          <svg width="100" height="40" viewBox="0 0 100 40">
+            <line x1="10" y1="20" x2="42" y2="20" stroke="#1e293b" stroke-width="2"/>
+            <line x1="42" y1="5" x2="42" y2="35" stroke="#1e293b" stroke-width="3"/>
+            <line x1="52" y1="12" x2="52" y2="28" stroke="#1e293b" stroke-width="5"/>
+            <line x1="52" y1="20" x2="90" y2="20" stroke="#1e293b" stroke-width="2"/>
+            <text x="36" y="10" font-size="10" fill="#1e293b">+</text>
+            <text x="56" y="14" font-size="10" fill="#1e293b">-</text>
+          </svg>
+          <div style="font-weight: 700; margin-top: 0.5rem; font-size: 0.9rem;">Single Cell</div>
+          <div style="font-size: 0.75rem; color: #64748b;">Long bar is +, short thick bar is -</div>
+        </div>
+
+        <!-- Battery -->
+        <div style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; background: #fafafa;">
+          <svg width="120" height="40" viewBox="0 0 120 40">
+            <line x1="10" y1="20" x2="35" y2="20" stroke="#1e293b" stroke-width="2"/>
+            <line x1="35" y1="5" x2="35" y2="35" stroke="#1e293b" stroke-width="3"/>
+            <line x1="45" y1="12" x2="45" y2="28" stroke="#1e293b" stroke-width="4"/>
+            <line x1="45" y1="20" x2="65" y2="20" stroke="#1e293b" stroke-width="2" stroke-dasharray="2,2"/>
+            <line x1="65" y1="5" x2="65" y2="35" stroke="#1e293b" stroke-width="3"/>
+            <line x1="75" y1="12" x2="75" y2="28" stroke="#1e293b" stroke-width="4"/>
+            <line x1="75" y1="20" x2="110" y2="20" stroke="#1e293b" stroke-width="2"/>
+          </svg>
+          <div style="font-weight: 700; margin-top: 0.5rem; font-size: 0.9rem;">Battery</div>
+          <div style="font-size: 0.75rem; color: #64748b;">Multiple cells in series</div>
+        </div>
+
+        <!-- Light Bulb -->
+        <div style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; background: #fafafa;">
+          <svg width="80" height="40" viewBox="0 0 80 40">
+            <line x1="10" y1="20" x2="25" y2="20" stroke="#1e293b" stroke-width="2"/>
+            <circle cx="40" cy="20" r="14" fill="none" stroke="#1e293b" stroke-width="2"/>
+            <path d="M 32 20 Q 40 8 40 20 Q 40 8 48 20" fill="none" stroke="#1e293b" stroke-width="2"/>
+            <line x1="55" y1="20" x2="70" y2="20" stroke="#1e293b" stroke-width="2"/>
+          </svg>
+          <div style="font-weight: 700; margin-top: 0.5rem; font-size: 0.9rem;">Light Bulb / Lamp</div>
+          <div style="font-size: 0.75rem; color: #64748b;">Load converting E to light/heat</div>
+        </div>
+
+        <!-- Resistor -->
+        <div style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; background: #fafafa;">
+          <svg width="100" height="40" viewBox="0 0 100 40">
+            <line x1="10" y1="20" x2="25" y2="20" stroke="#1e293b" stroke-width="2"/>
+            <path d="M 25 20 L 30 10 L 40 30 L 50 10 L 60 30 L 70 10 L 75 20" fill="none" stroke="#1e293b" stroke-width="2"/>
+            <line x1="75" y1="20" x2="90" y2="20" stroke="#1e293b" stroke-width="2"/>
+          </svg>
+          <div style="font-weight: 700; margin-top: 0.5rem; font-size: 0.9rem;">Fixed Resistor</div>
+          <div style="font-size: 0.75rem; color: #64748b;">Hinders electron motion</div>
+        </div>
+
+        <!-- Switch -->
+        <div style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; background: #fafafa;">
+          <svg width="100" height="40" viewBox="0 0 100 40">
+            <line x1="10" y1="20" x2="30" y2="20" stroke="#1e293b" stroke-width="2"/>
+            <circle cx="30" cy="20" r="3" fill="#1e293b"/>
+            <line x1="30" y1="20" x2="65" y2="8" stroke="#1e293b" stroke-width="2"/>
+            <circle cx="70" cy="20" r="3" fill="#1e293b"/>
+            <line x1="70" y1="20" x2="90" y2="20" stroke="#1e293b" stroke-width="2"/>
+          </svg>
+          <div style="font-weight: 700; margin-top: 0.5rem; font-size: 0.9rem;">Open Switch</div>
+          <div style="font-size: 0.75rem; color: #64748b;">Breaks path (I = 0)</div>
+        </div>
+
+        <!-- Ammeter -->
+        <div style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; background: #fafafa;">
+          <svg width="80" height="40" viewBox="0 0 80 40">
+            <line x1="10" y1="20" x2="25" y2="20" stroke="#1e293b" stroke-width="2"/>
+            <circle cx="40" cy="20" r="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+            <text x="40" y="25" font-size="14" font-weight="bold" fill="#2563eb" text-anchor="middle">A</text>
+            <line x1="55" y1="20" x2="70" y2="20" stroke="#1e293b" stroke-width="2"/>
+          </svg>
+          <div style="font-weight: 700; margin-top: 0.5rem; font-size: 0.9rem;">Ammeter</div>
+          <div style="font-size: 0.75rem; color: #64748b;">Connect in SERIES only</div>
+        </div>
+
+        <!-- Voltmeter -->
+        <div style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; background: #fafafa;">
+          <svg width="80" height="40" viewBox="0 0 80 40">
+            <line x1="10" y1="20" x2="25" y2="20" stroke="#1e293b" stroke-width="2"/>
+            <circle cx="40" cy="20" r="14" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+            <text x="40" y="25" font-size="14" font-weight="bold" fill="#dc2626" text-anchor="middle">V</text>
+            <line x1="55" y1="20" x2="70" y2="20" stroke="#1e293b" stroke-width="2"/>
+          </svg>
+          <div style="font-weight: 700; margin-top: 0.5rem; font-size: 0.9rem;">Voltmeter</div>
+          <div style="font-size: 0.75rem; color: #64748b;">Connect in PARALLEL only</div>
+        </div>
+
+        <!-- Variable Resistor -->
+        <div style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; background: #fafafa;">
+          <svg width="100" height="40" viewBox="0 0 100 40">
+            <line x1="10" y1="20" x2="25" y2="20" stroke="#1e293b" stroke-width="2"/>
+            <path d="M 25 20 L 30 10 L 40 30 L 50 10 L 60 30 L 70 10 L 75 20" fill="none" stroke="#1e293b" stroke-width="2"/>
+            <line x1="75" y1="20" x2="90" y2="20" stroke="#1e293b" stroke-width="2"/>
+            <line x1="30" y1="35" x2="68" y2="5" stroke="#dc2626" stroke-width="2"/>
+            <polygon points="68,5 60,6 64,12" fill="#dc2626"/>
+          </svg>
+          <div style="font-weight: 700; margin-top: 0.5rem; font-size: 0.9rem;">Rheostat / Variable R</div>
+          <div style="font-size: 0.75rem; color: #64748b;">Adjustable resistance (dimmer)</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+// ==================== DATA DEFINITIONS ====================
+
+const fibData = [
+  {
+    id: "fib1",
+    topic: "Topic 1: Electric Charges",
+    text: "All matter is made of atoms. Protons have a positive charge, while electrons have a [blank1] charge.",
+    blanks: [
+      { id: "blank1", accepted: ["negative", "-", "neg"] }
+    ],
+    hint: "Think about the sign of an electron compared to a proton.",
+    explanation: "Protons carry a positive (+) charge, electrons carry a negative (-) charge, and neutrons carry no charge (neutral)."
+  },
+  {
+    id: "fib2",
+    topic: "Topic 1: Electric Charges",
+    text: "In solid materials, positively charged protons cannot leave the nucleus. Therefore, ONLY [blank1] are able to move from atom to atom.",
+    blanks: [
+      { id: "blank1", accepted: ["electrons", "electron", "valence electrons"] }
+    ],
+    hint: "What subatomic particle orbits the nucleus?",
+    explanation: "Protons and neutrons are tightly bound within the atomic nucleus. Only electrons (specifically outer valence electrons) can transfer."
+  },
+  {
+    id: "fib3",
+    topic: "Topic 1: Static Electricity",
+    text: "Charging by [blank1] occurs when two different materials are rubbed together and electrons are captured by the material with greater electron affinity.",
+    blanks: [
+      { id: "blank1", accepted: ["friction", "rubbing"] }
+    ],
+    hint: "Think about rubbing a balloon against a wool sweater.",
+    explanation: "Friction transfers electrons between two dissimilar materials through physical rubbing."
+  },
+  {
+    id: "fib4",
+    topic: "Topic 1: Methods of Charging",
+    text: "When a charged object is brought near a neutral object without touching it, causing a redistribution of charges, this process is called [blank1].",
+    blanks: [
+      { id: "blank1", accepted: ["induction", "charge induction", "electrostatic induction"] }
+    ],
+    hint: "The three methods are friction, conduction (contact), and ______.",
+    explanation: "Induction causes temporary charge separation without physical contact."
+  },
+  {
+    id: "fib5",
+    topic: "Topic 1: Materials",
+    text: "Materials like copper and aluminum that allow valence electrons to flow freely are called [blank1], whereas rubber and plastic are [blank2].",
+    blanks: [
+      { id: "blank1", accepted: ["conductors", "conductor"] },
+      { id: "blank2", accepted: ["insulators", "insulator"] }
+    ],
+    hint: "One allows flow, the other resists and holds charge.",
+    explanation: "Conductors allow free electron movement; insulators hold tightly onto electrons and prevent flow."
+  },
+  {
+    id: "fib6",
+    topic: "Topic 1: Safety & Grounding",
+    text: "Connecting a charged object to the Earth via a conducting wire to safely neutralize charge buildup is called [blank1].",
+    blanks: [
+      { id: "blank1", accepted: ["grounding", "earthing", "ground"] }
+    ],
+    hint: "Earth acts as a massive sink or source of electrons.",
+    explanation: "Grounding safely discharges excess static charge into the earth."
+  },
+  {
+    id: "fib7",
+    topic: "Topic 2: Conventional Current",
+    text: "Benjamin Franklin assumed current moved from positive to negative, known as [blank1] current, but physically electrons actually move from [blank2] to positive.",
+    blanks: [
+      { id: "blank1", accepted: ["conventional", "conventional current"] },
+      { id: "blank2", accepted: ["negative", "-", "neg"] }
+    ],
+    hint: "Historical convention vs physical electron flow.",
+    explanation: "Conventional current runs positive-to-negative; real electron flow in solid conductors is negative-to-positive."
+  },
+  {
+    id: "fib8",
+    topic: "Topic 2: Circuit Meters",
+    text: "An ammeter measures electric current and must always be connected in [blank1], while a voltmeter measures potential difference and must be connected in [blank2].",
+    blanks: [
+      { id: "blank1", accepted: ["series", "in series"] },
+      { id: "blank2", accepted: ["parallel", "in parallel"] }
+    ],
+    hint: "One is part of the single loop; the other branches across the component.",
+    explanation: "Ammeters connect in series (low internal resistance); voltmeters connect in parallel (high internal resistance)."
+  },
+  {
+    id: "fib9",
+    topic: "Topic 2: Units of Electricity",
+    text: "The SI unit for electric charge is the [blank1], the unit for electric current is the [blank2], and the unit for potential difference is the [blank3].",
+    blanks: [
+      { id: "blank1", accepted: ["coulomb", "coulombs", "c"] },
+      { id: "blank2", accepted: ["ampere", "amperes", "amp", "amps", "a"] },
+      { id: "blank3", accepted: ["volt", "volts", "v"] }
+    ],
+    hint: "Named after famous physicists Coulomb, Ampere, and Volta.",
+    explanation: "Charge = Coulomb (C), Current = Ampere (A), Voltage = Volt (V)."
+  },
+  {
+    id: "fib10",
+    topic: "Topic 3: Resistance Factors",
+    text: "Compared to a thin, long wire, a short and [blank1] wire will have much lower electrical resistance.",
+    blanks: [
+      { id: "blank1", accepted: ["thick", "wide", "thicker", "wider"] }
+    ],
+    hint: "Think of water flowing through a wide pipe vs a narrow drinking straw.",
+    explanation: "Resistance is inversely proportional to cross-sectional area: thicker wires have lower resistance."
+  },
+  {
+    id: "fib11",
+    topic: "Topic 3: Temperature & Resistance",
+    text: "As the temperature of a metal conductor increases, its electrical resistance [blank1].",
+    blanks: [
+      { id: "blank1", accepted: ["increases", "goes up", "rises", "increase"] }
+    ],
+    hint: "Warmer metal atoms vibrate more violently, causing more collisions with electrons.",
+    explanation: "Higher temperatures cause increased thermal vibrations, resulting in higher resistance."
+  },
+  {
+    id: "fib12",
+    topic: "Topic 3: Variable Resistors",
+    text: "An adjustable resistor used in dimmer switches and stove burners is known as a [blank1] or rheostat.",
+    blanks: [
+      { id: "blank1", accepted: ["potentiometer", "variable resistor", "variable"] }
+    ],
+    hint: "Its resistance can be varied manually by a dial or slider.",
+    explanation: "Variable resistors (rheostats or potentiometers) allow manual adjustment of current by changing resistance."
+  },
+  {
+    id: "fib13",
+    topic: "Topic 3: Series Circuits",
+    text: "In a series circuit, the [blank1] is the same at every point throughout the loop, while the [blank2] is divided among the loads.",
+    blanks: [
+      { id: "blank1", accepted: ["current", "amperage", "i"] },
+      { id: "blank2", accepted: ["voltage", "potential difference", "v"] }
+    ],
+    hint: "Current has only one path to flow, but energy (voltage) is shared.",
+    explanation: "In series: I_total = I1 = I2; V_total = V1 + V2."
+  },
+  {
+    id: "fib14",
+    topic: "Topic 3: Parallel Circuits",
+    text: "In a parallel circuit, the [blank1] across each separate branch is identical to the source voltage, but the total [blank2] is the sum of the branch currents.",
+    blanks: [
+      { id: "blank1", accepted: ["voltage", "potential difference", "v"] },
+      { id: "blank2", accepted: ["current", "amperage", "i"] }
+    ],
+    hint: "Parallel branches each receive full battery push.",
+    explanation: "In parallel: V_total = V1 = V2; I_total = I1 + I2."
+  },
+  {
+    id: "fib15",
+    topic: "Topic 3: Household Wiring",
+    text: "Household circuits are always wired in [blank1] so that turning off one appliance does not shut off power to other devices.",
+    blanks: [
+      { id: "blank1", accepted: ["parallel", "a parallel circuit"] }
+    ],
+    hint: "Series or parallel?",
+    explanation: "Parallel wiring ensures that each outlet receives 120 V independently and appliances operate without mutual interference."
+  }
+];
+
+const mcData = [
+  {
+    id: "mc1",
+    topic: "Topic 1: Electric Charges",
+    question: "When a neutral glass rod is rubbed with silk, the glass rod becomes positively charged. What actually occurred during this process?",
+    options: [
+      "Protons transferred from the silk to the glass rod.",
+      "Electrons transferred from the glass rod to the silk.",
+      "Electrons transferred from the silk to the glass rod.",
+      "Protons transferred from the glass rod to the silk."
+    ],
+    answer: 1,
+    hint: "Remember: protons are locked inside the nucleus and NEVER transfer during charging in solids!",
+    explanation: "Protons are trapped tightly in the atomic nucleus and NEVER transfer during charging in solids. The glass rod became positive because it LOST negative electrons to the silk."
+  },
+  {
+    id: "mc2",
+    topic: "Topic 1: Static Electricity",
+    question: "A student brings a negatively charged plastic ruler near an uncharged, neutral aluminum pop can resting on a table. The can rolls towards the ruler. Why?",
+    options: [
+      "Neutral objects always repel charged objects.",
+      "Electrons in the can are attracted to the negative ruler.",
+      "Electrons in the can are repelled to the far side, leaving the near side positively charged by induction.",
+      "The aluminum can instantly converts into an insulator."
+    ],
+    answer: 2,
+    hint: "Review electrostatic induction: what happens to the mobile electrons in the metal when a negative charge approaches?",
+    explanation: "Through electrostatic induction, the negative ruler repels free electrons to the far side of the metal can. The positive protons left on the near side are closer to the ruler, creating a net attractive force."
+  },
+  {
+    id: "mc3",
+    topic: "Topic 1: Van de Graaff Generator",
+    question: "When a person stands on an insulating plastic stool and touches the metal dome of an active Van de Graaff generator, their hair stands up. This happens because:",
+    options: [
+      "Current electricity is flowing through their body into the ground.",
+      "Each strand of hair acquires the same electric charge and like charges repel each other.",
+      "The hair is magnetized by the generator motor.",
+      "Opposite charges on adjacent hairs attract each other."
+    ],
+    answer: 1,
+    hint: "What charge does each hair acquire, and what is the fundamental Law of Charges?",
+    explanation: "Charge transfers to the person's body and onto every strand of hair. Because all hairs have the same charge (either all negative or all positive), they strongly repel each other according to the Law of Charges."
+  },
+  {
+    id: "mc4",
+    topic: "Topic 1: Industrial Applications",
+    question: "Why is electrostatic technology used in automobile spray painting?",
+    options: [
+      "It heats the paint so it dries 10 times faster.",
+      "Charging paint droplets negatively and the car body positively ensures uniform paint coverage and dramatically reduces wasted overspray.",
+      "It neutralizes the paint so it won't conduct electricity in rain.",
+      "It allows paint to float freely in the air without landing on windows."
+    ],
+    answer: 1,
+    hint: "Opposites attract! How does opposite charging help the paint stick evenly?",
+    explanation: "The paint droplets are given a negative charge and the grounded metal car body is given an opposite charge. Attraction pulls the paint droplets directly to every curve, including hard-to-reach recesses."
+  },
+  {
+    id: "mc5",
+    topic: "Topic 1: Semiconductors",
+    question: "Selenium is an element used in photocopiers and laser printers because it behaves as a semiconductor. This means selenium:",
+    options: [
+      "Has zero electrical resistance at all temperatures.",
+      "Acts as an electrical insulator in the dark, but becomes a conductor when exposed to light.",
+      "Conducts electricity only when submerged in liquid acid.",
+      "Carries protons instead of electrons across its surface."
+    ],
+    answer: 1,
+    hint: "Check Slide 6 & Slide 12 of your class notes on selenium and light exposure.",
+    explanation: "As stated in class notes, selenium is photoconductive: it insulates in darkness and conducts when illuminated, allowing light to erase electrostatic patterns on the copier drum."
+  },
+  {
+    id: "mc6",
+    topic: "Topic 2: History of Electricity",
+    question: "Benjamin Franklin's model of 'conventional current' defined electric current as flowing from:",
+    options: [
+      "Negative terminal to positive terminal.",
+      "Positive terminal to negative terminal.",
+      "Ground to the cloud.",
+      "North magnetic pole to South magnetic pole."
+    ],
+    answer: 1,
+    hint: "Franklin thought current was an 'excess fluid' (+) flowing to where there was a deficit (-).",
+    explanation: "Franklin assumed electric fluid flowed from an area of surplus (+) to an area of deficiency (-). In reality, solid wire conduction consists of electrons flowing from negative (-) to positive (+)."
+  },
+  {
+    id: "mc7",
+    topic: "Topic 2: Electron Drift vs Signal Speed",
+    question: "When you flip a wall switch, the ceiling light turns on virtually instantly. Which statement best explains this?",
+    options: [
+      "Electrons travel through the copper wire at the speed of light from the switch to the bulb.",
+      "The wire was completely empty and fills up with electrons in a microsecond.",
+      "The wire is already filled with mobile electrons, and the electric field signal propagates at nearly light speed, causing electrons everywhere in the circuit to move at once.",
+      "The switch sends a sound wave through the wire that excites the bulb filament."
+    ],
+    answer: 2,
+    hint: "Think about the water pipe analogy: when you turn on a faucet, does water have to travel all the way from the reservoir, or is the pipe already full?",
+    explanation: "Individual electron drift speed is extremely slow (~1 meter/hour), but the electric field signal travels at nearly the speed of light. Like water in pre-filled pipes, water emerges from the spigot the moment the valve opens."
+  },
+  {
+    id: "mc8",
+    topic: "Topic 2: Potential Difference",
+    question: "A standard 9.0 V battery has a potential difference of 9.0 Volts. Scientifically, this means the battery provides:",
+    options: [
+      "9.0 Coulombs of charge per second.",
+      "9.0 Joules of electrical energy per Coulomb of charge.",
+      "9.0 Ohms of resistance to current flow.",
+      "9.0 Watts of continuous power output."
+    ],
+    answer: 1,
+    hint: "Look at the formula ΔV = ΔE / q. What are the units of energy and charge?",
+    explanation: "Voltage (potential difference) is defined as energy per unit charge: 1 Volt = 1 Joule / 1 Coulomb (ΔV = ΔE / q). A 9 V battery gives 9 J to every coulomb of electrons."
+  },
+  {
+    id: "mc9",
+    topic: "Topic 2: Measuring Instruments",
+    question: "An instrument designed specifically to detect and measure very small, weak electric currents and indicate their direction is a:",
+    options: [
+      "Voltmeter",
+      "Galvanometer",
+      "Ohmmeter",
+      "Rheostat"
+    ],
+    answer: 1,
+    hint: "Check Slide 24: what instrument is used for VERY WEAK current?",
+    explanation: "A galvanometer is a sensitive instrument used to measure very weak currents and identify current direction. Larger currents use an ammeter."
+  },
+  {
+    id: "mc10",
+    topic: "Topic 2: Meter Hookup Rules",
+    question: "A student wants to measure the potential difference across a light bulb and the current flowing through it. How must the meters be connected?",
+    options: [
+      "Ammeter in parallel with bulb; Voltmeter in series with circuit.",
+      "Both Ammeter and Voltmeter in parallel with bulb.",
+      "Ammeter in series with circuit; Voltmeter in parallel across bulb.",
+      "Both Ammeter and Voltmeter in series with circuit."
+    ],
+    answer: 2,
+    hint: "Ammeters measure through-flow (series); voltmeters measure potential across (parallel).",
+    explanation: "Ammeters must ALWAYS be connected in series (in line) so the entire current passes through them. Voltmeters must ALWAYS be in parallel (across) the component to measure the voltage drop."
+  },
+  {
+    id: "mc11",
+    topic: "Topic 3: Resistance Factors",
+    question: "Which of the following copper wires would have the LOWEST electrical resistance?",
+    options: [
+      "A long, thin wire at 80°C",
+      "A long, thick wire at 20°C",
+      "A short, thin wire at 80°C",
+      "A short, thick wire at 20°C"
+    ],
+    answer: 3,
+    hint: "Think about the four factors: shorter length, wider cross-section, and cooler temperature minimize collisions.",
+    explanation: "Resistance is minimized when: length is shortest, diameter/thickness is greatest, and temperature is lowest. Short + thick + cold = least resistance."
+  },
+  {
+    id: "mc12",
+    topic: "Topic 3: Ohmic vs Non-Ohmic",
+    question: "An 'ohmic' resistor is characterized by which of the following properties?",
+    options: [
+      "Its resistance changes whenever the applied voltage changes.",
+      "A plot of Voltage (V) vs Current (I) yields a curved, non-linear line.",
+      "Its resistance remains constant, yielding a straight linear line on a V vs I graph with slope equal to resistance.",
+      "It conducts electricity with zero resistance at room temperature."
+    ],
+    answer: 2,
+    hint: "Ohmic resistors obey Ohm's Law with constant R.",
+    explanation: "Ohmic resistors obey Ohm's Law strictly: their resistance R is constant regardless of V or I, producing a straight line through the origin on a V-I graph."
+  },
+  {
+    id: "mc13",
+    topic: "Topic 3: Series Circuit Behavior",
+    question: "Three identical light bulbs are connected in series with a 12 V battery. What happens if a fourth identical bulb is added in series?",
+    options: [
+      "Total circuit resistance increases, total current decreases, and all bulbs become dimmer.",
+      "Total circuit resistance decreases, total current increases, and all bulbs become brighter.",
+      "Total circuit resistance remains unchanged, and only the new bulb lights up.",
+      "Total voltage from the battery increases from 12 V to 16 V."
+    ],
+    answer: 0,
+    hint: "In series, R_total = R1 + R2 + R3 + R4. What does increasing R do to current I = V/R?",
+    explanation: "In series, adding loads increases total resistance (R_T = R1+R2+R3+R4). With higher R and constant V, total current drops (I = V/R), causing all bulbs to glow dimmer."
+  },
+  {
+    id: "mc14",
+    topic: "Topic 3: Parallel Circuit Behavior",
+    question: "Two identical light bulbs are connected in parallel to a 6.0 V battery. If one bulb burns out (filament breaks), what happens to the second bulb?",
+    options: [
+      "The second bulb immediately goes out because the circuit loop is broken.",
+      "The second bulb stays on with the exact same brightness because it is on an independent branch with 6.0 V across it.",
+      "The second bulb becomes twice as bright because it receives all the current.",
+      "The battery explodes due to excessive resistance."
+    ],
+    answer: 1,
+    hint: "Are parallel branches dependent on each other, or do they each have their own direct loop to the battery?",
+    explanation: "In parallel, each branch is an independent closed path connected directly across the 6.0 V battery. Disconnecting one branch has zero effect on the voltage or current of other parallel branches."
+  },
+  {
+    id: "mc15",
+    topic: "Topic 3: Series Voltage Distribution",
+    question: "A series circuit contains a 9.0 V battery and two resistors, R1 and R2. If a voltmeter placed across R1 reads 3.5 V, what is the voltage across R2?",
+    options: [
+      "9.0 V",
+      "12.5 V",
+      "5.5 V",
+      "3.5 V"
+    ],
+    answer: 2,
+    hint: "In a series circuit, total voltage is shared: V_total = V1 + V2.",
+    explanation: "In a series circuit, total voltage is the sum of component voltage drops: V_total = V1 + V2. Therefore, V2 = 9.0 V - 3.5 V = 5.5 V."
+  },
+  {
+    id: "mc16",
+    topic: "Topic 3: Parallel Current Distribution",
+    question: "A battery provides 6.0 A of total current to a parallel circuit containing two branches. If Branch 1 draws 2.5 A, how much current flows through Branch 2?",
+    options: [
+      "6.0 A",
+      "3.5 A",
+      "2.5 A",
+      "8.5 A"
+    ],
+    answer: 1,
+    hint: "In a parallel circuit, total current divides: I_total = I1 + I2.",
+    explanation: "In parallel, total current equals the sum of the branch currents: I_total = I1 + I2. So I2 = 6.0 A - 2.5 A = 3.5 A."
+  },
+  {
+    id: "mc17",
+    topic: "Topic 3: Electrical Safety",
+    question: "What is the critical difference between a fuse and a circuit breaker in household safety?",
+    options: [
+      "A fuse protects against low voltage, while a breaker protects against high current.",
+      "A fuse has a thin metallic strip that melts permanently when current is excessive and must be replaced; a circuit breaker is an electromagnetic/bimetallic switch that can simply be reset.",
+      "Circuit breakers are only used in cars; fuses are used in houses.",
+      "Fuses are connected in parallel; circuit breakers are connected in series."
+    ],
+    answer: 1,
+    hint: "Which device has to be thrown away after tripping, and which one can just be flipped back on?",
+    explanation: "A fuse melts its internal wire when overloaded and is a one-time use device. Circuit breakers trip like a switch when current exceeds safety limits and can be reset."
+  },
+  {
+    id: "mc18",
+    topic: "Topic 3: Power & Energy",
+    question: "A 60 W light bulb runs for 2.0 minutes. How much electrical energy does it consume?",
+    options: [
+      "120 Joules",
+      "7,200 Joules",
+      "30 Joules",
+      "3,600 Joules"
+    ],
+    answer: 1,
+    hint: "Formula: E = P × t. Always convert minutes to seconds first (2.0 min × 60 s/min = 120 s)!",
+    explanation: "Always convert time to seconds! t = 2.0 min × 60 s/min = 120 s. Energy E = P × t = 60 W × 120 s = 7,200 J."
+  },
+  {
+    id: "mc19",
+    topic: "Topic 1: Lightning Safety",
+    question: "Why is an enclosed metal automobile a relatively safe place to be during a severe lightning thunderstorm?",
+    options: [
+      "The rubber tires insulate the car completely from the ground.",
+      "The metal frame acts as a Faraday cage, conducting electric discharge around the outside of the vehicle safely into the ground.",
+      "Gasoline in the fuel tank absorbs electrical static.",
+      "The glass windshield repels negatively charged lightning bolts."
+    ],
+    answer: 1,
+    hint: "What happens to excess charge on a metal shell? Where does it flow?",
+    explanation: "The metal body of the car conducts the lightning around the exterior of the passenger cabin and down to ground. Contrary to popular myth, rubber tires do NOT protect the car (lightning jumped miles of air!)."
+  },
+  {
+    id: "mc20",
+    topic: "Topic 3: Resistance Matching",
+    question: "Which of the following electrical quantities is matched with its correct SI unit?",
+    options: [
+      "Potential Difference — Watt",
+      "Electrical Charge — Ampere",
+      "Electrical Energy — Joule",
+      "Electrical Resistance — Volt"
+    ],
+    answer: 2,
+    hint: "Check your Units Cheat Sheet: Joules are the unit of energy and work.",
+    explanation: "Energy is measured in Joules (J). Charge is in Coulombs (C), Current is in Amperes (A), Potential Difference is in Volts (V), Resistance is in Ohms (Ω), Power is in Watts (W)."
+  }
+];
+
+const calcData = [
+  {
+    id: "calc1",
+    title: "Question 1: Automobile Headlight",
+    topic: "Worksheet 3a #1",
+    scenario: "An automobile headlight has an average resistance of 24 Ω. A standard car battery provides a potential difference of 12 V. What amount of current passes through the headlight?",
+    targetVar: "I",
+    knowns: "V = 12 V, R = 24 Ω",
+    formula: "I = V / R",
+    correctVal: 0.5,
+    unit: "A",
+    explanation: "Step 1: Formula I = V / R.<br>Step 2: Substitution I = 12 V / 24 Ω.<br>Step 3: Final answer = 0.50 A."
+  },
+  {
+    id: "calc2",
+    title: "Question 2: Portable Radio Potential Difference",
+    topic: "Worksheet 3a #2",
+    scenario: "In a portable radio, 0.50 A of current flows through a conductor that provides 18 Ω of resistance. What potential difference (voltage) is provided by the battery?",
+    targetVar: "V",
+    knowns: "I = 0.50 A, R = 18 Ω",
+    formula: "V = I × R",
+    correctVal: 9.0,
+    unit: "V",
+    explanation: "Step 1: Formula V = I × R.<br>Step 2: Substitution V = (0.50 A)(18 Ω).<br>Step 3: Final answer = 9.0 V."
+  },
+  {
+    id: "calc3",
+    title: "Question 3: Radio Conductor Resistance",
+    topic: "Worksheet 3a #3",
+    scenario: "A 9.0 V battery maintains a current of 3.0 A through a portable radio circuit. What is the electrical resistance of the conductor?",
+    targetVar: "R",
+    knowns: "V = 9.0 V, I = 3.0 A",
+    formula: "R = V / I",
+    correctVal: 3.0,
+    unit: "Ω",
+    explanation: "Step 1: Formula R = V / I.<br>Step 2: Substitution R = 9.0 V / 3.0 A.<br>Step 3: Final answer = 3.0 Ω."
+  },
+  {
+    id: "calc4",
+    title: "Question 4: Hair Dryer Resistance",
+    topic: "Worksheet 3a #4",
+    scenario: "A 1100 W hair dryer is plugged into a 110 V wall outlet, drawing a current of 10 A through its heating coils. What is the electrical resistance of the hair dryer?",
+    targetVar: "R",
+    knowns: "V = 110 V, I = 10 A",
+    formula: "R = V / I",
+    correctVal: 11.0,
+    unit: "Ω",
+    explanation: "Step 1: Formula R = V / I.<br>Step 2: Substitution R = 110 V / 10 A.<br>Step 3: Final answer = 11 Ω. (Note: Power P = IV = 10 A × 110 V = 1100 W verifies the numbers!)."
+  },
+  {
+    id: "calc5",
+    title: "Question 5: CD Player Resistance & Current",
+    topic: "Worksheet 3a #6",
+    scenario: "A portable CD player operates using four 1.5 V cells connected in series. The CD player provides an internal resistance of 15,000 Ω (15 kΩ). What amount of current flows through the CD player in Amperes?",
+    targetVar: "I",
+    knowns: "4 cells × 1.5 V = 6.0 V total, R = 15,000 Ω",
+    formula: "I = V / R",
+    correctVal: 0.0004,
+    unit: "A",
+    explanation: "Step 1: Total voltage V = 4 × 1.5 V = 6.0 V.<br>Step 2: Formula I = V / R.<br>Step 3: Substitution I = 6.0 V / 15,000 Ω = 0.0004 A (or 0.40 mA)."
+  },
+  {
+    id: "calc6",
+    title: "Question 6: Electric Motor Potential Difference",
+    topic: "Worksheet 3a #7",
+    scenario: "An electric motor has an operating resistance of 25 Ω when a 4.8 A current flows through it. What is the potential difference of the outlet powering the motor?",
+    targetVar: "V",
+    knowns: "R = 25 Ω, I = 4.8 A",
+    formula: "V = I × R",
+    correctVal: 120.0,
+    unit: "V",
+    explanation: "Step 1: Formula V = I × R.<br>Step 2: Substitution V = (4.8 A)(25 Ω).<br>Step 3: Final answer = 120 V."
+  },
+  {
+    id: "calc7",
+    title: "Question 7: Series Circuit Light Bulb Resistance",
+    topic: "Worksheet 3a #8a",
+    scenario: "A student builds a simple series circuit using a 12 V battery connected to a single light bulb. The current in the circuit is measured at 2.0 A. Calculate the resistance of this light bulb.",
+    targetVar: "R",
+    knowns: "V = 12 V, I = 2.0 A",
+    formula: "R = V / I",
+    correctVal: 6.0,
+    unit: "Ω",
+    explanation: "Step 1: Formula R = V / I.<br>Step 2: Substitution R = 12 V / 2.0 A = 6.0 Ω."
+  },
+  {
+    id: "calc8",
+    title: "Question 8: Adding Identical Bulb in Series",
+    topic: "Worksheet 3a #8b",
+    scenario: "In the circuit from Question 7 (12 V battery, single bulb R = 6.0 Ω), the student adds an identical second bulb in series, doubling the total resistance to 12.0 Ω. Calculate the new circuit current.",
+    targetVar: "I",
+    knowns: "V = 12 V, R_total = 12.0 Ω",
+    formula: "I = V / R",
+    correctVal: 1.0,
+    unit: "A",
+    explanation: "Step 1: Formula I = V / R_total.<br>Step 2: Substitution I = 12 V / 12.0 Ω = 1.0 A.<br>Note: Current is cut in half, so both bulbs become dimmer!"
+  },
+  {
+    id: "calc9",
+    title: "Question 9: Safe Extension Cord Resistance",
+    topic: "Class Notes Slide 41",
+    scenario: "An extension cord is rated for a maximum current of 15 A when connected to a standard 120 V outlet. What is the SMALLEST electrical resistance that can safely be plugged in without overloading the cord?",
+    targetVar: "R",
+    knowns: "V = 120 V, I_max = 15 A",
+    formula: "R = V / I",
+    correctVal: 8.0,
+    unit: "Ω",
+    explanation: "Step 1: Formula R = V / I.<br>Step 2: Substitution R = 120 V / 15 A = 8.0 Ω.<br>Any resistance lower than 8.0 Ω would draw more than 15 A and overheat the cord!"
+  },
+  {
+    id: "calc10",
+    title: "Question 10: Resistor with Milliamps Conversion",
+    topic: "Class Notes Slide 41",
+    scenario: "What is the potential difference across a 1,500 Ω resistor carrying a current of 75 mA (0.075 A)?",
+    targetVar: "V",
+    knowns: "R = 1500 Ω, I = 75 mA = 0.075 A",
+    formula: "V = I × R",
+    correctVal: 112.5,
+    unit: "V",
+    explanation: "Step 1: Convert current to Amperes: 75 mA / 1000 = 0.075 A.<br>Step 2: V = I × R = (0.075 A)(1500 Ω) = 112.5 V."
+  },
+  {
+    id: "calc11",
+    title: "Question 11: Electric Drill Power Consumption",
+    topic: "Class Notes Slide 43",
+    scenario: "An electric drill is connected to a 9.0 V battery and behaves as a 2.50 Ω resistor while drilling. Calculate the electrical power (in Watts) consumed by the drill.",
+    targetVar: "P",
+    knowns: "V = 9.0 V, R = 2.50 Ω. (First find I = V/R)",
+    formula: "I = V/R, then P = I × V",
+    correctVal: 32.4,
+    unit: "W",
+    explanation: "Step 1: Current I = V / R = 9.0 V / 2.50 Ω = 3.6 A.<br>Step 2: Power P = I × V = (3.6 A)(9.0 V) = 32.4 W."
+  },
+  {
+    id: "calc12",
+    title: "Question 12: Kitchen Toaster Energy Consumption",
+    topic: "Class Notes Slide 43",
+    scenario: "A toaster operates at 110 V drawing 10 A of current for exactly 1.5 minutes to brown a slice of bread. Calculate the total electrical energy in Joules (J) used.",
+    targetVar: "E",
+    knowns: "V = 110 V, I = 10 A, t = 1.5 min = 90 s",
+    formula: "P = IV, E = P × t",
+    correctVal: 99000.0,
+    unit: "J",
+    explanation: "Step 1: Power P = I × V = 10 A × 110 V = 1100 W.<br>Step 2: Time in seconds = 1.5 min × 60 s/min = 90 s.<br>Step 3: Energy E = P × t = 1100 W × 90 s = 99,000 J (or 99 kJ)."
+  }
+];
+
+const circuitData = [
+  {
+    id: "circ1",
+    title: "Series Circuit Troubleshooting: Open Switch",
+    svg: `<svg width="340" height="180" viewBox="0 0 340 180" class="schematic-svg">
+      <line x1="40" y1="90" x2="60" y2="90" stroke="#1e293b" stroke-width="2"/>
+      <line x1="60" y1="75" x2="60" y2="105" stroke="#1e293b" stroke-width="3"/>
+      <line x1="68" y1="80" x2="68" y2="100" stroke="#1e293b" stroke-width="5"/>
+      <text x="56" y="70" font-size="11" font-weight="bold">+ 12V -</text>
+      <line x1="68" y1="90" x2="90" y2="90" stroke="#1e293b" stroke-width="2"/>
+      
+      <line x1="40" y1="90" x2="40" y2="30" stroke="#1e293b" stroke-width="2"/>
+      <line x1="40" y1="30" x2="130" y2="30" stroke="#1e293b" stroke-width="2"/>
+      
+      <circle cx="130" cy="30" r="3" fill="#1e293b"/>
+      <line x1="130" y1="30" x2="165" y2="15" stroke="#dc2626" stroke-width="2.5"/>
+      <circle cx="170" cy="30" r="3" fill="#1e293b"/>
+      <text x="140" y="12" font-size="11" font-weight="bold" fill="#dc2626">Switch S1 (OPEN)</text>
+      
+      <line x1="170" y1="30" x2="300" y2="30" stroke="#1e293b" stroke-width="2"/>
+      <line x1="300" y1="30" x2="300" y2="60" stroke="#1e293b" stroke-width="2"/>
+      
+      <circle cx="300" cy="75" r="14" fill="#fef9c3" stroke="#1e293b" stroke-width="2"/>
+      <path d="M 292 75 Q 300 65 300 75 Q 300 65 308 75" fill="none" stroke="#1e293b" stroke-width="2"/>
+      <text x="250" y="78" font-size="11" font-weight="bold">Bulb L1</text>
+      
+      <line x1="300" y1="89" x2="300" y2="110" stroke="#1e293b" stroke-width="2"/>
+      
+      <circle cx="300" cy="125" r="14" fill="#fef9c3" stroke="#1e293b" stroke-width="2"/>
+      <path d="M 292 125 Q 300 115 300 125 Q 300 115 308 125" fill="none" stroke="#1e293b" stroke-width="2"/>
+      <text x="250" y="128" font-size="11" font-weight="bold">Bulb L2</text>
+      
+      <line x1="300" y1="139" x2="300" y2="160" stroke="#1e293b" stroke-width="2"/>
+      <line x1="300" y1="160" x2="90" y2="160" stroke="#1e293b" stroke-width="2"/>
+      <line x1="90" y1="160" x2="90" y2="90" stroke="#1e293b" stroke-width="2"/>
+    </svg>`,
+    question: "In the series circuit above, Switch S1 is OPEN. What is the current flowing through Bulb L2?",
+    options: [
+      "12 A",
+      "Half the normal current",
+      "0 A (No current flows anywhere)",
+      "Current still flows through L2 because it is connected after L1"
+    ],
+    answer: 2,
+    hint: "How many paths do electrons have in a series circuit?",
+    explanation: "In a series circuit, there is only ONE continuous conducting loop for electrons. An open switch anywhere breaks the loop, dropping current everywhere in the circuit to exactly 0 A."
+  },
+  {
+    id: "circ2",
+    title: "Parallel Circuit: Independent Branch Control",
+    svg: `<svg width="360" height="210" viewBox="0 0 360 210" class="schematic-svg">
+      <line x1="40" y1="105" x2="60" y2="105" stroke="#1e293b" stroke-width="2"/>
+      <line x1="60" y1="90" x2="60" y2="120" stroke="#1e293b" stroke-width="3"/>
+      <line x1="68" y1="95" x2="68" y2="115" stroke="#1e293b" stroke-width="5"/>
+      <text x="50" y="80" font-size="11" font-weight="bold">9.0 V</text>
+      
+      <line x1="40" y1="105" x2="40" y2="40" stroke="#1e293b" stroke-width="2"/>
+      <line x1="40" y1="40" x2="320" y2="40" stroke="#1e293b" stroke-width="2"/>
+      
+      <line x1="68" y1="105" x2="68" y2="180" stroke="#1e293b" stroke-width="2"/>
+      <line x1="68" y1="180" x2="320" y2="180" stroke="#1e293b" stroke-width="2"/>
+      
+      <!-- Branch 1 -->
+      <line x1="160" y1="40" x2="160" y2="80" stroke="#1e293b" stroke-width="2"/>
+      <circle cx="160" cy="95" r="14" fill="#fde047" stroke="#1e293b" stroke-width="2"/>
+      <path d="M 152 95 Q 160 85 160 95 Q 160 85 168 95" fill="none" stroke="#1e293b" stroke-width="2"/>
+      <text x="120" y="98" font-size="11" font-weight="bold">Bulb 1</text>
+      <line x1="160" y1="109" x2="160" y2="180" stroke="#1e293b" stroke-width="2"/>
+      
+      <!-- Branch 2: Motor with Open Switch S2 -->
+      <line x1="280" y1="40" x2="280" y2="70" stroke="#1e293b" stroke-width="2"/>
+      <circle cx="280" cy="70" r="3" fill="#1e293b"/>
+      <line x1="280" y1="70" x2="295" y2="55" stroke="#dc2626" stroke-width="2"/>
+      <circle cx="280" cy="90" r="3" fill="#1e293b"/>
+      <text x="295" y="75" font-size="10" font-weight="bold" fill="#dc2626">Switch S2 (OPEN)</text>
+      
+      <line x1="280" y1="90" x2="280" y2="115" stroke="#1e293b" stroke-width="2"/>
+      <circle cx="280" cy="130" r="14" fill="#e0e7ff" stroke="#4338ca" stroke-width="2"/>
+      <text x="280" y="135" font-size="12" font-weight="bold" fill="#4338ca" text-anchor="middle">M</text>
+      <text x="305" y="135" font-size="11" font-weight="bold">Motor</text>
+      <line x1="280" y1="144" x2="280" y2="180" stroke="#1e293b" stroke-width="2"/>
+    </svg>`,
+    question: "In this parallel circuit, Switch S2 controlling the Motor is OPEN. What happens to Bulb 1?",
+    options: [
+      "Bulb 1 turns off because the circuit is broken.",
+      "Bulb 1 stays illuminated normally because it is on its own separate parallel branch.",
+      "Bulb 1 burns out from sudden overvoltage.",
+      "Bulb 1 flickers because voltage divides in half."
+    ],
+    answer: 1,
+    hint: "Does Bulb 1 still have an unbroken conducting path connected to the 9.0 V battery?",
+    explanation: "In parallel circuits, each branch operates completely independently. Switch S2 breaks only the motor branch; Bulb 1 maintains a complete closed loop to the 9.0 V battery."
+  },
+  {
+    id: "circ3",
+    title: "Parallel Circuit: Total Resistance Behavior",
+    svg: `<svg width="340" height="180" viewBox="0 0 340 180" class="schematic-svg">
+      <line x1="40" y1="90" x2="70" y2="90" stroke="#1e293b" stroke-width="2"/>
+      <line x1="50" y1="75" x2="50" y2="105" stroke="#1e293b" stroke-width="3"/>
+      <line x1="58" y1="80" x2="58" y2="100" stroke="#1e293b" stroke-width="5"/>
+      <text x="40" y="68" font-size="11" font-weight="bold">60.0 V</text>
+      <line x1="40" y1="90" x2="40" y2="30" stroke="#1e293b" stroke-width="2"/>
+      <line x1="40" y1="30" x2="300" y2="30" stroke="#1e293b" stroke-width="2"/>
+      <line x1="70" y1="90" x2="70" y2="150" stroke="#1e293b" stroke-width="2"/>
+      <line x1="70" y1="150" x2="300" y2="150" stroke="#1e293b" stroke-width="2"/>
+      
+      <!-- Branch 1 -->
+      <line x1="120" y1="30" x2="120" y2="70" stroke="#1e293b" stroke-width="2"/>
+      <rect x="110" y="70" width="20" height="40" fill="#f8fafc" stroke="#1e293b" stroke-width="2"/>
+      <text x="75" y="94" font-size="11" font-weight="bold">15 Ω</text>
+      <line x1="120" y1="110" x2="120" y2="150" stroke="#1e293b" stroke-width="2"/>
+      
+      <!-- Branch 2 -->
+      <line x1="200" y1="30" x2="200" y2="70" stroke="#1e293b" stroke-width="2"/>
+      <rect x="190" y="70" width="20" height="40" fill="#f8fafc" stroke="#1e293b" stroke-width="2"/>
+      <text x="155" y="94" font-size="11" font-weight="bold">15 Ω</text>
+      <line x1="200" y1="110" x2="200" y2="150" stroke="#1e293b" stroke-width="2"/>
+      
+      <!-- Branch 3 -->
+      <line x1="280" y1="30" x2="280" y2="70" stroke="#1e293b" stroke-width="2"/>
+      <rect x="270" y="70" width="20" height="40" fill="#f8fafc" stroke="#1e293b" stroke-width="2"/>
+      <text x="235" y="94" font-size="11" font-weight="bold">15 Ω</text>
+      <line x1="280" y1="110" x2="280" y2="150" stroke="#1e293b" stroke-width="2"/>
+    </svg>`,
+    question: "In this 60 V parallel circuit with three 15 Ω resistors (from class notes), what is the TOTAL equivalent resistance (R_T)?",
+    options: [
+      "45 Ω",
+      "15 Ω",
+      "5.0 Ω",
+      "0.2 Ω"
+    ],
+    answer: 2,
+    hint: "Recall: 1/R_T = 1/R1 + 1/R2 + 1/R3 = 1/15 + 1/15 + 1/15.",
+    explanation: "In parallel, adding branches reduces total resistance: 1/R_T = 1/15 + 1/15 + 1/15 = 3/15 = 1/5.0. Therefore, R_T = 5.0 Ω! Notice 5.0 Ω is smaller than any individual resistor."
+  },
+  {
+    id: "circ4",
+    title: "Proper Voltmeter Placement",
+    svg: `<svg width="340" height="180" viewBox="0 0 340 180" class="schematic-svg">
+      <rect x="50" y="30" width="240" height="120" fill="none" stroke="#1e293b" stroke-width="2"/>
+      <line x1="50" y1="80" x2="50" y2="100" stroke="#ffffff" stroke-width="4"/>
+      <line x1="40" y1="83" x2="60" y2="83" stroke="#1e293b" stroke-width="3"/>
+      <line x1="44" y1="93" x2="56" y2="93" stroke="#1e293b" stroke-width="5"/>
+      <circle cx="170" cy="30" r="14" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+      <path d="M 162 30 Q 170 20 170 30 Q 170 20 178 30" fill="none" stroke="#1e293b" stroke-width="2"/>
+      
+      <!-- Voltmeter in parallel -->
+      <line x1="130" y1="30" x2="130" y2="8" stroke="#dc2626" stroke-width="2"/>
+      <line x1="130" y1="8" x2="210" y2="8" stroke="#dc2626" stroke-width="2"/>
+      <line x1="210" y1="8" x2="210" y2="30" stroke="#dc2626" stroke-width="2"/>
+      <circle cx="170" cy="8" r="12" fill="#fff" stroke="#dc2626" stroke-width="2"/>
+      <text x="170" y="12" font-size="11" font-weight="bold" fill="#dc2626" text-anchor="middle">V</text>
+    </svg>`,
+    question: "A student installs a voltmeter across a light bulb as shown in red above. Is this meter installed correctly?",
+    options: [
+      "No, voltmeters must always be connected in series inside the main loop.",
+      "Yes, voltmeters measure potential difference and must always be connected in parallel across the load.",
+      "No, voltmeters will cause a short circuit across the bulb.",
+      "No, voltmeters can only be connected to batteries, not light bulbs."
+    ],
+    answer: 1,
+    hint: "Does a voltmeter connect in series or parallel?",
+    explanation: "Voltmeters have extremely high internal resistance and are designed specifically to be placed in PARALLEL across components to measure the potential difference without diverting noticeable current."
+  },
+  {
+    id: "circ5",
+    title: "Ammeter Hookup Trap (Parallel Connection Hazard)",
+    svg: `<svg width="340" height="180" viewBox="0 0 340 180" class="schematic-svg">
+      <rect x="50" y="30" width="240" height="120" fill="none" stroke="#1e293b" stroke-width="2"/>
+      <line x1="50" y1="80" x2="50" y2="100" stroke="#ffffff" stroke-width="4"/>
+      <line x1="40" y1="83" x2="60" y2="83" stroke="#1e293b" stroke-width="3"/>
+      <line x1="44" y1="93" x2="56" y2="93" stroke="#1e293b" stroke-width="5"/>
+      <!-- Resistor -->
+      <line x1="130" y1="30" x2="145" y2="30" stroke="#1e293b" stroke-width="2"/>
+      <path d="M 145 30 L 150 20 L 160 40 L 170 20 L 180 40 L 190 20 L 195 30" fill="none" stroke="#1e293b" stroke-width="2"/>
+      <line x1="195" y1="30" x2="210" y2="30" stroke="#1e293b" stroke-width="2"/>
+      <text x="170" y="55" font-size="11" font-weight="bold" text-anchor="middle">Resistor R1</text>
+      
+      <!-- Ammeter in parallel (BAD) -->
+      <line x1="130" y1="30" x2="130" y2="8" stroke="#dc2626" stroke-width="2"/>
+      <line x1="130" y1="8" x2="210" y2="8" stroke="#dc2626" stroke-width="2"/>
+      <line x1="210" y1="8" x2="210" y2="30" stroke="#dc2626" stroke-width="2"/>
+      <circle cx="170" cy="8" r="12" fill="#fff" stroke="#dc2626" stroke-width="2"/>
+      <text x="170" y="12" font-size="11" font-weight="bold" fill="#dc2626" text-anchor="middle">A</text>
+    </svg>`,
+    question: "A student accidentally connects an AMMETER in parallel across Resistor R1 as shown in red. What dangerous condition occurs?",
+    options: [
+      "The ammeter accurately measures the voltage across R1.",
+      "Because an ammeter has near-zero resistance, it creates a short circuit, bypassing R1 and drawing dangerously high current that can blow the meter fuse.",
+      "The resistor's resistance permanently doubles.",
+      "The circuit current drops to zero."
+    ],
+    answer: 1,
+    hint: "Ammeters have virtually 0 Ω resistance. What happens when a 0 Ω wire bridges across a resistor?",
+    explanation: "Ammeters have near-zero resistance. Placing an ammeter in parallel provides a zero-resistance bypass path (short circuit). Almost all current surges through the ammeter, blowing its internal fuse or damaging the equipment!"
+  },
+  {
+    id: "circ6",
+    title: "Series Voltage Drops with Identical Loads",
+    svg: `<svg width="340" height="180" viewBox="0 0 340 180" class="schematic-svg">
+      <rect x="50" y="30" width="240" height="120" fill="none" stroke="#1e293b" stroke-width="2"/>
+      <!-- 30V battery -->
+      <line x1="50" y1="80" x2="50" y2="100" stroke="#ffffff" stroke-width="4"/>
+      <line x1="40" y1="83" x2="60" y2="83" stroke="#1e293b" stroke-width="3"/>
+      <line x1="44" y1="93" x2="56" y2="93" stroke="#1e293b" stroke-width="5"/>
+      <text x="15" y="92" font-size="11" font-weight="bold">30.0 V</text>
+      <!-- Bulb 1 -->
+      <circle cx="120" cy="30" r="14" fill="#fde047" stroke="#1e293b" stroke-width="2"/>
+      <path d="M 112 30 Q 120 20 120 30 Q 120 20 128 30" fill="none" stroke="#1e293b" stroke-width="2"/>
+      <text x="120" y="60" font-size="11" font-weight="bold" text-anchor="middle">L1 (15 Ω)</text>
+      <!-- Bulb 2 -->
+      <circle cx="220" cy="30" r="14" fill="#fde047" stroke="#1e293b" stroke-width="2"/>
+      <path d="M 212 30 Q 220 20 220 30 Q 220 20 228 30" fill="none" stroke="#1e293b" stroke-width="2"/>
+      <text x="220" y="60" font-size="11" font-weight="bold" text-anchor="middle">L2 (15 Ω)</text>
+    </svg>`,
+    question: "In this series circuit powered by a 30.0 V battery with two identical 15 Ω light bulbs, what is the voltage drop across Bulb L1?",
+    options: [
+      "30.0 V",
+      "15.0 V",
+      "7.5 V",
+      "0 V"
+    ],
+    answer: 1,
+    hint: "In series, voltage divides among loads: V_total = V1 + V2. If both bulbs have the same resistance, how does the 30 V split?",
+    explanation: "In a series circuit, total voltage is shared among components. Because the two bulbs have equal resistance (15 Ω each), the 30.0 V divides equally: V1 = V2 = 30.0 V / 2 = 15.0 V."
+  },
+  {
+    id: "circ7",
+    title: "Parallel Circuit: Burned-Out Bulb Test",
+    svg: `<svg width="340" height="200" viewBox="0 0 340 200" class="schematic-svg">
+      <line x1="40" y1="100" x2="60" y2="100" stroke="#1e293b" stroke-width="2"/>
+      <line x1="50" y1="85" x2="50" y2="115" stroke="#1e293b" stroke-width="3"/>
+      <line x1="58" y1="90" x2="58" y2="110" stroke="#1e293b" stroke-width="5"/>
+      <text x="40" y="78" font-size="11" font-weight="bold">12 V</text>
+      <line x1="40" y1="100" x2="40" y2="30" stroke="#1e293b" stroke-width="2"/>
+      <line x1="40" y1="30" x2="300" y2="30" stroke="#1e293b" stroke-width="2"/>
+      <line x1="60" y1="100" x2="60" y2="170" stroke="#1e293b" stroke-width="2"/>
+      <line x1="60" y1="170" x2="300" y2="170" stroke="#1e293b" stroke-width="2"/>
+      
+      <!-- Branch 1 (L1) -->
+      <line x1="120" y1="30" x2="120" y2="85" stroke="#1e293b" stroke-width="2"/>
+      <circle cx="120" cy="100" r="14" fill="#fde047" stroke="#1e293b" stroke-width="2"/>
+      <text x="120" y="105" font-size="10" font-weight="bold" text-anchor="middle">L1</text>
+      <line x1="120" y1="115" x2="120" y2="170" stroke="#1e293b" stroke-width="2"/>
+      
+      <!-- Branch 2 (L2 Burned Out X) -->
+      <line x1="200" y1="30" x2="200" y2="85" stroke="#1e293b" stroke-width="2"/>
+      <circle cx="200" cy="100" r="14" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+      <line x1="192" y1="92" x2="208" y2="108" stroke="#dc2626" stroke-width="3"/>
+      <line x1="208" y1="92" x2="192" y2="108" stroke="#dc2626" stroke-width="3"/>
+      <text x="200" y="130" font-size="10" font-weight="bold" fill="#dc2626" text-anchor="middle">L2 Broken</text>
+      <line x1="200" y1="115" x2="200" y2="170" stroke="#1e293b" stroke-width="2"/>
+      
+      <!-- Branch 3 (L3) -->
+      <line x1="280" y1="30" x2="280" y2="85" stroke="#1e293b" stroke-width="2"/>
+      <circle cx="280" cy="100" r="14" fill="#fde047" stroke="#1e293b" stroke-width="2"/>
+      <text x="280" y="105" font-size="10" font-weight="bold" text-anchor="middle">L3</text>
+      <line x1="280" y1="115" x2="280" y2="170" stroke="#1e293b" stroke-width="2"/>
+    </svg>`,
+    question: "In this 12 V parallel lighting circuit, the filament in Bulb L2 snaps (burned out). What happens to Bulbs L1 and L3?",
+    options: [
+      "Bulbs L1 and L3 stay on with the exact same brightness.",
+      "Bulbs L1 and L3 turn off immediately.",
+      "Bulbs L1 and L3 glow twice as bright.",
+      "Bulbs L1 and L3 become dimmer."
+    ],
+    answer: 0,
+    hint: "Does the voltage across Branch 1 or Branch 3 change when Branch 2 is disconnected?",
+    explanation: "In a parallel circuit, each branch is an independent pathway directly connected across the 12 V power source. A break in Branch 2 does not affect the voltage or current flowing through Branches 1 and 3."
+  },
+  {
+    id: "circ8",
+    title: "Master Trunk Switch vs Branch Switch",
+    svg: `<svg width="340" height="190" viewBox="0 0 340 190" class="schematic-svg">
+      <line x1="30" y1="95" x2="50" y2="95" stroke="#1e293b" stroke-width="2"/>
+      <line x1="40" y1="80" x2="40" y2="110" stroke="#1e293b" stroke-width="3"/>
+      <line x1="48" y1="85" x2="48" y2="105" stroke="#1e293b" stroke-width="5"/>
+      <text x="35" y="72" font-size="10" font-weight="bold">Battery</text>
+      
+      <line x1="30" y1="95" x2="30" y2="30" stroke="#1e293b" stroke-width="2"/>
+      <line x1="30" y1="30" x2="70" y2="30" stroke="#1e293b" stroke-width="2"/>
+      
+      <!-- Master Switch S1 in main trunk -->
+      <circle cx="70" cy="30" r="3" fill="#1e293b"/>
+      <line x1="70" y1="30" x2="100" y2="15" stroke="#dc2626" stroke-width="2"/>
+      <circle cx="105" cy="30" r="3" fill="#1e293b"/>
+      <text x="85" y="10" font-size="10" font-weight="bold" fill="#dc2626">S1 (Master)</text>
+      
+      <line x1="105" y1="30" x2="300" y2="30" stroke="#1e293b" stroke-width="2"/>
+      <line x1="50" y1="95" x2="50" y2="160" stroke="#1e293b" stroke-width="2"/>
+      <line x1="50" y1="160" x2="300" y2="160" stroke="#1e293b" stroke-width="2"/>
+      
+      <!-- Branch 1 (Bulb) -->
+      <line x1="180" y1="30" x2="180" y2="80" stroke="#1e293b" stroke-width="2"/>
+      <circle cx="180" cy="95" r="14" fill="#fde047" stroke="#1e293b" stroke-width="2"/>
+      <text x="180" y="100" font-size="10" font-weight="bold" text-anchor="middle">Bulb</text>
+      <line x1="180" y1="110" x2="180" y2="160" stroke="#1e293b" stroke-width="2"/>
+      
+      <!-- Branch 2 (Switch S2 + Motor) -->
+      <line x1="270" y1="30" x2="270" y2="60" stroke="#1e293b" stroke-width="2"/>
+      <circle cx="270" cy="60" r="3" fill="#1e293b"/>
+      <line x1="270" y1="60" x2="285" y2="45" stroke="#2563eb" stroke-width="2"/>
+      <circle cx="270" cy="80" r="3" fill="#1e293b"/>
+      <text x="288" y="65" font-size="10" font-weight="bold" fill="#2563eb">S2</text>
+      <line x1="270" y1="80" x2="270" y2="105" stroke="#1e293b" stroke-width="2"/>
+      <circle cx="270" cy="120" r="14" fill="#e0e7ff" stroke="#4338ca" stroke-width="2"/>
+      <text x="270" y="125" font-size="11" font-weight="bold" fill="#4338ca" text-anchor="middle">M</text>
+      <line x1="270" y1="135" x2="270" y2="160" stroke="#1e293b" stroke-width="2"/>
+    </svg>`,
+    question: "In this circuit, which switch must be opened to turn off both the light bulb and the motor at the same time?",
+    options: [
+      "Switch S2 only.",
+      "Switch S1 (Master switch on the main trunk line).",
+      "Both S1 and S2 must be opened simultaneously.",
+      "A switch cannot turn off a motor."
+    ],
+    answer: 1,
+    hint: "Where is Switch S1 located relative to the whole circuit?",
+    explanation: "Switch S1 is located on the main trunk line leading directly from the battery. When S1 is open, the entire circuit is broken and no current can reach either branch."
+  }
+];
+
+// ==================== RENDERING LOGIC ====================
+
+function renderFIB() {
+  const container = document.getElementById('fibContainer');
+  container.innerHTML = fibData.map((item, idx) => {
+    let replacedText = item.text;
+    item.blanks.forEach(b => {
+      const placeholder = `[${b.id}]`;
+      const inputHtml = `<input type="text" class="fib-input" id="${item.id}_${b.id}" placeholder="Type here..." autocomplete="off" autocapitalize="off" spellcheck="false" oninput="clearInputFeedback('${item.id}', '${b.id}')" onkeydown="if(event.key==='Enter') checkSingleFIB('${item.id}')">`;
+      replacedText = replacedText.split(placeholder).join(inputHtml);
+    });
+
+    return `
+      <div class="question-block" id="block_${item.id}">
+        <div class="q-header">
+          <span class="q-num">Q${idx + 1}</span>
+          <span class="q-topic">${item.topic}</span>
+        </div>
+        <div class="q-text">${replacedText}</div>
+        <div class="q-actions">
+          <button class="btn btn-primary btn-sm" onclick="checkSingleFIB('${item.id}')">Check</button>
+          <button class="btn btn-outline btn-sm" onclick="toggleHint('hint_${item.id}')">Hint</button>
+          <button class="btn btn-outline btn-sm" onclick="revealFIB('${item.id}')">Reveal Answer</button>
+        </div>
+        <div class="hint-box" id="hint_${item.id}">💡 Hint: ${item.hint}</div>
+        <div class="feedback-box" id="fb_${item.id}"></div>
+      </div>
+    `;
+  }).join('');
+}
+
+function clearInputFeedback(itemId, blankId) {
+  const inputEl = document.getElementById(`${itemId}_${blankId}`);
+  if (inputEl) {
+    inputEl.classList.remove('correct', 'incorrect');
+  }
+}
+
+function renderMC() {
+  const container = document.getElementById('mcContainer');
+  container.innerHTML = mcData.map((item, idx) => {
+    const letters = ['A', 'B', 'C', 'D'];
+    const opts = item.options.map((opt, oIdx) => `
+      <div class="mc-option" id="opt_${item.id}_${oIdx}" onclick="selectMC('${item.id}', ${oIdx})">
+        <span class="opt-letter">${letters[oIdx]}</span>
+        <span>${opt}</span>
+      </div>
+    `).join('');
+
+    return `
+      <div class="question-block" id="block_${item.id}">
+        <div class="q-header">
+          <span class="q-num">Q${idx + 1}</span>
+          <span class="q-topic">${item.topic}</span>
+        </div>
+        <div class="q-text">${item.question}</div>
+        <div class="options-list">${opts}</div>
+        <div class="q-actions">
+          <button class="btn btn-outline btn-sm" onclick="toggleHint('hint_${item.id}')">Hint</button>
+        </div>
+        <div class="hint-box" id="hint_${item.id}">💡 Hint: ${item.hint}</div>
+        <div class="feedback-box" id="fb_${item.id}"></div>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderCalc() {
+  const container = document.getElementById('calcContainer');
+  container.innerHTML = calcData.map((item, idx) => {
+    return `
+      <div class="question-block" id="block_${item.id}">
+        <div class="q-header">
+          <span class="q-num">Math Q${idx + 1}</span>
+          <span class="q-topic">${item.topic}</span>
+        </div>
+        <div class="q-text"><strong>${item.title}:</strong> ${item.scenario}</div>
+        
+        <div class="calc-input-row">
+          <label style="font-weight: 600; font-size: 0.95rem;">Your Answer:</label>
+          <input type="text" class="calc-input" id="input_${item.id}" placeholder="e.g. ${item.correctVal}" autocomplete="off" onkeydown="if(event.key==='Enter') checkCalc('${item.id}')">
+          <span style="font-weight: 700; font-size: 1.1rem; color: #1e3a8a;">${item.unit}</span>
+          <button class="btn btn-primary" onclick="checkCalc('${item.id}')">Submit Solution</button>
+          <button class="btn btn-outline" onclick="toggleHint('hint_${item.id}')">Show Formula Hint</button>
+          <button class="btn btn-outline" onclick="revealCalc('${item.id}')">Step-by-Step Solution</button>
+        </div>
+
+        <div class="hint-box" id="hint_${item.id}">
+          💡 Formula: <code>${item.formula}</code> | Given: ${item.knowns}
+        </div>
+        <div class="feedback-box" id="fb_${item.id}"></div>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderCircuits() {
+  const container = document.getElementById('circuitContainer');
+  container.innerHTML = circuitData.map((item, idx) => {
+    const letters = ['A', 'B', 'C', 'D'];
+    const opts = item.options.map((opt, oIdx) => `
+      <div class="mc-option" id="opt_${item.id}_${oIdx}" onclick="selectCircuitMC('${item.id}', ${oIdx})">
+        <span class="opt-letter">${letters[oIdx]}</span>
+        <span>${opt}</span>
+      </div>
+    `).join('');
+
+    return `
+      <div class="question-block" id="block_${item.id}">
+        <div class="q-header">
+          <span class="q-num">Circuit Q${idx + 1}</span>
+          <span class="q-topic">${item.title}</span>
+        </div>
+        <div class="schematic-box">${item.svg}</div>
+        <div class="q-text">${item.question}</div>
+        <div class="options-list">${opts}</div>
+        <div class="q-actions">
+          <button class="btn btn-outline btn-sm" onclick="toggleHint('hint_${item.id}')">Hint</button>
+        </div>
+        <div class="hint-box" id="hint_${item.id}">💡 Hint: ${item.hint}</div>
+        <div class="feedback-box" id="fb_${item.id}"></div>
+      </div>
+    `;
+  }).join('');
+}
+
+// ==================== CHECKING & SCORING ====================
+
+let userState = {
+  fib: {},
+  mc: {},
+  calc: {},
+  circuit: {}
+};
+
+// Load from LocalStorage if available
+function loadSavedState() {
+  try {
+    const saved = localStorage.getItem('grade9_science_study_state');
+    if (saved) {
+      userState = JSON.parse(saved);
+    }
+  } catch (e) {
+    console.log('LocalStorage not accessible', e);
+  }
+}
+
+function saveCurrentState() {
+  try {
+    localStorage.setItem('grade9_science_study_state', JSON.stringify(userState));
+  } catch (e) {}
+}
+
+function checkSingleFIB(id) {
+  const item = fibData.find(x => x.id === id);
+  if (!item) return;
+
+  let allCorrect = true;
+  let filledAll = true;
+
+  item.blanks.forEach(b => {
+    const inputEl = document.getElementById(`${item.id}_${b.id}`);
+    if (!inputEl) return;
+    const val = inputEl.value.trim().toLowerCase();
+    if (!val) filledAll = false;
+
+    const isMatch = b.accepted.some(acc => val === acc.toLowerCase());
+    if (isMatch) {
+      inputEl.className = "fib-input correct";
+    } else {
+      inputEl.className = "fib-input incorrect";
+      allCorrect = false;
+    }
+  });
+
+  const fb = document.getElementById(`fb_${id}`);
+  const block = document.getElementById(`block_${id}`);
+  fb.className = "feedback-box show " + (allCorrect ? "correct" : "incorrect");
+
+  if (allCorrect) {
+    fb.innerHTML = `<strong>✓ Correct!</strong> ${item.explanation}`;
+    block.className = "question-block correct";
+    userState.fib[id] = true;
+  } else {
+    fb.innerHTML = `<strong>✗ Not quite:</strong> Check your spelling or terminology. Click "Hint" or "Reveal Answer" for help.`;
+    block.className = "question-block incorrect";
+    userState.fib[id] = false;
+  }
+
+  saveCurrentState();
+  updateDashboard();
+}
+
+function checkAllFIB() {
+  fibData.forEach(item => checkSingleFIB(item.id));
+}
+
+function revealFIB(id) {
+  const item = fibData.find(x => x.id === id);
+  if (!item) return;
+  item.blanks.forEach(b => {
+    const inputEl = document.getElementById(`${item.id}_${b.id}`);
+    if (inputEl) {
+      inputEl.value = b.accepted[0];
+      inputEl.className = "fib-input correct";
+    }
+  });
+  const fb = document.getElementById(`fb_${id}`);
+  fb.className = "feedback-box show correct";
+  fb.innerHTML = `<strong>Answer:</strong> ${item.blanks.map(b => b.accepted[0]).join(', ')}<br>${item.explanation}`;
+  document.getElementById(`block_${id}`).className = "question-block correct";
+  userState.fib[id] = true;
+  saveCurrentState();
+  updateDashboard();
+}
+
+function resetFIB() {
+  fibData.forEach(item => {
+    item.blanks.forEach(b => {
+      const el = document.getElementById(`${item.id}_${b.id}`);
+      if (el) { el.value = ""; el.className = "fib-input"; }
+    });
+    const fb = document.getElementById(`fb_${item.id}`);
+    if (fb) fb.className = "feedback-box";
+    const blk = document.getElementById(`block_${item.id}`);
+    if (blk) blk.className = "question-block";
+    delete userState.fib[item.id];
+  });
+  saveCurrentState();
+  updateDashboard();
+}
+
+function selectMC(id, selectedIdx) {
+  const item = mcData.find(x => x.id === id);
+  if (!item) return;
+
+  const isCorrect = (selectedIdx === item.answer);
+  userState.mc[id] = isCorrect;
+
+  item.options.forEach((_, idx) => {
+    const el = document.getElementById(`opt_${id}_${idx}`);
+    el.className = "mc-option";
+    if (idx === item.answer) el.className = "mc-option correct-choice";
+    else if (idx === selectedIdx && !isCorrect) el.className = "mc-option wrong-choice";
+  });
+
+  const fb = document.getElementById(`fb_${id}`);
+  const block = document.getElementById(`block_${id}`);
+  fb.className = "feedback-box show " + (isCorrect ? "correct" : "incorrect");
+  
+  if (isCorrect) {
+    fb.innerHTML = `<strong>✓ Correct!</strong> ${item.explanation}`;
+    block.className = "question-block correct";
+  } else {
+    fb.innerHTML = `<strong>✗ Incorrect.</strong> The correct answer is Option ${['A','B','C','D'][item.answer]}.<br>${item.explanation}`;
+    block.className = "question-block incorrect";
+  }
+
+  saveCurrentState();
+  updateDashboard();
+}
+
+function resetMC() {
+  mcData.forEach(item => {
+    item.options.forEach((_, idx) => {
+      const el = document.getElementById(`opt_${item.id}_${idx}`);
+      if (el) el.className = "mc-option";
+    });
+    const fb = document.getElementById(`fb_${item.id}`);
+    if (fb) fb.className = "feedback-box";
+    const blk = document.getElementById(`block_${item.id}`);
+    if (blk) blk.className = "question-block";
+    delete userState.mc[item.id];
+  });
+  saveCurrentState();
+  updateDashboard();
+}
+
+function checkCalc(id) {
+  const item = calcData.find(x => x.id === id);
+  if (!item) return;
+
+  const inputEl = document.getElementById(`input_${id}`);
+  let raw = inputEl.value.trim().toLowerCase();
+  const fb = document.getElementById(`fb_${id}`);
+  const block = document.getElementById(`block_${id}`);
+
+  if (!raw) {
+    fb.className = "feedback-box show incorrect";
+    fb.innerHTML = "Please enter your calculated answer.";
+    return;
+  }
+
+  // Handle unit conversions & prefixes
+  raw = raw.replace(/,/g, '');
+  if (raw.endsWith('ma') || raw.endsWith('milliamp') || raw.endsWith('milliamps')) {
+    let num = parseFloat(raw);
+    if (!isNaN(num)) raw = (num / 1000).toString();
+  } else if (raw.endsWith('kj') || raw.endsWith('kilojoules')) {
+    let num = parseFloat(raw);
+    if (!isNaN(num)) raw = (num * 1000).toString();
+  }
+
+  // Extract number
+  const numMatch = raw.match(/-?\d+(\.\d+)?/);
+  const val = numMatch ? parseFloat(numMatch[0]) : NaN;
+
+  if (isNaN(val)) {
+    fb.className = "feedback-box show incorrect";
+    fb.innerHTML = "Could not parse a numerical value. Example format: <code>12</code> or <code>12 V</code>.";
+    return;
+  }
+
+  // Tolerance 5%
+  const tolerance = Math.max(0.0001, Math.abs(item.correctVal * 0.05));
+  const isCorrect = Math.abs(val - item.correctVal) <= tolerance;
+  userState.calc[id] = isCorrect;
+
+  fb.className = "feedback-box show " + (isCorrect ? "correct" : "incorrect");
+  if (isCorrect) {
+    fb.innerHTML = `<strong>✓ Correct! ${item.correctVal} ${item.unit}</strong><br>${item.explanation}`;
+    block.className = "question-block correct";
+    inputEl.className = "calc-input correct";
+  } else {
+    fb.innerHTML = `<strong>✗ Not quite:</strong> You entered ${val} ${item.unit}. Expected ≈ ${item.correctVal} ${item.unit}. Check your formula substitution or decimal places.`;
+    block.className = "question-block incorrect";
+    inputEl.className = "calc-input incorrect";
+  }
+
+  saveCurrentState();
+  updateDashboard();
+}
+
+function revealCalc(id) {
+  const item = calcData.find(x => x.id === id);
+  if (!item) return;
+  const inputEl = document.getElementById(`input_${id}`);
+  inputEl.value = `${item.correctVal} ${item.unit}`;
+  inputEl.className = "calc-input correct";
+  const fb = document.getElementById(`fb_${id}`);
+  fb.className = "feedback-box show correct";
+  fb.innerHTML = `<strong>Solution Breakdown:</strong><br>${item.explanation}`;
+  document.getElementById(`block_${id}`).className = "question-block correct";
+  userState.calc[id] = true;
+  saveCurrentState();
+  updateDashboard();
+}
+
+function resetCalc() {
+  calcData.forEach(item => {
+    const el = document.getElementById(`input_${item.id}`);
+    if (el) { el.value = ""; el.className = "calc-input"; }
+    const fb = document.getElementById(`fb_${item.id}`);
+    if (fb) fb.className = "feedback-box";
+    const blk = document.getElementById(`block_${item.id}`);
+    if (blk) blk.className = "question-block";
+    delete userState.calc[item.id];
+  });
+  saveCurrentState();
+  updateDashboard();
+}
+
+function selectCircuitMC(id, selectedIdx) {
+  const item = circuitData.find(x => x.id === id);
+  if (!item) return;
+
+  const isCorrect = (selectedIdx === item.answer);
+  userState.circuit[id] = isCorrect;
+
+  item.options.forEach((_, idx) => {
+    const el = document.getElementById(`opt_${id}_${idx}`);
+    el.className = "mc-option";
+    if (idx === item.answer) el.className = "mc-option correct-choice";
+    else if (idx === selectedIdx && !isCorrect) el.className = "mc-option wrong-choice";
+  });
+
+  const fb = document.getElementById(`fb_${id}`);
+  const block = document.getElementById(`block_${id}`);
+  fb.className = "feedback-box show " + (isCorrect ? "correct" : "incorrect");
+
+  if (isCorrect) {
+    fb.innerHTML = `<strong>✓ Correct!</strong> ${item.explanation}`;
+    block.className = "question-block correct";
+  } else {
+    fb.innerHTML = `<strong>✗ Incorrect.</strong> The correct answer is Option ${['A','B','C','D'][item.answer]}.<br>${item.explanation}`;
+    block.className = "question-block incorrect";
+  }
+
+  saveCurrentState();
+  updateDashboard();
+}
+
+function resetCircuits() {
+  circuitData.forEach(item => {
+    item.options.forEach((_, idx) => {
+      const el = document.getElementById(`opt_${item.id}_${idx}`);
+      if (el) el.className = "mc-option";
+    });
+    const fb = document.getElementById(`fb_${item.id}`);
+    if (fb) fb.className = "feedback-box";
+    const blk = document.getElementById(`block_${item.id}`);
+    if (blk) blk.className = "question-block";
+    delete userState.circuit[item.id];
+  });
+  saveCurrentState();
+  updateDashboard();
+}
+
+function toggleHint(hintId) {
+  const el = document.getElementById(hintId);
+  if (!el) return;
+  el.style.display = (el.style.display === "block") ? "none" : "block";
+}
+
+function clearAllData() {
+  if (confirm("Reset all quiz answers, calculations, and scoreboard progress?")) {
+    try { localStorage.removeItem('grade9_science_study_state'); } catch(e) {}
+    userState = { fib: {}, mc: {}, calc: {}, circuit: {} };
+    resetFIB();
+    resetMC();
+    resetCalc();
+    resetCircuits();
+    updateDashboard();
+  }
+}
+
+// ==================== DASHBOARD & PROGRESS ====================
+
+function updateDashboard() {
+  const totalQuestions = fibData.length + mcData.length + calcData.length + circuitData.length;
+  
+  const answeredFIB = Object.keys(userState.fib).length;
+  const correctFIB = Object.values(userState.fib).filter(Boolean).length;
+  
+  const answeredMC = Object.keys(userState.mc).length;
+  const correctMC = Object.values(userState.mc).filter(Boolean).length;
+
+  const answeredCalc = Object.keys(userState.calc).length;
+  const correctCalc = Object.values(userState.calc).filter(Boolean).length;
+
+  const answeredCirc = Object.keys(userState.circuit).length;
+  const correctCirc = Object.values(userState.circuit).filter(Boolean).length;
+
+  const totalAnswered = answeredFIB + answeredMC + answeredCalc + answeredCirc;
+  const totalCorrect = correctFIB + correctMC + correctCalc + correctCirc;
+
+  // Badges
+  document.getElementById('fibBadge').innerText = `${correctFIB}/${fibData.length}`;
+  document.getElementById('mcBadge').innerText = `${correctMC}/${mcData.length}`;
+  document.getElementById('calcBadge').innerText = `${correctCalc}/${calcData.length}`;
+  document.getElementById('circuitBadge').innerText = `${correctCirc}/${circuitData.length}`;
+
+  // Stats
+  const pct = Math.round((totalAnswered / totalQuestions) * 100);
+  document.getElementById('progressPercent').innerText = `${pct}%`;
+  document.getElementById('progressBar').style.width = `${pct}%`;
+
+  document.getElementById('scoreDisplay').innerText = `${totalCorrect} / ${totalAnswered}`;
+  
+  if (totalAnswered > 0) {
+    const accuracy = Math.round((totalCorrect / totalAnswered) * 100);
+    document.getElementById('accuracyDisplay').innerText = `${accuracy}%`;
+
+    const readinessEl = document.getElementById('readinessDisplay');
+    if (accuracy >= 85 && pct >= 70) {
+      readinessEl.innerText = "🌟 Exam Ready!";
+      readinessEl.style.color = "#4ade80";
+    } else if (accuracy >= 70) {
+      readinessEl.innerText = "👍 Proficient";
+      readinessEl.style.color = "#60a5fa";
+    } else {
+      readinessEl.innerText = "⚠️ Needs Review";
+      readinessEl.style.color = "#f87171";
+    }
+  } else {
+    document.getElementById('accuracyDisplay').innerText = "--%";
+    document.getElementById('readinessDisplay').innerText = "Not Started";
+    document.getElementById('readinessDisplay').style.color = "#fde047";
+  }
+}
+
+// ==================== TABS & WIDGETS ====================
+
+function switchTab(tabId) {
+  document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  
+  const target = document.getElementById(tabId);
+  if (target) target.classList.add('active');
+
+  const btns = Array.from(document.querySelectorAll('.tab-btn'));
+  const activeBtn = btns.find(b => b.getAttribute('onclick').includes(tabId));
+  if (activeBtn) activeBtn.classList.add('active');
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function solveOhms(source) {
+  const vIn = parseFloat(document.getElementById('widgetV').value);
+  const iIn = parseFloat(document.getElementById('widgetI').value);
+  const rIn = parseFloat(document.getElementById('widgetR').value);
+  const res = document.getElementById('widgetResult');
+
+  if (!isNaN(iIn) && !isNaN(rIn) && source !== 'V') {
+    const v = (iIn * rIn).toFixed(2);
+    document.getElementById('widgetV').value = v;
+    res.innerHTML = `Calculated: Voltage V = I × R = (${iIn} A) × (${rIn} Ω) = <strong>${v} V</strong>`;
+  } else if (!isNaN(vIn) && !isNaN(rIn) && source !== 'I' && rIn > 0) {
+    const i = (vIn / rIn).toFixed(3);
+    document.getElementById('widgetI').value = i;
+    res.innerHTML = `Calculated: Current I = V / R = (${vIn} V) / (${rIn} Ω) = <strong>${i} A</strong>`;
+  } else if (!isNaN(vIn) && !isNaN(iIn) && source !== 'R' && iIn > 0) {
+    const r = (vIn / iIn).toFixed(2);
+    document.getElementById('widgetR').value = r;
+    res.innerHTML = `Calculated: Resistance R = V / I = (${vIn} V) / (${iIn} A) = <strong>${r} Ω</strong>`;
+  }
+}
+
+function clearOhmWidget() {
+  document.getElementById('widgetV').value = "";
+  document.getElementById('widgetI').value = "";
+  document.getElementById('widgetR').value = "";
+  document.getElementById('widgetResult').innerHTML = "";
+}
+
+function calcPowerEnergy() {
+  const v = parseFloat(document.getElementById('powV').value);
+  const i = parseFloat(document.getElementById('powI').value);
+  const t = parseFloat(document.getElementById('powT').value);
+  const res = document.getElementById('powResult');
+
+  if (!isNaN(v) && !isNaN(i)) {
+    const p = (v * i).toFixed(1);
+    let msg = `Power P = I × V = (${i} A) × (${v} V) = <strong>${p} Watts</strong>`;
+    if (!isNaN(t) && t > 0) {
+      const e = (p * t).toLocaleString();
+      msg += ` | Total Energy E = P × t = (${p} W) × (${t} s) = <strong>${e} Joules</strong>`;
+    }
+    res.innerHTML = msg;
+  }
+}
+
+function clearPowerWidget() {
+  document.getElementById('powV').value = "";
+  document.getElementById('powI').value = "";
+  document.getElementById('powT').value = "";
+  document.getElementById('powResult').innerHTML = "";
+}
+
+// Initial Init
+window.addEventListener('DOMContentLoaded', () => {
+  loadSavedState();
+  renderFIB();
+  renderMC();
+  renderCalc();
+  renderCircuits();
+  updateDashboard();
+});
+</script>
+</body>
+</html>
