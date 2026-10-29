@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How the Split-Ring Commutator Flips — Interactive Motor Simulation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #131c2e;
+      --panel-bg: #1c273e;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border: #2e3e5c;
+      --primary: #38bdf8;
+      --primary-hover: #0ea5e9;
+      --primary-glow: rgba(56, 189, 248, 0.25);
+      --north-red: #ef4444;
+      --south-blue: #3b82f6;
+      --segment-a: #f97316; /* Orange */
+      --segment-b: #a855f7; /* Purple */
+      --brush-pos: #ef4444;
+      --brush-neg: #3b82f6;
+      --spark: #fef08a;
+      --success: #22c55e;
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.5;
+      padding-bottom: 2rem;
+    }
+
+    header {
+      background: rgba(19, 28, 46, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 0.85rem 1.5rem;
+    }
+
+    .header-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #f97316, #a855f7);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      box-shadow: 0 4px 14px rgba(249, 115, 22, 0.3);
+    }
+
+    .brand-text h1 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-text span {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .header-links {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.5rem 0.95rem;
+      border-radius: 9px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      color: var(--text);
+      text-decoration: none;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+
+    .btn:hover {
+      background: var(--border);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #090d16;
+      border-color: transparent;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      color: #fff;
+    }
+
+    .btn-danger {
+      background: #dc2626;
+      color: white;
+      border-color: transparent;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 1.5rem auto 0;
+      padding: 0 1.25rem;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* SIMULATION VIEWPORTS CONTAINER */
+    .sim-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .sim-layout { grid-template-columns: 1fr; }
+    }
+
+    .sim-panel {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      position: relative;
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.75rem;
+    }
+
+    .panel-title {
+      font-size: 1rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .canvas-container {
+      width: 100%;
+      height: 380px;
+      background: #0b111e;
+      border-radius: 12px;
+      border: 1px solid #1e2c47;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* CONTROL CONSOLE */
+    .control-console {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    .console-row-1 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .playback-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .slider-group {
+      flex: 1;
+      min-width: 280px;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .slider-group input[type="range"] {
+      flex: 1;
+      height: 8px;
+      background: var(--border);
+      border-radius: 5px;
+      outline: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+
+    .slider-group input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--primary);
+      cursor: pointer;
+      box-shadow: 0 0 10px var(--primary-glow);
+      border: 2px solid #fff;
+    }
+
+    .angle-badge {
+      font-family: var(--font-mono);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary);
+      background: #0b111e;
+      padding: 0.35rem 0.85rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      min-width: 90px;
+      text-align: center;
+    }
+
+    /* LIVE TELEMETRY & STATUS CARDS */
+    .telemetry-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .telemetry-card {
+      background: var(--panel-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .telemetry-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .telemetry-value {
+      font-size: 1rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
+    }
+
+    /* STAGE SELECTOR BUTTONS */
+    .stages-bar {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .stage-btn {
+      flex: 1;
+      min-width: 160px;
+      padding: 0.55rem 0.75rem;
+      background: var(--panel-bg);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s ease;
+    }
+
+    .stage-btn:hover {
+      background: var(--border);
+      color: var(--text);
+    }
+
+    .stage-btn.active {
+      background: var(--primary);
+      color: #090d16;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px var(--primary-glow);
+    }
+
+    /* ANNOUNCEMENT BANNER */
+    .status-banner {
+      background: linear-gradient(90deg, #1e3a8a, #065f46);
+      border: 1.5px solid #38bdf8;
+      border-radius: 10px;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    /* DEFECTIVE UN-SPLIT EXPERIMENT CARD */
+    .experiment-card {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(245, 158, 11, 0.05));
+      border: 1.5px dashed #ef4444;
+      border-radius: 16px;
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .experiment-text h3 {
+      font-size: 1.05rem;
+      color: #fca5a5;
+      font-weight: 800;
+      margin-bottom: 0.35rem;
+    }
+
+    .experiment-text p {
+      font-size: 0.875rem;
+      color: #cbd5e1;
+      max-width: 750px;
+      line-height: 1.5;
+    }
+
+    /* EDUCATIONAL STEP GUIDE */
+    .edu-section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .edu-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .edu-card {
+      background: var(--panel-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .edu-card h4 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #f8fafc;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .edu-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .legend-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .legend-color {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-icon">🔄</div>
+        <div class="brand-text">
+          <h1>How the Split-Ring Commutator Flips</h1>
+          <span>Science 9 Unit D • Interactive DC Motor Simulator</span>
+        </div>
+      </div>
+      <div class="header-links">
+        <a href="Parts_of_Electric_Motors_and_Generators.md" class="btn" title="Read Markdown Guide">
+          📄 Parts Guide
+        </a>
+        <a id="guideLink" href="Interactive_Study_Guide_Unit_D_Complete.html" class="btn btn-primary" title="Open Master Study Guide">
+          📖 Master Guide
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- EXPERIMENT TOGGLE CARD: REAL VS DEFECTIVE UN-SPLIT MOTOR -->
+    <div class="experiment-card">
+      <div class="experiment-text">
+        <h3>🔬 The Classic Grade 9 Exam Dilemma: "What if the ring is NOT split?"</h3>
+        <p>
+          A DC motor requires a <strong>split</strong> ring. Toggle below between a standard functional motor with a <strong>Split-Ring Commutator</strong> and a defective motor with a <strong>Solid Continuous Ring</strong> to see why an un-split motor gets trapped in magnetic lock!
+        </p>
+      </div>
+      <div style="display: flex; gap: 0.6rem; align-items: center;">
+        <button id="modeSplitBtn" class="btn btn-primary">
+          ✓ Split-Ring (Functional)
+        </button>
+        <button id="modeSolidBtn" class="btn" style="background: rgba(239, 68, 68, 0.2); border-color: #ef4444; color: #fca5a5;">
+          ⚠️ Solid Un-Split Ring
+        </button>
+      </div>
+    </div>
+
+    <!-- SIMULATION CANVAS VIEWPORTS -->
+    <div class="sim-layout">
+      
+      <!-- VIEW 1: ARMATURE & STATOR MAGNETS -->
+      <div class="sim-panel">
+        <div class="panel-header">
+          <div class="panel-title">
+            <span>🧲</span> View 1: Armature Coil in Magnetic Field
+          </div>
+          <span style="font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono);">Cross-Section</span>
+        </div>
+
+        <div class="canvas-container">
+          <canvas id="armatureCanvas" width="560" height="380"></canvas>
+        </div>
+
+        <div class="legend-row">
+          <div class="legend-item"><span class="legend-color" style="background: var(--north-red);"></span> Stator North (N)</div>
+          <div class="legend-item"><span class="legend-color" style="background: var(--south-blue);"></span> Stator South (S)</div>
+          <div class="legend-item"><span class="legend-color" style="background: var(--segment-a);"></span> Coil Wire A</div>
+          <div class="legend-item"><span class="legend-color" style="background: var(--segment-b);"></span> Coil Wire B</div>
+          <div class="legend-item"><span class="legend-color" style="background: #22c55e;"></span> Net Torque Force</div>
+        </div>
+      </div>
+
+      <!-- VIEW 2: SPLIT-RING COMMUTATOR & BRUSHES ZOOM -->
+      <div class="sim-panel">
+        <div class="panel-header">
+          <div class="panel-title">
+            <span>⚙️</span> View 2: Split-Ring Commutator & Brushes (Zoom)
+          </div>
+          <span style="font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono);">Axle Close-Up</span>
+        </div>
+
+        <div class="canvas-container">
+          <canvas id="commutatorCanvas" width="560" height="380"></canvas>
+        </div>
+
+        <div class="legend-row">
+          <div class="legend-item"><span class="legend-color" style="background: var(--brush-pos);"></span> Brush (+) [Red]</div>
+          <div class="legend-item"><span class="legend-color" style="background: var(--brush-neg);"></span> Brush (-) [Blue]</div>
+          <div class="legend-item"><span class="legend-color" style="background: var(--segment-a);"></span> Segment A (Half-Ring)</div>
+          <div class="legend-item"><span class="legend-color" style="background: var(--segment-b);"></span> Segment B (Half-Ring)</div>
+          <div class="legend-item"><span class="legend-color" style="background: #000; border: 1px solid #fff;"></span> Insulating Gap</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- REAL-TIME TELEMETRY STATUS BANNER -->
+    <div class="status-banner" id="statusBanner">
+      <span style="font-size: 1.3rem;">⚡</span>
+      <div id="statusText">
+        Armature is rotating clockwise. Segment A is touching Brush (+); Segment B is touching Brush (-).
+      </div>
+    </div>
+
+    <!-- CONTROL CONSOLE -->
+    <div class="control-console">
+      
+      <div class="console-row-1">
+        <div class="playback-group">
+          <button id="playBtn" class="btn btn-primary" title="Play / Pause Animation">
+            ⏸️ Pause
+          </button>
+          <button id="stepPrevBtn" class="btn" title="Step Back 5°">
+            ⏪ -5°
+          </button>
+          <button id="stepNextBtn" class="btn" title="Step Forward 5°">
+            +5° ⏩
+          </button>
+          <button id="resetAngleBtn" class="btn" title="Reset to 0°">
+            ↺ 0°
+          </button>
+        </div>
+
+        <div class="slider-group">
+          <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">Angle:</span>
+          <input type="range" id="angleSlider" min="0" max="360" value="0" step="1">
+          <div class="angle-badge" id="angleDisplay">0°</div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">Speed:</span>
+          <select id="speedSelect" class="btn" style="padding: 0.45rem 0.65rem;">
+            <option value="0.25">0.25x (Super Slow)</option>
+            <option value="0.5">0.5x (Slow-Mo)</option>
+            <option value="1.0" selected>1.0x (Normal)</option>
+            <option value="2.0">2.0x (Fast)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- STAGES SHORTCUTS -->
+      <div>
+        <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); margin-bottom: 0.4rem; text-transform: uppercase;">
+          Jump to Key Motion Milestones:
+        </div>
+        <div class="stages-bar">
+          <button class="stage-btn active" data-angle="0">
+            <strong>1. Angle 0°</strong><br>Horizontal Max Push
+          </button>
+          <button class="stage-btn" data-angle="88">
+            <strong>2. Angle 88°</strong><br>Entering Gap
+          </button>
+          <button class="stage-btn" data-angle="90">
+            <strong>3. Angle 90° (GAP)</strong><br>Dead Center (0 Current)
+          </button>
+          <button class="stage-btn" data-angle="92">
+            <strong>4. Angle 92° (FLIP!)</strong><br>Contacts Inverted!
+          </button>
+          <button class="stage-btn" data-angle="180">
+            <strong>5. Angle 180°</strong><br>Opposite Max Push
+          </button>
+          <button class="stage-btn" data-angle="270">
+            <strong>6. Angle 270° (FLIP 2)</strong><br>Second Contact Swap
+          </button>
+        </div>
+      </div>
+
+      <!-- TELEMETRY SENSORS -->
+      <div class="telemetry-grid">
+        <div class="telemetry-card">
+          <div class="telemetry-label">Brush (+) Touching:</div>
+          <div class="telemetry-value" id="brushPosTouch" style="color: var(--segment-a);">Segment A</div>
+        </div>
+        <div class="telemetry-card">
+          <div class="telemetry-label">Brush (-) Touching:</div>
+          <div class="telemetry-value" id="brushNegTouch" style="color: var(--segment-b);">Segment B</div>
+        </div>
+        <div class="telemetry-card">
+          <div class="telemetry-label">Coil Wire A Polarity:</div>
+          <div class="telemetry-value" id="wireAPolarity" style="color: var(--north-red);">North Pole (N)</div>
+        </div>
+        <div class="telemetry-card">
+          <div class="telemetry-label">Coil Wire B Polarity:</div>
+          <div class="telemetry-value" id="wireBPolarity" style="color: var(--south-blue);">South Pole (S)</div>
+        </div>
+        <div class="telemetry-card">
+          <div class="telemetry-label">Torque Direction:</div>
+          <div class="telemetry-value" id="torqueValue" style="color: var(--success);">Clockwise (CW) ↷</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- EDUCATIONAL WALKTHROUGH ACCORDION -->
+    <div class="edu-section">
+      <div class="edu-title">📖 What You Must Know for Your Exam (Slide 23 Breakdown)</div>
+      
+      <div class="edu-grid">
+        <div class="edu-card">
+          <h4>1. Why the Commutator is Cut in Half</h4>
+          <p>
+            An electromagnet has fixed North and South poles as long as current flows in one direction. As Wire A passes Stator North, it is repelled toward Stator South. Once Wire A reaches South ($90^\circ$), it wants to stay there! Splitting the ring allows the contacts to physically switch sides every $180^\circ$.
+          </p>
+        </div>
+        <div class="edu-card">
+          <h4>2. The Exact Moment of the Flip ($90^\circ$ & $270^\circ$)</h4>
+          <p>
+            When the coil is perfectly vertical, the insulating gap slides across the stationary brushes. For a fraction of a millisecond, current stops completely ($I = 0$). <strong>Momentum / inertia</strong> carries the heavy armature past this neutral zone.
+          </p>
+        </div>
+        <div class="edu-card">
+          <h4>3. What Happens Right After $90^\circ$ ($91^\circ$)</h4>
+          <p>
+            Segment A now connects to the <strong>Negative Brush</strong>, and Segment B connects to the <strong>Positive Brush</strong>! Current in the coil reverses direction. Wire A instantly flips from a North pole into a South pole! Now Stator South repels Wire A onwards, maintaining continuous clockwise rotation.
+          </p>
+        </div>
+        <div class="edu-card">
+          <h4>4. The Defective Solid Ring Result</h4>
+          <p>
+            Without the split, current never reverses. The motor will spin to $90^\circ$, rock back and forth, and freeze locked in place because opposite magnetic poles attract and stay pinned together.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- JAVASCRIPT ANIMATION ENGINE -->
+  <script>
+    // State variables
+    let currentAngle = 0; // Degrees (0 to 360)
+    let isPlaying = true;
+    let speedMultiplier = 1.0;
+    let isSplitRing = true; // true = functional split ring; false = solid ring
+    let animationFrameId;
+
+    // Canvases
+    const armCanvas = document.getElementById('armatureCanvas');
+    const armCtx = armCanvas.getContext('2d');
+    const comCanvas = document.getElementById('commutatorCanvas');
+    const comCtx = comCanvas.getContext('2d');
+
+    // DOM Elements
+    const playBtn = document.getElementById('playBtn');
+    const angleSlider = document.getElementById('angleSlider');
+    const angleDisplay = document.getElementById('angleDisplay');
+    const speedSelect = document.getElementById('speedSelect');
+    const statusText = document.getElementById('statusText');
+    const statusBanner = document.getElementById('statusBanner');
+    const brushPosTouch = document.getElementById('brushPosTouch');
+    const brushNegTouch = document.getElementById('brushNegTouch');
+    const wireAPolarity = document.getElementById('wireAPolarity');
+    const wireBPolarity = document.getElementById('wireBPolarity');
+    const torqueValue = document.getElementById('torqueValue');
+    const modeSplitBtn = document.getElementById('modeSplitBtn');
+    const modeSolidBtn = document.getElementById('modeSolidBtn');
+
+    // Gap width in degrees
+    const GAP_WIDTH_DEG = 8; // 4 degrees on each side of 90 and 270
+
+    function getAngleMod() {
+      let a = currentAngle % 360;
+      if (a < 0) a += 360;
+      return a;
+    }
+
+    // Determine commutator contact state
+    function getContactState() {
+      const a = getAngleMod();
+
+      // Check if brushes are in the gap
+      // Gaps are centered at 90° and 270°
+      const inGap1 = Math.abs(a - 90) < GAP_WIDTH_DEG / 2;
+      const inGap2 = Math.abs(a - 270) < GAP_WIDTH_DEG / 2;
+
+      if (!isSplitRing) {
+        // Solid continuous ring: Segment A permanently touches (+), Segment B permanently touches (-)
+        return {
+          posContact: 'Segment A',
+          negContact: 'Segment B',
+          inGap: false,
+          polarityA: 'North (N)',
+          polarityB: 'South (S)',
+          currentDirection: 'Forward',
+          torque: Math.cos(a * Math.PI / 180) // Restoring torque towards 90°
+        };
+      }
+
+      if (inGap1 || inGap2) {
+        return {
+          posContact: 'Gap (No Contact)',
+          negContact: 'Gap (No Contact)',
+          inGap: true,
+          polarityA: 'None (0 A)',
+          polarityB: 'None (0 A)',
+          currentDirection: 'Zero (Gap)',
+          torque: 0
+        };
+      }
+
+      // Between (90 + halfGap) and (270 - halfGap) -> FLIPPED STATE!
+      if (a > 90 && a < 270) {
+        return {
+          posContact: 'Segment B',
+          negContact: 'Segment A',
+          inGap: false,
+          polarityA: 'South (S)', // Flipped!
+          polarityB: 'North (N)', // Flipped!
+          currentDirection: 'Reversed (B -> A)',
+          torque: Math.abs(Math.cos(a * Math.PI / 180)) // Always pushes CW!
+        };
+      } else {
+        // 0 to 90 or 270 to 360 -> ORIGINAL STATE
+        return {
+          posContact: 'Segment A',
+          negContact: 'Segment B',
+          inGap: false,
+          polarityA: 'North (N)',
+          polarityB: 'South (S)',
+          currentDirection: 'Forward (A -> B)',
+          torque: Math.abs(Math.cos(a * Math.PI / 180)) // Always pushes CW!
+        };
+      }
+    }
+
+    // DRAW ARMATURE (VIEW 1)
+    function drawArmature() {
+      const w = armCanvas.width;
+      const h = armCanvas.height;
+      const cx = w / 2;
+      const cy = h / 2;
+      const rad = (currentAngle * Math.PI) / 180;
+      const state = getContactState();
+
+      armCtx.clearRect(0, 0, w, h);
+
+      // 1. Draw Stator Field Magnets (Left: North Red, Right: South Blue)
+      // Left North Magnet
+      armCtx.fillStyle = '#ef4444';
+      armCtx.beginPath();
+      armCtx.roundRect(20, 90, 80, 200, [12, 0, 0, 12]);
+      armCtx.fill();
+      armCtx.fillStyle = '#ffffff';
+      armCtx.font = 'bold 36px "Plus Jakarta Sans"';
+      armCtx.textAlign = 'center';
+      armCtx.textBaseline = 'middle';
+      armCtx.fillText('N', 60, 190);
+      armCtx.font = 'bold 11px "Plus Jakarta Sans"';
+      armCtx.fillText('STATOR', 60, 225);
+
+      // Right South Magnet
+      armCtx.fillStyle = '#3b82f6';
+      armCtx.beginPath();
+      armCtx.roundRect(w - 100, 90, 80, 200, [0, 12, 12, 0]);
+      armCtx.fill();
+      armCtx.fillStyle = '#ffffff';
+      armCtx.font = 'bold 36px "Plus Jakarta Sans"';
+      armCtx.fillText('S', w - 60, 190);
+      armCtx.font = 'bold 11px "Plus Jakarta Sans"';
+      armCtx.fillText('STATOR', w - 60, 225);
+
+      // 2. Draw Magnetic Field Flux Lines (dashed lines from N to S)
+      armCtx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
+      armCtx.lineWidth = 1.5;
+      armCtx.setLineDash([6, 6]);
+      for (let y = 130; y <= 250; y += 30) {
+        armCtx.beginPath();
+        armCtx.moveTo(105, y);
+        armCtx.lineTo(w - 105, y);
+        armCtx.stroke();
+      }
+      armCtx.setLineDash([]);
+
+      // 3. Draw Central Rotating Shaft / Axle
+      armCtx.fillStyle = '#475569';
+      armCtx.beginPath();
+      armCtx.arc(cx, cy, 26, 0, Math.PI * 2);
+      armCtx.fill();
+      armCtx.strokeStyle = '#94a3b8';
+      armCtx.lineWidth = 2;
+      armCtx.stroke();
+
+      // 4. Draw Rotating Armature Coil Loop
+      const coilLength = 120;
+      armCtx.save();
+      armCtx.translate(cx, cy);
+      armCtx.rotate(rad);
+
+      // Soft Iron Core (Cross rectangle)
+      armCtx.fillStyle = '#334155';
+      armCtx.fillRect(-coilLength, -14, coilLength * 2, 28);
+      armCtx.strokeStyle = '#64748b';
+      armCtx.lineWidth = 2;
+      armCtx.strokeRect(-coilLength, -14, coilLength * 2, 28);
+
+      // Coil Side A (Left when angle = 0)
+      armCtx.fillStyle = '#f97316'; // Orange
+      armCtx.beginPath();
+      armCtx.arc(-coilLength, 0, 20, 0, Math.PI * 2);
+      armCtx.fill();
+      armCtx.strokeStyle = '#ffffff';
+      armCtx.lineWidth = 2.5;
+      armCtx.stroke();
+
+      armCtx.fillStyle = '#ffffff';
+      armCtx.font = 'bold 13px "JetBrains Mono"';
+      armCtx.textAlign = 'center';
+      armCtx.textBaseline = 'middle';
+      armCtx.fillText('A', -coilLength, 0);
+
+      // Coil Side B (Right when angle = 0)
+      armCtx.fillStyle = '#a855f7'; // Purple
+      armCtx.beginPath();
+      armCtx.arc(coilLength, 0, 20, 0, Math.PI * 2);
+      armCtx.fill();
+      armCtx.strokeStyle = '#ffffff';
+      armCtx.lineWidth = 2.5;
+      armCtx.stroke();
+
+      armCtx.fillStyle = '#ffffff';
+      armCtx.fillText('B', coilLength, 0);
+
+      armCtx.restore();
+
+      // 5. Draw Magnetic Polarity Labels and Force Arrows on Coil Ends
+      const xA = cx - Math.cos(rad) * coilLength;
+      const yA = cy - Math.sin(rad) * coilLength;
+      const xB = cx + Math.cos(rad) * coilLength;
+      const yB = cy + Math.sin(rad) * coilLength;
+
+      if (!state.inGap) {
+        // Polarity badge for Side A
+        const isANorth = state.polarityA.includes('North');
+        armCtx.fillStyle = isANorth ? '#ef4444' : '#3b82f6';
+        armCtx.beginPath();
+        armCtx.roundRect(xA - 18, yA - 38, 36, 20, 4);
+        armCtx.fill();
+        armCtx.fillStyle = '#ffffff';
+        armCtx.font = 'bold 12px "JetBrains Mono"';
+        armCtx.fillText(isANorth ? 'N' : 'S', xA, yA - 28);
+
+        // Polarity badge for Side B
+        const isBNorth = state.polarityB.includes('North');
+        armCtx.fillStyle = isBNorth ? '#ef4444' : '#3b82f6';
+        armCtx.beginPath();
+        armCtx.roundRect(xB - 18, yB - 38, 36, 20, 4);
+        armCtx.fill();
+        armCtx.fillStyle = '#ffffff';
+        armCtx.fillText(isBNorth ? 'N' : 'S', xB, yB - 28);
+
+        // Force Vectors (Clockwise Torque Arrows)
+        // Upward/Clockwise force on side A
+        drawForceArrow(armCtx, xA, yA, rad + Math.PI / 2, '#22c55e', 'Force F');
+        drawForceArrow(armCtx, xB, yB, rad - Math.PI / 2, '#22c55e', 'Force F');
+      } else {
+        // IN GAP INDICATOR
+        armCtx.fillStyle = '#fef08a';
+        armCtx.font = 'bold 13px "Plus Jakarta Sans"';
+        armCtx.fillText('⚡ GAP: Current = 0 A (Inertia Carries Coil)', cx, cy - 145);
+      }
+
+      // Center Axle Dot
+      armCtx.fillStyle = '#f8fafc';
+      armCtx.beginPath();
+      armCtx.arc(cx, cy, 5, 0, Math.PI * 2);
+      armCtx.fill();
+    }
+
+    // DRAW COMMUTATOR & BRUSHES (VIEW 2 - CLOSE-UP ZOOM)
+    function drawCommutator() {
+      const w = comCanvas.width;
+      const h = comCanvas.height;
+      const cx = w / 2;
+      const cy = h / 2;
+      const rad = (currentAngle * Math.PI) / 180;
+      const state = getContactState();
+
+      comCtx.clearRect(0, 0, w, h);
+
+      const rOuter = 85;
+      const rInner = 50;
+      const gapAngle = (GAP_WIDTH_DEG * Math.PI) / 180;
+
+      // 1. Draw Rotating Shaft
+      comCtx.fillStyle = '#334155';
+      comCtx.beginPath();
+      comCtx.arc(cx, cy, rInner - 8, 0, Math.PI * 2);
+      comCtx.fill();
+      comCtx.strokeStyle = '#64748b';
+      comCtx.lineWidth = 3;
+      comCtx.stroke();
+
+      // 2. Draw Split Ring Segments (Rotates with currentAngle)
+      comCtx.save();
+      comCtx.translate(cx, cy);
+      comCtx.rotate(rad);
+
+      if (isSplitRing) {
+        // SEGMENT A (Orange) - Arc from (gap/2) to (PI - gap/2)
+        comCtx.fillStyle = '#f97316';
+        comCtx.beginPath();
+        comCtx.arc(0, 0, rOuter, gapAngle / 2, Math.PI - gapAngle / 2);
+        comCtx.arc(0, 0, rInner, Math.PI - gapAngle / 2, gapAngle / 2, true);
+        comCtx.closePath();
+        comCtx.fill();
+        comCtx.strokeStyle = '#ffffff';
+        comCtx.lineWidth = 2.5;
+        comCtx.stroke();
+
+        // Label Segment A
+        comCtx.fillStyle = '#ffffff';
+        comCtx.font = 'bold 15px "JetBrains Mono"';
+        comCtx.textAlign = 'center';
+        comCtx.textBaseline = 'middle';
+        comCtx.fillText('SEGMENT A', 0, (rOuter + rInner) / 2);
+
+        // SEGMENT B (Purple) - Arc from (PI + gap/2) to (2PI - gap/2)
+        comCtx.fillStyle = '#a855f7';
+        comCtx.beginPath();
+        comCtx.arc(0, 0, rOuter, Math.PI + gapAngle / 2, Math.PI * 2 - gapAngle / 2);
+        comCtx.arc(0, 0, rInner, Math.PI * 2 - gapAngle / 2, Math.PI + gapAngle / 2, true);
+        comCtx.closePath();
+        comCtx.fill();
+        comCtx.strokeStyle = '#ffffff';
+        comCtx.lineWidth = 2.5;
+        comCtx.stroke();
+
+        // Label Segment B
+        comCtx.fillStyle = '#ffffff';
+        comCtx.fillText('SEGMENT B', 0, -((rOuter + rInner) / 2));
+
+        // Draw The Insulating Gaps (Dark slots)
+        comCtx.fillStyle = '#090d16';
+        comCtx.fillRect(rInner - 5, -8, rOuter - rInner + 10, 16);
+        comCtx.fillRect(-rOuter - 5, -8, rOuter - rInner + 10, 16);
+      } else {
+        // DEFECTIVE SOLID UN-SPLIT RING
+        comCtx.fillStyle = '#f59e0b'; // Brass continuous ring
+        comCtx.beginPath();
+        comCtx.arc(0, 0, rOuter, 0, Math.PI * 2);
+        comCtx.arc(0, 0, rInner, Math.PI * 2, 0, true);
+        comCtx.fill();
+        comCtx.strokeStyle = '#dc2626';
+        comCtx.lineWidth = 3;
+        comCtx.stroke();
+
+        comCtx.fillStyle = '#ffffff';
+        comCtx.font = 'bold 14px "Plus Jakarta Sans"';
+        comCtx.fillText('SOLID UN-SPLIT RING', 0, 0);
+      }
+
+      comCtx.restore();
+
+      // 3. Draw Stationary Brushes (DO NOT ROTATE)
+      // Top Brush (+) Red
+      const brushW = 32;
+      const brushH = 45;
+      const bYTop = cy - rOuter - brushH + 6;
+
+      comCtx.fillStyle = '#ef4444';
+      comCtx.beginPath();
+      comCtx.roundRect(cx - brushW / 2, bYTop, brushW, brushH, [8, 8, 2, 2]);
+      comCtx.fill();
+      comCtx.strokeStyle = '#ffffff';
+      comCtx.lineWidth = 2.5;
+      comCtx.stroke();
+
+      comCtx.fillStyle = '#ffffff';
+      comCtx.font = 'bold 14px "JetBrains Mono"';
+      comCtx.textAlign = 'center';
+      comCtx.textBaseline = 'middle';
+      comCtx.fillText('+', cx, bYTop + 16);
+      comCtx.font = 'bold 9px "Plus Jakarta Sans"';
+      comCtx.fillText('BRUSH', cx, bYTop + 32);
+
+      // Bottom Brush (-) Blue
+      const bYBot = cy + rOuter - 6;
+      comCtx.fillStyle = '#3b82f6';
+      comCtx.beginPath();
+      comCtx.roundRect(cx - brushW / 2, bYBot, brushW, brushH, [2, 2, 8, 8]);
+      comCtx.fill();
+      comCtx.strokeStyle = '#ffffff';
+      comCtx.lineWidth = 2.5;
+      comCtx.stroke();
+
+      comCtx.fillStyle = '#ffffff';
+      comCtx.font = 'bold 14px "JetBrains Mono"';
+      comCtx.fillText('—', cx, bYBot + 28);
+      comCtx.font = 'bold 9px "Plus Jakarta Sans"';
+      comCtx.fillText('BRUSH', cx, bYBot + 14);
+
+      // Lead Wires from Brushes
+      comCtx.strokeStyle = '#ef4444';
+      comCtx.lineWidth = 4;
+      comCtx.beginPath();
+      comCtx.moveTo(cx, bYTop);
+      comCtx.lineTo(cx, bYTop - 35);
+      comCtx.lineTo(cx - 140, bYTop - 35);
+      comCtx.stroke();
+
+      comCtx.strokeStyle = '#3b82f6';
+      comCtx.beginPath();
+      comCtx.moveTo(cx, bYBot + brushH);
+      comCtx.lineTo(cx, bYBot + brushH + 35);
+      comCtx.lineTo(cx - 140, bYBot + brushH + 35);
+      comCtx.stroke();
+
+      // Battery Symbol at left
+      drawBatterySymbol(comCtx, cx - 140, cy);
+
+      // Sparks if near the gap
+      if (state.inGap) {
+        drawSparks(comCtx, cx, cy - rOuter);
+        drawSparks(comCtx, cx, cy + rOuter);
+      }
+    }
+
+    // Helper: Draw Force Arrow
+    function drawForceArrow(ctx, x, y, angleRad, color, label) {
+      const len = 45;
+      const x2 = x + Math.cos(angleRad) * len;
+      const y2 = y + Math.sin(angleRad) * len;
+
+      ctx.save();
+      ctx.strokeStyle = color;
+      ctx.fillStyle = color;
+      ctx.lineWidth = 3.5;
+
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(x2, y2);
+      ctx.stroke();
+
+      // Arrowhead
+      const headLen = 10;
+      ctx.beginPath();
+      ctx.moveTo(x2, y2);
+      ctx.lineTo(x2 - headLen * Math.cos(angleRad - Math.PI / 6), y2 - headLen * Math.sin(angleRad - Math.PI / 6));
+      ctx.lineTo(x2 - headLen * Math.cos(angleRad + Math.PI / 6), y2 - headLen * Math.sin(angleRad + Math.PI / 6));
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.restore();
+    }
+
+    // Helper: Draw Battery
+    function drawBatterySymbol(ctx, x, y) {
+      ctx.fillStyle = '#f8fafc';
+      ctx.font = 'bold 12px "JetBrains Mono"';
+      ctx.textAlign = 'right';
+      ctx.fillText('+ DC Battery —', x - 15, y);
+
+      ctx.strokeStyle = '#94a3b8';
+      ctx.lineWidth = 3;
+      // Long line (+)
+      ctx.beginPath();
+      ctx.moveTo(x, y - 20);
+      ctx.lineTo(x, y + 20);
+      ctx.stroke();
+      // Short line (-)
+      ctx.lineWidth = 6;
+      ctx.beginPath();
+      ctx.moveTo(x + 10, y - 10);
+      ctx.lineTo(x + 10, y + 10);
+      ctx.stroke();
+    }
+
+    // Helper: Sparks
+    function drawSparks(ctx, x, y) {
+      ctx.save();
+      ctx.fillStyle = '#fef08a';
+      for (let i = 0; i < 6; i++) {
+        const ang = Math.random() * Math.PI * 2;
+        const dist = 5 + Math.random() * 14;
+        ctx.beginPath();
+        ctx.arc(x + Math.cos(ang) * dist, y + Math.sin(ang) * dist, 2.5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.restore();
+    }
+
+    // Update Telemetry Panel & Status Messages
+    function updateTelemetry() {
+      const a = Math.round(getAngleMod());
+      angleDisplay.innerText = `${a}°`;
+      angleSlider.value = a;
+
+      const state = getContactState();
+
+      brushPosTouch.innerText = state.posContact;
+      brushPosTouch.style.color = state.posContact.includes('A') ? 'var(--segment-a)' : (state.posContact.includes('B') ? 'var(--segment-b)' : '#fef08a');
+
+      brushNegTouch.innerText = state.negContact;
+      brushNegTouch.style.color = state.negContact.includes('B') ? 'var(--segment-b)' : (state.negContact.includes('A') ? 'var(--segment-a)' : '#fef08a');
+
+      wireAPolarity.innerText = state.polarityA;
+      wireAPolarity.style.color = state.polarityA.includes('North') ? 'var(--north-red)' : (state.polarityA.includes('South') ? 'var(--south-blue)' : '#94a3b8');
+
+      wireBPolarity.innerText = state.polarityB;
+      wireBPolarity.style.color = state.polarityB.includes('South') ? 'var(--south-blue)' : (state.polarityB.includes('North') ? 'var(--north-red)' : '#94a3b8');
+
+      if (!isSplitRing) {
+        if (Math.abs(a - 90) < 5) {
+          torqueValue.innerText = 'STUCK IN LOCK (0 Torque)';
+          torqueValue.style.color = '#ef4444';
+          statusBanner.style.background = 'linear-gradient(90deg, #7f1d1d, #991b1b)';
+          statusText.innerHTML = '🛑 <strong>DEFECTIVE MOTOR TRAPPED!</strong> Without a split-ring, current did not reverse. Opposite poles (North to South) locked together at 90°!';
+        } else {
+          torqueValue.innerText = 'Restoring to 90°';
+          torqueValue.style.color = '#f59e0b';
+          statusBanner.style.background = 'linear-gradient(90deg, #78350f, #854d0e)';
+          statusText.innerHTML = '⚠️ <strong>Solid Ring Mode:</strong> Current flows continuously in one direction. Watch it stall when it hits 90°!';
+        }
+        return;
+      }
+
+      if (state.inGap) {
+        torqueValue.innerText = '0 (Coast on Inertia)';
+        torqueValue.style.color = '#fef08a';
+        statusBanner.style.background = 'linear-gradient(90deg, #854d0e, #ca8a04)';
+        statusText.innerHTML = `⚡ <strong>GAP ZONE (${a}°):</strong> Brushes cross the gap. Current is zero! Heavy rotor inertia carries the coil past vertical.`;
+      } else if (a > 90 && a < 270) {
+        torqueValue.innerText = 'Clockwise (CW) ↷';
+        torqueValue.style.color = 'var(--success)';
+        statusBanner.style.background = 'linear-gradient(90deg, #1e3a8a, #7c3aed)';
+        statusText.innerHTML = `🔄 <strong>CONTACTS FLIPPED (${a}°):</strong> Segment A now touches Brush (-), Segment B touches (+). Current reversed! Wire A is now a <strong>SOUTH POLE</strong>, repelling onward!`;
+      } else {
+        torqueValue.innerText = 'Clockwise (CW) ↷';
+        torqueValue.style.color = 'var(--success)';
+        statusBanner.style.background = 'linear-gradient(90deg, #065f46, #0284c7)';
+        statusText.innerHTML = `✓ <strong>NORMAL DRIVE (${a}°):</strong> Segment A on (+), Segment B on (-). Stator North repels Wire A North, producing strong clockwise torque.`;
+      }
+
+      // Update active milestone button
+      document.querySelectorAll('.stage-btn').forEach(btn => {
+        const targetA = parseInt(btn.dataset.angle, 10);
+        btn.classList.toggle('active', Math.abs(a - targetA) < 10);
+      });
+    }
+
+    // Main Animation Loop
+    function animate() {
+      if (isPlaying) {
+        if (!isSplitRing) {
+          // Solid ring behavior: oscillates and damps down at 90 degrees
+          const diff = 90 - (currentAngle % 360);
+          if (Math.abs(diff) < 2) {
+            currentAngle = 90;
+            isPlaying = false;
+            playBtn.innerText = '▶️ Play';
+          } else {
+            currentAngle += Math.sign(diff) * 1.5 * speedMultiplier;
+          }
+        } else {
+          currentAngle = (currentAngle + 1.2 * speedMultiplier) % 360;
+        }
+      }
+
+      drawArmature();
+      drawCommutator();
+      updateTelemetry();
+
+      animationFrameId = requestAnimationFrame(animate);
+    }
+
+    // Event Listeners
+    playBtn.addEventListener('click', () => {
+      isPlaying = !isPlaying;
+      playBtn.innerText = isPlaying ? '⏸️ Pause' : '▶️ Play';
+      playBtn.classList.toggle('btn-primary', isPlaying);
+    });
+
+    stepNextBtn.addEventListener('click', () => {
+      isPlaying = false;
+      playBtn.innerText = '▶️ Play';
+      playBtn.classList.remove('btn-primary');
+      currentAngle = (currentAngle + 5) % 360;
+    });
+
+    stepPrevBtn.addEventListener('click', () => {
+      isPlaying = false;
+      playBtn.innerText = '▶️ Play';
+      playBtn.classList.remove('btn-primary');
+      currentAngle = (currentAngle - 5 + 360) % 360;
+    });
+
+    document.getElementById('resetAngleBtn').addEventListener('click', () => {
+      currentAngle = 0;
+    });
+
+    angleSlider.addEventListener('input', (e) => {
+      isPlaying = false;
+      playBtn.innerText = '▶️ Play';
+      playBtn.classList.remove('btn-primary');
+      currentAngle = parseFloat(e.target.value);
+    });
+
+    speedSelect.addEventListener('change', (e) => {
+      speedMultiplier = parseFloat(e.target.value);
+    });
+
+    // Milestone buttons
+    document.querySelectorAll('.stage-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        isPlaying = false;
+        playBtn.innerText = '▶️ Play';
+        playBtn.classList.remove('btn-primary');
+        currentAngle = parseInt(btn.dataset.angle, 10);
+      });
+    });
+
+    // Experiment Mode buttons
+    modeSplitBtn.addEventListener('click', () => {
+      isSplitRing = true;
+      modeSplitBtn.className = 'btn btn-primary';
+      modeSolidBtn.className = 'btn';
+      modeSolidBtn.style.background = 'rgba(239, 68, 68, 0.2)';
+      modeSolidBtn.style.borderColor = '#ef4444';
+      modeSolidBtn.style.color = '#fca5a5';
+      isPlaying = true;
+      playBtn.innerText = '⏸️ Pause';
+      playBtn.classList.add('btn-primary');
+    });
+
+    modeSolidBtn.addEventListener('click', () => {
+      isSplitRing = false;
+      modeSolidBtn.className = 'btn btn-danger';
+      modeSplitBtn.className = 'btn';
+      currentAngle = 10; // Start near 0 so student sees it get stuck at 90
+      isPlaying = true;
+      playBtn.innerText = '⏸️ Pause';
+      playBtn.classList.add('btn-primary');
+    });
+
+    // Start Animation
+    window.addEventListener('DOMContentLoaded', () => {
+      animate();
+    if (window.location.hostname.includes('github.io')) {
+      const gl = document.getElementById('guideLink');
+      if (gl) gl.href = 'index.html';
+    }
+
+    });
+  </script>
+</body>
+</html>
