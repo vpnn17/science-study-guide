@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Science 9: Unit D Master Flashcards (Topics 1–8)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-card: #1e293b;
+      --bg-card-back: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #334155;
+      --primary: #38bdf8;
+      --primary-hover: #0ea5e9;
+      --primary-glow: rgba(56, 189, 248, 0.25);
+      --accent: #818cf8;
+      --success: #34d399;
+      --success-bg: rgba(52, 211, 153, 0.15);
+      --warning: #fbbf24;
+      --warning-bg: rgba(251, 191, 36, 0.15);
+      --danger: #f87171;
+      --danger-bg: rgba(248, 113, 113, 0.15);
+      --t1: #f43f5e;
+      --t2: #38bdf8;
+      --t3: #a855f7;
+      --t4: #f59e0b;
+      --t5: #10b981;
+      --t6: #06b6d4;
+      --t7: #ec4899;
+      --t8: #6366f1;
+      --radius: 16px;
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --bg-card: #ffffff;
+      --bg-card-back: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --primary: #0284c7;
+      --primary-hover: #0369a1;
+      --primary-glow: rgba(2, 132, 199, 0.15);
+      --accent: #6366f1;
+      --success: #059669;
+      --success-bg: #d1fae5;
+      --warning: #d97706;
+      --warning-bg: #fef3c7;
+      --danger: #dc2626;
+      --danger-bg: #fee2e2;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.25s, color 0.25s;
+      line-height: 1.5;
+      padding-bottom: 3rem;
+    }
+
+    header {
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 0.85rem 1.5rem;
+    }
+
+    [data-theme="light"] header {
+      background: rgba(255, 255, 255, 0.85);
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, #0284c7, #818cf8);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      box-shadow: 0 4px 12px var(--primary-glow);
+    }
+
+    .brand-text h1 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .brand-text span {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.5rem 0.9rem;
+      border-radius: 9px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text);
+      text-decoration: none;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+
+    .btn:hover {
+      background: var(--border);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #0f172a;
+      border-color: transparent;
+      font-weight: 700;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      color: #fff;
+    }
+
+    .btn-study-guide {
+      background: linear-gradient(135deg, #4f46e5, #06b6d4);
+      color: #ffffff !important;
+      border: none;
+      font-weight: 700;
+    }
+
+    .btn-study-guide:hover {
+      opacity: 0.92;
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: 1.5rem auto 0;
+      padding: 0 1.25rem;
+      width: 100%;
+      flex: 1;
+    }
+
+    /* TOP STATS & PROGRESS BAR */
+    .stats-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    .stats-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .stats-counters {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .stat-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .stat-dot.mastered { background: var(--success); }
+    .stat-dot.learning { background: var(--warning); }
+    .stat-dot.starred { background: #eab308; }
+    .stat-dot.total { background: var(--primary); }
+
+    .progress-bar-wrap {
+      width: 100%;
+      height: 9px;
+      background: var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #34d399, #10b981);
+      transition: width 0.3s ease;
+    }
+
+    /* CONTROLS & FILTER SECTION */
+    .controls-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .search-and-view {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .search-input-wrap {
+      position: relative;
+      flex: 1;
+      min-width: 240px;
+    }
+
+    .search-input-wrap svg {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 0.65rem 0.75rem 0.65rem 2.4rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-glow);
+    }
+
+    .view-mode-switch {
+      display: inline-flex;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 3px;
+    }
+
+    .view-mode-btn {
+      padding: 0.45rem 0.85rem;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: 7px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.15s ease;
+    }
+
+    .view-mode-btn.active {
+      background: var(--primary);
+      color: #0f172a;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    .filter-scroll {
+      display: flex;
+      gap: 0.45rem;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: thin;
+    }
+
+    .filter-chip {
+      white-space: nowrap;
+      padding: 0.4rem 0.8rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+
+    .filter-chip:hover {
+      border-color: var(--primary);
+      color: var(--text);
+    }
+
+    .filter-chip.active {
+      background: var(--primary);
+      color: #0f172a;
+      border-color: var(--primary);
+    }
+
+    .filter-status-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .status-chip {
+      padding: 0.35rem 0.75rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .status-chip.active {
+      background: var(--border);
+      color: var(--text);
+      border-color: var(--primary);
+    }
+
+    /* FLASHCARD CONTAINER & 3D CARD */
+    .flashcard-stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .card-scene {
+      width: 100%;
+      max-width: 780px;
+      min-height: 420px;
+      perspective: 1200px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .card-flipper {
+      width: 100%;
+      min-height: 420px;
+      height: 100%;
+      position: relative;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+
+    .card-flipper.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card-face {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      min-height: 420px;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--border);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      padding: 2rem 2.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-y: auto;
+    }
+
+    .card-front {
+      background: var(--bg-card);
+    }
+
+    .card-back {
+      background: var(--bg-card-back);
+      transform: rotateY(180deg);
+      border-color: var(--primary);
+      box-shadow: 0 10px 35px var(--primary-glow);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+    }
+
+    .topic-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.3rem 0.75rem;
+      border-radius: 20px;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .tag-T1 { background: var(--t1); }
+    .tag-T2 { background: var(--t2); color: #0f172a; }
+    .tag-T3 { background: var(--t3); }
+    .tag-T4 { background: var(--t4); color: #0f172a; }
+    .tag-T5 { background: var(--t5); }
+    .tag-T6 { background: var(--t6); color: #0f172a; }
+    .tag-T7 { background: var(--t7); }
+    .tag-T8 { background: var(--t8); }
+
+    .card-quick-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .icon-btn {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .icon-btn:hover {
+      background: var(--border);
+      color: var(--text);
+    }
+
+    .icon-btn.starred {
+      color: #eab308;
+      border-color: #eab308;
+      background: rgba(234, 179, 8, 0.12);
+    }
+
+    .card-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+      padding: 0.5rem 0;
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .card-question {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: -0.015em;
+      line-height: 1.35;
+      color: var(--text);
+    }
+
+    .card-hint {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .card-bottom-hint {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 1.5rem;
+      padding-top: 0.75rem;
+      border-top: 1px dashed var(--border);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .flip-reminder {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    /* CARD BACK STYLING */
+    .answer-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    .answer-list li {
+      list-style: none;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+
+    .answer-list li::before {
+      content: "•";
+      color: var(--primary);
+      position: absolute;
+      left: 0;
+      font-size: 1.4rem;
+      line-height: 1;
+      top: 0;
+    }
+
+    .exam-tip-box {
+      margin-top: 1rem;
+      background: var(--warning-bg);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      font-size: 0.85rem;
+      color: #fef08a;
+      line-height: 1.45;
+    }
+
+    [data-theme="light"] .exam-tip-box {
+      color: #854d0e;
+    }
+
+    .keywords-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.75rem;
+    }
+
+    .keyword-badge {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      padding: 0.2rem 0.5rem;
+      color: var(--text-muted);
+    }
+
+    /* CONTROLS UNDER CARD */
+    .card-action-bar {
+      width: 100%;
+      max-width: 780px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-btn-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .eval-btn-group {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .btn-eval-review {
+      background: var(--danger-bg);
+      color: var(--danger);
+      border-color: rgba(248, 113, 113, 0.4);
+    }
+
+    .btn-eval-review:hover {
+      background: var(--danger);
+      color: #ffffff;
+    }
+
+    .btn-eval-master {
+      background: var(--success-bg);
+      color: var(--success);
+      border-color: rgba(52, 211, 153, 0.4);
+    }
+
+    .btn-eval-master:hover {
+      background: var(--success);
+      color: #ffffff;
+    }
+
+    /* KEYBOARD SHORTCUTS HINT */
+    .keyboard-hint {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
+    .kbd {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.15rem 0.4rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+    /* GRID / BROWSE ALL MODE */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    .grid-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.85rem;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .grid-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+
+    .grid-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .grid-card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .grid-card-question {
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--text);
+    }
+
+    .grid-card-details {
+      margin-top: 0.5rem;
+      border-top: 1px dashed var(--border);
+      padding-top: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 4rem 1rem;
+      color: var(--text-muted);
+    }
+
+    .empty-state svg {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+
+    @media (max-width: 640px) {
+      .card-face {
+        padding: 1.25rem;
+        min-height: 380px;
+      }
+      .card-scene, .card-flipper {
+        min-height: 380px;
+      }
+      .card-question {
+        font-size: 1.15rem;
+      }
+      .card-action-bar {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-icon">⚡</div>
+        <div class="brand-text">
+          <h1>Science 9: Unit D Flashcards</h1>
+          <span>Electrical Principles & Technologies (Topics 1–8)</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <a id="guideLink" href="Interactive_Study_Guide_Unit_D_Complete.html" class="btn btn-study-guide" title="Open complete master study guide with tests & rubrics">
+          📖 Master Guide & Tests
+        </a>
+        <button id="themeToggle" class="btn icon-btn" title="Toggle Theme">
+          🌓
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="container">
+
+    <!-- STATS & PROGRESS -->
+    <div class="stats-card">
+      <div class="stats-row">
+        <div class="stats-counters">
+          <div class="stat-item">
+            <span class="stat-dot total"></span>
+            <span>Total: <strong id="totalCardsCount">64</strong></span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-dot mastered"></span>
+            <span>Mastered: <strong id="masteredCount">0</strong></span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-dot learning"></span>
+            <span>Needs Review: <strong id="reviewCount">0</strong></span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-dot starred"></span>
+            <span>Starred: <strong id="starredCount">0</strong></span>
+          </div>
+        </div>
+
+        <div style="font-size: 0.85rem; font-weight: 700; color: var(--success);" id="masteryPercent">
+          0% Mastered
+        </div>
+      </div>
+
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" id="progressBar" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <!-- CONTROLS & FILTERS -->
+    <div class="controls-panel">
+      
+      <div class="search-and-view">
+        <div class="search-input-wrap">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="searchInput" class="search-input" placeholder="Search cards by topic, keyword, formula, or concept (e.g. thermocouple, Oersted, Ohm)...">
+        </div>
+
+        <div class="view-mode-switch">
+          <button id="modeSingle" class="view-mode-btn active" title="Single Flashcard Mode">
+            🗂️ Flashcard
+          </button>
+          <button id="modeGrid" class="view-mode-btn" title="Browse All Cards Grid">
+            ▦ Browse All (<span id="gridMatchCount">64</span>)
+          </button>
+        </div>
+      </div>
+
+      <!-- TOPIC CHIPS -->
+      <div class="filter-scroll" id="topicFilterWrap">
+        <button class="filter-chip active" data-topic="ALL">All Topics (64)</button>
+        <button class="filter-chip" data-topic="T1">T1: Static Electricity (9)</button>
+        <button class="filter-chip" data-topic="T2">T2: Current & Cells (9)</button>
+        <button class="filter-chip" data-topic="T3">T3: Resistance & Circuits (8)</button>
+        <button class="filter-chip" data-topic="T4">T4: Energy Transformations (5)</button>
+        <button class="filter-chip" data-topic="T5">T5: Battery Chemistry (5)</button>
+        <button class="filter-chip" data-topic="T6">T6: Motors & Generators (8)</button>
+        <button class="filter-chip" data-topic="T7">T7: Power, Bills & Safety (9)</button>
+        <button class="filter-chip" data-topic="T8">T8: Alberta Electricity & Rubric (11)</button>
+      </div>
+
+      <!-- STATUS FILTER -->
+      <div class="filter-status-row">
+        <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">Show:</span>
+        <button class="status-chip active" data-status="ALL">All Cards</button>
+        <button class="status-chip" data-status="STARRED">⭐ Starred Only</button>
+        <button class="status-chip" data-status="REVIEW">🔄 Needs Review</button>
+        <button class="status-chip" data-status="MASTERED">✅ Mastered Only</button>
+        <button class="status-chip" data-status="UNSTUDIED">⚪ Unstudied</button>
+        <div style="flex: 1;"></div>
+        <button id="shuffleBtn" class="btn" style="padding: 0.35rem 0.75rem; font-size: 0.8rem;" title="Randomize card order">
+          🔀 Shuffle
+        </button>
+        <button id="resetProgressBtn" class="btn" style="padding: 0.35rem 0.75rem; font-size: 0.8rem; color: var(--danger);" title="Clear saved mastery progress">
+          ↺ Reset
+        </button>
+      </div>
+
+    </div>
+
+    <!-- FLASHCARD SINGLE VIEW MODE -->
+    <div id="singleCardView" class="flashcard-stage">
+
+      <div class="card-scene" id="cardScene">
+        <div class="card-flipper" id="cardFlipper">
+          
+          <!-- FRONT FACE -->
+          <div class="card-face card-front">
+            <div class="card-top">
+              <span class="topic-tag tag-T1" id="frontTopicTag">Topic 1: Static Electricity</span>
+              <div class="card-quick-actions">
+                <button class="icon-btn" id="ttsBtn" title="Read question aloud (Audio TTS)">🔊</button>
+                <button class="icon-btn" id="starBtn" title="Star this card (Difficult/Favorite)">⭐</button>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <div class="card-title" id="frontTitle">Atomic Structure & Mobile Charges</div>
+              <div class="card-question" id="frontQuestion">Why do only electrons move when solid objects become electrostatically charged?</div>
+            </div>
+
+            <div class="card-bottom-hint">
+              <span id="cardCounterText">Card 1 of 64</span>
+              <span class="flip-reminder">Click anywhere or press Space to reveal answer ➔</span>
+            </div>
+          </div>
+
+          <!-- BACK FACE -->
+          <div class="card-face card-back">
+            <div class="card-top">
+              <span class="topic-tag tag-T1" id="backTopicTag">Topic 1: Static Electricity</span>
+              <div class="card-quick-actions">
+                <button class="icon-btn" id="backTtsBtn" title="Read answer aloud (Audio TTS)">🔊</button>
+                <button class="icon-btn" id="backStarBtn" title="Star this card">⭐</button>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <div class="card-title" id="backTitle">Atomic Structure & Mobile Charges</div>
+              <ul class="answer-list" id="backAnswerList">
+                <!-- Answer items injected here -->
+              </ul>
+              
+              <div class="exam-tip-box" id="backExamTip">
+                <strong>💡 Exam Tip:</strong> Never say an object gained protons!
+              </div>
+
+              <div class="keywords-row" id="backKeywords">
+                <!-- Keywords injected here -->
+              </div>
+            </div>
+
+            <div class="card-bottom-hint">
+              <span style="color: var(--success); font-weight: 600;">Self-assess below to track mastery:</span>
+              <span class="flip-reminder">Click or press Space to flip back ➔</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CONTROLS UNDER CARD -->
+      <div class="card-action-bar">
+        
+        <div class="nav-btn-group">
+          <button id="prevBtn" class="btn" title="Previous Card (Left Arrow)">
+            ◀ Prev
+          </button>
+          <button id="flipBtn" class="btn btn-primary" title="Flip Card (Spacebar)">
+            🔄 Flip Card
+          </button>
+          <button id="nextBtn" class="btn" title="Next Card (Right Arrow)">
+            Next ▶
+          </button>
+        </div>
+
+        <div class="eval-btn-group">
+          <button id="markReviewBtn" class="btn btn-eval-review" title="Mark as Still Learning / Need Review">
+            ❌ Still Learning
+          </button>
+          <button id="markMasterBtn" class="btn btn-eval-master" title="Mark as Mastered / Understood">
+            ✅ Mastered
+          </button>
+        </div>
+
+      </div>
+
+      <!-- KEYBOARD SHORTCUTS HINTS -->
+      <div class="keyboard-hint">
+        Keyboard Shortcuts: <span class="kbd">Space</span> Flip &bull; <span class="kbd">←</span> <span class="kbd">→</span> Prev/Next &bull; <span class="kbd">1</span> Mastered &bull; <span class="kbd">2</span> Needs Review &bull; <span class="kbd">S</span> Star &bull; <span class="kbd">A</span> Audio
+      </div>
+
+    </div>
+
+    <!-- BROWSE ALL / GRID MODE -->
+    <div id="gridCardView" style="display: none;">
+      <div class="cards-grid" id="cardsGrid">
+        <!-- Grid cards injected here -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- JAVASCRIPT DATA & LOGIC -->
+  <script>
+    const ALL_CARDS = [{"id": 1, "topic": "Topic 1: Static Electricity", "topicCode": "T1", "title": "The Laws of Electric Charges", "question": "What are the three fundamental laws governing electric charges?", "answer": ["<strong>1. Unlike (opposite) charges attract:</strong> Positive (+) attracts Negative (-).", "<strong>2. Like (similar) charges repel:</strong> Positive repels Positive (+ / +); Negative repels Negative (- / -).", "<strong>3. Charged objects attract neutral objects:</strong> A positively or negatively charged object will attract a neutral insulator or conductor via temporary electrostatic induction/polarization."], "examTip": "Always remember that neutral objects DO NOT repel! Only like-charged objects repel each other. Repulsion is the only definitive test that an object is charged.", "keywords": "Attract, Repel, Neutral, Polarization"}, {"id": 2, "topic": "Topic 1: Static Electricity", "topicCode": "T1", "title": "Atomic Structure & Mobile Charge Carriers", "question": "Why do only electrons move when solid objects become electrostatically charged?", "answer": ["<strong>Protons</strong> are positively charged and tightly locked inside the atomic nucleus by the strong nuclear force. They <em>cannot</em> move or transfer between objects during friction.", "<strong>Electrons</strong> are negatively charged, have 1/1836th the mass of a proton, and orbit in outer electron shells. They are easily transferred between materials.", "<strong>Key Rule:</strong> Positive charge means an object has a <em>deficit of electrons</em> (lost electrons). Negative charge means an object has an <em>excess of electrons</em> (gained electrons)."], "examTip": "Never write that an object 'gained protons' to become positive! It ALWAYS lost electrons.", "keywords": "Electrons, Protons, Nucleus, Deficit, Excess"}, {"id": 3, "topic": "Topic 1: Static Electricity", "topicCode": "T1", "title": "The Triboelectric Series & Charging by Friction", "question": "How does charging by friction work, and what determines which material becomes negative?", "answer": ["<strong>Charging by Friction:</strong> Rubbing two neutral, dissimilar materials together causes mechanical contact that transfers electrons from the material with lower electron affinity to the material with higher electron affinity.", "<strong>Triboelectric Series:</strong> A ranked ranking of materials based on how easily they gain or lose electrons.", "<strong>Example:</strong> Rubbing fur with ebonite (hard rubber): Ebonite has higher electron affinity &rarr; pulls electrons off fur &rarr; <strong>Ebonite becomes negative (-)</strong> and <strong>Fur becomes positive (+)</strong>."], "examTip": "Both objects start completely neutral, but end up with EQUAL and OPPOSITE charges because charge is conserved.", "keywords": "Friction, Triboelectric Series, Electron Affinity, Ebonite"}, {"id": 4, "topic": "Topic 1: Static Electricity", "topicCode": "T1", "title": "Charging by Conduction vs Charging by Induction", "question": "Compare charging by conduction (contact) with charging by induction in terms of physical contact and final charge.", "answer": ["<strong>Charging by Conduction:</strong> Direct physical contact occurs between a charged object and a neutral conductor. Electrons transfer directly across the contact point. Result: The neutral object acquires the <strong>SAME charge</strong> as the charging rod.", "<strong>Charging by Induction:</strong> NO physical contact. A charged rod is brought <em>near</em> a neutral conductor, causing electrons to shift (polarize). When grounded momentarily, electrons flow in/out of ground. Result: The neutral object acquires the <strong>OPPOSITE charge</strong> to the charging rod."], "examTip": "Conduction = Contact = Same charge.<br>Induction = No contact (+ Grounding) = Opposite charge.", "keywords": "Conduction, Induction, Contact, Grounding, Same vs Opposite"}, {"id": 5, "topic": "Topic 1: Static Electricity", "topicCode": "T1", "title": "Polarization of Neutral Insulators", "question": "Why does a negatively charged latex balloon stick to a neutral wooden or drywall door?", "answer": ["<strong>1. Electrostatic Repulsion:</strong> Negative electrons in the neutral wall's surface atoms are slightly pushed away (repelled) from the negative balloon.", "<strong>2. Surface Polarization:</strong> The near surface of the wall becomes slightly positive relative to the balloon.", "<strong>3. Net Attraction:</strong> Because the positive surface charges are closer to the balloon than the pushed-back negative charges, the electrostatic attractive force is stronger than the repulsive force, holding the balloon to the wall."], "examTip": "The wall remains net neutral overall! Only the charge distribution at the localized surface is shifted (polarized).", "keywords": "Polarization, Neutral, Wall, Attraction, Surface Charge"}, {"id": 6, "topic": "Topic 1: Static Electricity", "topicCode": "T1", "title": "Lightning Formation & Grounding", "question": "How does lightning form between clouds and ground, and how do lightning rods provide safety?", "answer": ["<strong>1. Charge Separation:</strong> Rising ice crystals and falling hail in storm updrafts collide, stripping electrons. Bottom of cloud becomes heavily negative (-), top becomes positive (+).", "<strong>2. Ground Induction:</strong> The negative cloud base repels electrons deep into the Earth, inducing a massive positive (+) charge on the ground and tall structures.", "<strong>3. Discharge:</strong> When the potential difference exceeds air's breakdown voltage (~30,000 V/cm), air ionizes into plasma and a giant discharge occurs (lightning).", "<strong>4. Lightning Rod:</strong> A pointed copper rod at the highest peak connected by heavy cable directly to a ground rod buried in Earth. It safely channels the massive current safely into the ground without setting the structure on fire."], "examTip": "Grounding means connecting a circuit or object to Earth (an infinite reservoir that absorbs or supplies electrons without changing its own potential).", "keywords": "Lightning, Grounding, Ionization, Stepped Leader, Ground Rod"}, {"id": 7, "topic": "Topic 1: Static Electricity", "topicCode": "T1", "title": "Faraday Cage & Automobile Lightning Safety", "question": "Why are occupants inside an enclosed metal car safe if struck by lightning? (Is it the rubber tires?)", "answer": ["<strong>It is NOT the rubber tires!</strong> Lightning has just travelled 5 km through open air (an excellent insulator). A few inches of rubber tires cannot stop millions of Volts.", "<strong>Faraday Cage Effect:</strong> The enclosed metal chassis and bodywork of the car act as a Faraday cage.", "<strong>Mechanism:</strong> Mobile electrons in the metal body rapidly redistribute on the <em>outer skin</em>, creating an internal electric field that cancels to zero. The current flows around the exterior shell and arcs from wheel rims into the ground, leaving the inside cabin completely protected."], "examTip": "A classic exam trick question! 'Are you safe in a car due to rubber tires?' &rarr; NO, it is because of the metal body acting as a Faraday cage.", "keywords": "Faraday Cage, Metal Body, Not Rubber Tires, Electric Field Zero"}, {"id": 8, "topic": "Topic 1: Static Electricity", "topicCode": "T1", "title": "Photocopiers & Selenium Photoconductors", "question": "How do photocopiers use electrostatic charges and selenium to reproduce documents?", "answer": ["<strong>1. Photoconductive Drum:</strong> Coated with selenium, a semiconductor that acts as an insulator in the dark, but conducts electricity when illuminated.", "<strong>2. Charging:</strong> A corona wire sprays uniform positive static charge across the selenium drum in darkness.", "<strong>3. Exposure:</strong> Intense light reflects off white areas of the paper onto the drum, making selenium conductive so charges bleed away into ground. Dark text areas reflect no light, leaving an invisible electrostatic latent image.", "<strong>4. Inking:</strong> Negatively charged black plastic toner powder is attracted only to the remaining positive image areas.", "<strong>5. Transfer & Fusing:</strong> Strongly charged paper pulls toner off drum; heated rollers melt (fuse) plastic toner permanently into the paper fibers."], "examTip": "Know the property of Selenium: acts as an insulator in dark, conductor in light (photoconductivity).", "keywords": "Selenium, Photoconductive, Toner, Corona Wire, Fusing"}, {"id": 9, "topic": "Topic 1: Static Electricity", "topicCode": "T1", "title": "Electrostatic Precipitators", "question": "What is an electrostatic precipitator, and how does it clean industrial smokestack emissions?", "answer": ["<strong>Function:</strong> An environmental air-pollution control device installed in industrial smokestacks (e.g., coal plants, cement factories) to remove airborne fly ash and particulate matter.", "<strong>Step 1:</strong> Flue gas passes by highly charged negative electrode wires, which ionize the gas and transfer negative charge to smoke particles.", "<strong>Step 2:</strong> The negatively charged particles pass between large positively charged collection plates.", "<strong>Step 3:</strong> Electrostatic attraction pulls the soot particles onto the positive collector plates. Mechanical hammers (rappers) shake the ash down into collection hoppers for safe disposal."], "examTip": "Precipitators boast >99% efficiency at removing solid particulate matter, but do NOT remove gaseous greenhouse gases like CO2.", "keywords": "Precipitator, Fly Ash, Ionization, Collector Plates, Particulates"}, {"id": 10, "topic": "Topic 2: Current & Voltage", "topicCode": "T2", "title": "Electric Current (I) & The Ampere", "question": "Define electric current, state its symbol, unit, and the mathematical formula connecting charge and time.", "answer": ["<strong>Definition:</strong> The rate of flow of electric charge past a specific point in a circuit.", "<strong>Symbol:</strong> $I$", "<strong>Unit:</strong> Ampere (A), commonly called the 'Amp'.", "<strong>Formula:</strong> $I = \\frac{Q}{t}$ (where $Q$ is charge in Coulombs, and $t$ is time in seconds).", "<strong>Physical Meaning:</strong> $1.0\\text{ Ampere} = 1.0\\text{ Coulomb per second}$ ($1\\text{ C} \\approx 6.24 \\times 10^{18}\\text{ electrons}$).", "<strong>Measurement:</strong> Measured with an <strong>ammeter</strong> connected in <strong>series</strong>."], "examTip": "Current is the rate of flow of charge (like liters of water per second in a pipe), NOT the speed of electrons.", "keywords": "Current, Ampere, Coulomb, Rate of Flow, Ammeter"}, {"id": 11, "topic": "Topic 2: Current & Voltage", "topicCode": "T2", "title": "Conventional Current vs Real Electron Flow", "question": "Why does conventional current point in the opposite direction of actual electron flow?", "answer": ["<strong>Conventional Current:</strong> In the 1700s, Benjamin Franklin hypothesized that electricity was an invisible fluid flowing from a region of excess (positive, +) to a region of deficit (negative, -). All standard physics and engineering circuit diagrams adopted Franklin's (+) to (-) convention.", "<strong>Real Electron Flow:</strong> In 1897, J.J. Thomson discovered the electron. In solid metallic wires, positive nuclei are fixed, and only negatively charged electrons move, flowing from <strong>negative (-) to positive (+)</strong>.", "<strong>Conclusion:</strong> Conventional current (+ to -) is directly opposite to real electron flow (- to +)."], "examTip": "If an exam question asks: 'Which way do electrons flow in a wire connected to a battery?', answer: From the negative terminal to the positive terminal.", "keywords": "Conventional Current, Electron Flow, Benjamin Franklin, Negative to Positive"}, {"id": 12, "topic": "Topic 2: Current & Voltage", "topicCode": "T2", "title": "Electron Drift Velocity vs Signal Speed", "question": "Why does a lightbulb turn on instantly across a room if electrons move at a snail's pace of ~1 meter per hour?", "answer": ["<strong>Electron Drift Speed:</strong> In a wire conducting steady current, individual electrons collide billions of times per second with copper atoms. Their net forward drift speed is extremely slow (~$1\\text{ mm/s}$ or ~1 meter per hour!).", "<strong>Electric Field Propagation:</strong> The conducting wire is already completely pre-filled with mobile electrons from end to end. The moment the switch closes, an <strong>electric field</strong> propagates through the entire wire at nearly the speed of light (~$300,000\\text{ km/s}$).", "<strong>The Water Hose Analogy:</strong> Think of a garden hose already full of water: when the tap is opened, water exits the nozzle immediately because water pushes water throughout the entire hose at once."], "examTip": "The electrons that enter the lightbulb are NOT the ones that just left the battery; they were already waiting inside the filament wire!", "keywords": "Drift Velocity, Electric Field, Light Speed, Water Hose Analogy"}, {"id": 13, "topic": "Topic 2: Current & Voltage", "topicCode": "T2", "title": "Potential Difference / Voltage (V) & The Volt", "question": "Define potential difference (voltage), state its symbol, unit, and the fundamental energy relationship.", "answer": ["<strong>Definition:</strong> The difference in electric potential energy per unit of charge between two points in an electrical circuit.", "<strong>Symbol:</strong> $V$", "<strong>Unit:</strong> Volt (V).", "<strong>Formula:</strong> $V = \\frac{E}{Q}$ (where $E$ is electrical energy in Joules, and $Q$ is charge in Coulombs).", "<strong>Physical Meaning:</strong> $1.0\\text{ Volt} = 1.0\\text{ Joule of energy per Coulomb of charge}$ ($1\\text{ V} = 1\\text{ J/C}$).", "<strong>Analogy:</strong> Voltage is electrical 'pressure' that pushes charges through the circuit (like water pressure from a pump or elevated water tower)."], "examTip": "Voltage is measured ACROSS a component (between two points), never 'through' a component.", "keywords": "Voltage, Potential Difference, Volt, Joule per Coulomb, Electrical Pressure"}, {"id": 14, "topic": "Topic 2: Current & Voltage", "topicCode": "T2", "title": "Voltmeter: Placement & Internal Resistance", "question": "How must a voltmeter be placed in a circuit, and what internal resistance must it have? Why?", "answer": ["<strong>Placement:</strong> Always connected in <strong>PARALLEL</strong> across the component whose voltage you want to measure.", "<strong>Internal Resistance:</strong> An ideal voltmeter has <strong>nearly INFINITE (extremely high) internal resistance</strong>.", "<strong>Why:</strong> If the voltmeter had low resistance, it would create a parallel detour that would siphon off circuit current and alter the voltage being measured. High resistance ensures virtually zero current passes through the meter itself."], "examTip": "Connecting a voltmeter in series will act like an open switch and shut down your circuit because its resistance is too high for current to pass!", "keywords": "Voltmeter, Parallel, High Resistance, Measure Across"}, {"id": 15, "topic": "Topic 2: Current & Voltage", "topicCode": "T2", "title": "Ammeter: Placement & Internal Resistance", "question": "How must an ammeter be placed in a circuit, and what internal resistance must it have? Why?", "answer": ["<strong>Placement:</strong> Always connected in <strong>SERIES</strong> directly into the current pathway.", "<strong>Internal Resistance:</strong> An ideal ammeter has <strong>nearly ZERO (extremely low) internal resistance</strong>.", "<strong>Why:</strong> All circuit current must pass directly through the ammeter to be counted. If it had appreciable resistance, it would add to total circuit resistance, reduce the actual current flow, and give a false reading.", "<strong>DANGER:</strong> Never place an ammeter in parallel across a power source! Zero resistance across a battery causes a violent short circuit, blowing the meter's internal fuse."], "examTip": "Remember: <strong>A</strong>mmeter = <strong>A</strong>long the line (Series, 0 &Omega;). <strong>V</strong>oltmeter = <strong>V</strong>iew from side (Parallel, &infin; &Omega;).", "keywords": "Ammeter, Series, Low Resistance, Count Current"}, {"id": 16, "topic": "Topic 2: Current & Voltage", "topicCode": "T2", "title": "Electrochemical Cells: Core Components", "question": "What are the three essential components of every electrochemical cell, and what are their functions?", "answer": ["<strong>1. Anode (Negative Terminal in a Galvanic Cell):</strong> The electrode where <strong>oxidation</strong> occurs (atoms lose electrons: $M \\rightarrow M^{n+} + n e^-$). Electrons exit here to travel through the external circuit.", "<strong>2. Cathode (Positive Terminal in a Galvanic Cell):</strong> The electrode where <strong>reduction</strong> occurs (ions gain electrons: $X^{n+} + n e^- \\rightarrow X$). Electrons enter here from the external circuit.", "<strong>3. Electrolyte:</strong> A liquid solution or moist paste containing mobile ions that conducts electric charge between the electrodes and completes the internal circuit."], "examTip": "The two electrodes MUST be two DIFFERENT metals with different chemical reactivities (e.g., zinc and copper) to create a voltage difference!", "keywords": "Anode, Cathode, Electrolyte, Oxidation, Reduction"}, {"id": 17, "topic": "Topic 2: Current & Voltage", "topicCode": "T2", "title": "Wet Cells vs Dry Cells", "question": "Distinguish between a wet cell and a dry cell with examples and practical trade-offs.", "answer": ["<strong>Wet Cell:</strong> Contains a <strong>liquid electrolyte</strong> (e.g., sulfuric acid solution $\\text{H}_2\\text{SO}_4$).<br>&bull; <em>Example:</em> 12-Volt Lead-Acid car battery.<br>&bull; <em>Pros:</em> Delivers very high surge currents, economical for vehicles.<br>&bull; <em>Cons:</em> Heavy, spills dangerous corrosive acid if inverted, emits explosive hydrogen gas.", "<strong>Dry Cell:</strong> Contains a <strong>moist chemical paste</strong> electrolyte rather than a free-flowing liquid.<br>&bull; <em>Example:</em> Alkaline AA, AAA, C, D cells (potassium hydroxide $\\text{KOH}$ paste).<br>&bull; <em>Pros:</em> Spill-proof, fully portable, operates safely in any orientation."], "examTip": "A 'dry cell' is not truly dry inside; it contains a moist chemical paste to allow ions to migrate.", "keywords": "Wet Cell, Dry Cell, Liquid vs Paste, Car Battery, Alkaline"}, {"id": 18, "topic": "Topic 2: Current & Voltage", "topicCode": "T2", "title": "Primary Cells vs Secondary Cells", "question": "What is the key scientific and practical difference between primary and secondary cells?", "answer": ["<strong>Primary Cell (Single-use / Non-rechargeable):</strong><br>&bull; The electrochemical reactions are irreversible.<br>&bull; As the cell discharges, the anode metal oxidizes away and chemicals are permanently consumed.<br>&bull; Once reactants reach equilibrium, the cell is 'dead' and must be recycled.<br>&bull; <em>Examples:</em> Standard zinc-carbon and alkaline batteries.", "<strong>Secondary Cell (Rechargeable / Storage Cell):</strong><br>&bull; The electrochemical reactions are completely reversible.<br>&bull; Supplying electrical current in reverse from a charger forces electrons back, restoring original chemical reactants.<br>&bull; Can be recharged hundreds to thousands of times.<br>&bull; <em>Examples:</em> Lithium-ion (smartphones/EVs), NiMH, Lead-Acid."], "examTip": "Remember: <strong>P</strong>rimary = <strong>P</strong>ermanent (one-time). <strong>S</strong>econdary = <strong>S</strong>econd chance (rechargeable).", "keywords": "Primary, Secondary, Rechargeable, Reversible Reaction, Lithium-ion"}, {"id": 19, "topic": "Topic 3: Resistance & Circuits", "topicCode": "T3", "title": "Factors Affecting Electrical Resistance (L.A.M.T.)", "question": "What are the four physical factors that determine the resistance of a conducting wire?", "answer": ["<strong>1. Length ($L$):</strong> Longer wire = Greater resistance ($R \\propto L$). Electrons collide more times along a longer path.", "<strong>2. Cross-Sectional Area ($A$ / Thickness):</strong> Thinner wire = Greater resistance; Thicker wire = Lower resistance ($R \\propto 1/A$). Wider wires provide more parallel lanes for electron travel.", "<strong>3. Material (Resistivity $\\rho$):</strong> Different elements have different atomic structures. Copper and silver have very low resistance; nichrome and tungsten have high resistance.", "<strong>4. Temperature ($T$):</strong> Higher temperature = Greater resistance for most metals. Heated metal atoms vibrate faster, increasing collisions with flowing electrons."], "examTip": "Mnemonic: <strong>L.A.M.T.</strong> &rarr; <strong>L</strong>ength (long=high R), <strong>A</strong>rea (thin=high R), <strong>M</strong>aterial, <strong>T</strong>emperature (hot=high R).", "keywords": "Length, Area, Material, Temperature, LAMT"}, {"id": 20, "topic": "Topic 3: Resistance & Circuits", "topicCode": "T3", "title": "Conductors, Insulators, Resistors & Superconductors", "question": "Classify materials by electrical conductivity into four distinct categories with real-world examples.", "answer": ["<strong>1. Conductors:</strong> Materials with loosely bound valence electrons that allow electric charge to flow freely with low resistance (e.g., Copper, Aluminum, Silver, Gold).", "<strong>2. Insulators:</strong> Materials with tightly bound valence electrons that strongly resist electron flow (e.g., Rubber, Glass, Porcelain, Dry Wood, Plastic).", "<strong>3. Resistors:</strong> Devices engineered with a specific resistance to limit current flow or drop voltage in a circuit (e.g., Carbon film resistors, toaster heating elements).", "<strong>4. Superconductors:</strong> Materials that exhibit <strong>EXACTLY ZERO electrical resistance</strong> when cooled below a critical transition temperature ($T_c$, often near absolute zero using liquid nitrogen or helium)."], "examTip": "Superconductors waste zero energy as heat ($I^2R = 0$) and can carry massive currents without overheating (used in MRI magnets and Maglev trains).", "keywords": "Conductors, Insulators, Resistors, Superconductors, Critical Temperature"}, {"id": 21, "topic": "Topic 3: Resistance & Circuits", "topicCode": "T3", "title": "Variable Resistors: Rheostats & Potentiometers", "question": "How does a variable resistor function, and what are its common applications?", "answer": ["<strong>Mechanism:</strong> A variable resistor features a long resistive wire coil and an adjustable sliding contact (wiper).", "<strong>Working Principle:</strong> Moving the sliding contact changes the effective <strong>length ($L$)</strong> of resistive wire included in the active circuit.<br>&bull; Longer length = Greater resistance &rarr; Reduces circuit current.<br>&bull; Shorter length = Lower resistance &rarr; Increases circuit current.", "<strong>Applications:</strong> Dimmer switches for household lighting, volume knobs on audio equipment, motor speed controls."], "examTip": "A rheostat has 2 active terminals (controls current). A potentiometer has 3 terminals (controls voltage division). Both adjust resistance by changing wire length.", "keywords": "Rheostat, Potentiometer, Variable Resistor, Wiper, Dimmer Switch"}, {"id": 22, "topic": "Topic 3: Resistance & Circuits", "topicCode": "T3", "title": "Ohm's Law ($V = IR$)", "question": "State Ohm's Law and its three algebraic rearrangements with proper standard SI units.", "answer": ["<strong>Law:</strong> The current through a metallic conductor between two points is directly proportional to the voltage across the two points, provided temperature remains constant.", "<strong>Formula 1:</strong> $V = I \\times R$ (Voltage in Volts = Current in Amperes $\\times$ Resistance in Ohms)", "<strong>Formula 2:</strong> $I = \\frac{V}{R}$ (Current in Amperes = Voltage in Volts $\\div$ Resistance in Ohms)", "<strong>Formula 3:</strong> $R = \\frac{V}{I}$ (Resistance in Ohms = Voltage in Volts $\\div$ Current in Amperes)", "<strong>Unit of Resistance:</strong> Ohm ($\\Omega$). $1.0\\text{ }\\Omega = 1.0\\text{ Volt per Ampere}$."], "examTip": "Use the V-I-R formula triangle: Cover the letter you want to find with your thumb to see the math operation!", "keywords": "Ohm's Law, V=IR, Volts, Amperes, Ohms"}, {"id": 23, "topic": "Topic 3: Resistance & Circuits", "topicCode": "T3", "title": "Series Circuit Rules: Current, Voltage & Resistance", "question": "What are the three fundamental mathematical rules for components wired in a SERIES circuit?", "answer": ["<strong>Single Pathway:</strong> There is only one continuous path for electrons to follow.", "<strong>1. Current is CONSTANT everywhere:</strong><br>$I_{\\text{total}} = I_1 = I_2 = I_3$", "<strong>2. Voltage DIVIDES across components:</strong><br>$V_{\\text{total}} = V_1 + V_2 + V_3$ (The sum of voltage drops equals total source voltage).", "<strong>3. Total Resistance INCREASES with each added resistor:</strong><br>$R_{\\text{total}} = R_1 + R_2 + R_3$", "<strong>Disadvantage:</strong> If any single component breaks or a switch opens, the entire circuit is broken and all devices turn off."], "examTip": "In Series: Current is identical; Voltages add up; Total resistance is GREATER than any individual resistor.", "keywords": "Series Circuit, Single Path, Constant Current, Voltage Drops Add, R_total=R1+R2"}, {"id": 24, "topic": "Topic 3: Resistance & Circuits", "topicCode": "T3", "title": "Parallel Circuit Rules: Current, Voltage & Resistance", "question": "What are the three fundamental mathematical rules for components wired in a PARALLEL circuit?", "answer": ["<strong>Multiple Branch Pathways:</strong> Electrons have two or more independent branches to travel through.", "<strong>1. Voltage is CONSTANT across all branches:</strong><br>$V_{\\text{total}} = V_1 = V_2 = V_3$ (Every branch experiences the full source voltage).", "<strong>2. Current DIVIDES among branches:</strong><br>$I_{\\text{total}} = I_1 + I_2 + I_3$ (Branches with lower resistance draw higher current).", "<strong>3. Total Equivalent Resistance DECREASES:</strong><br>$\\frac{1}{R_{\\text{total}}} = \\frac{1}{R_1} + \\frac{1}{R_2} + \\dots$ (Adding more branches opens more paths, lowering total resistance).", "<strong>Advantage:</strong> If one branch is disconnected or a bulb burns out, all other branches continue operating unaffected."], "examTip": "In Parallel: Voltage is identical across every branch; Currents add up; Total resistance is LESS than the smallest branch resistance!", "keywords": "Parallel Circuit, Multiple Branches, Constant Voltage, Current Splits, 1/R_total"}, {"id": 25, "topic": "Topic 3: Resistance & Circuits", "topicCode": "T3", "title": "Adding Resistors: Series vs Parallel Comparison", "question": "What happens to total resistance and battery current when you add another identical resistor in: (a) Series, (b) Parallel?", "answer": ["<strong>Case (a) Adding in SERIES:</strong><br>&bull; Total Resistance: <strong>INCREASES</strong> ($R_{\\text{total}} = R_1 + R_2 + \\dots$).<br>&bull; Total Current from Source: <strong>DECREASES</strong> ($I = V/R_{\\text{total}}$).<br>&bull; Lightbulbs become dimmer.", "<strong>Case (b) Adding in PARALLEL:</strong><br>&bull; Total Resistance: <strong>DECREASES</strong> (opens another channel for electrons).<br>&bull; Total Current from Source: <strong>INCREASES</strong> ($I_{\\text{total}} = I_1 + I_2$).<br>&bull; Each bulb remains at full brightness, but the battery drains faster."], "examTip": "Think of toll booths on a highway: Adding toll booths in series = huge traffic jam (high R). Adding toll booths in parallel = traffic flows faster (low R).", "keywords": "Toll Booth Analogy, Adding Resistors, Series vs Parallel"}, {"id": 26, "topic": "Topic 3: Resistance & Circuits", "topicCode": "T3", "title": "Short Circuits: Cause, Danger & Safeguards", "question": "What is a short circuit, why is it extremely hazardous, and how is it prevented?", "answer": ["<strong>Definition:</strong> An accidental low-resistance pathway that connects the two terminals of a power source, bypassing the intended load (resistor or appliance).", "<strong>Danger ($I = V/R$):</strong> Because resistance $R \\approx 0$, current $I$ surges to an enormous value (hundreds of Amperes).", "<strong>Consequence ($P = I^2R$):</strong> The wire rapidly generates intense thermal energy, melting wire insulation, sparking, and causing catastrophic electrical fires or battery explosions.", "<strong>Safeguards:</strong> Fuses and circuit breakers automatically detect overcurrent and trip instantly to cut off power before wires catch fire."], "examTip": "A 'short' circuit does not mean short in length; it means current took a shortcut with nearly zero resistance!", "keywords": "Short Circuit, Zero Resistance, Overcurrent, Fire Hazard, Circuit Breaker"}, {"id": 27, "topic": "Topic 4: Energy Transformations", "topicCode": "T4", "title": "The Thermocouple & The Seebeck Effect", "question": "What is a thermocouple, what energy transformation does it perform, and how does it work?", "answer": ["<strong>Energy Transformation:</strong> <strong>Thermal Energy (Heat) &rarr; Electrical Energy</strong>.", "<strong>Structure:</strong> Two strips of <strong>dissimilar metals</strong> (e.g., iron and constantan, or copper and iron) joined together at two junctions.", "<strong>The Seebeck Effect:</strong> When one junction is heated while the other is kept cold, a temperature gradient causes electrons to diffuse at different rates across the metals, producing a small voltage (potential difference).", "<strong>Applications:</strong> High-temperature thermometers in jet engines, furnace safety pilot switches, kilns, and deep-space probes (RTGs)."], "examTip": "Multiple thermocouples connected in series are called a <strong>thermopile</strong> (produces a higher combined voltage).", "keywords": "Thermocouple, Seebeck Effect, Dissimilar Metals, Thermal to Electrical"}, {"id": 28, "topic": "Topic 4: Energy Transformations", "topicCode": "T4", "title": "The Bimetallic Strip & Thermostats", "question": "How does a bimetallic strip work, and why does it NOT generate electricity directly?", "answer": ["<strong>Structure:</strong> Two different metals (e.g., brass and steel) welded or riveted together along their length.", "<strong>Working Principle:</strong> Different metals have different rates of <strong>thermal expansion</strong>. When heated, brass expands faster than steel, forcing the strip to bend into an arc toward the slower-expanding steel.", "<strong>Function:</strong> It converts <strong>Thermal Energy &rarr; Mechanical Energy</strong> (motion/bending).", "<strong>Application in Thermostats:</strong> The bending strip acts as a mechanical switch, making or breaking electrical contact to turn heaters and air conditioners on and off at set temperatures."], "examTip": "A bimetallic strip does NOT generate electricity! It produces mechanical bending to OPEN/CLOSE a circuit. (Do not confuse with a thermocouple!).", "keywords": "Bimetallic Strip, Thermal Expansion, Mechanical Motion, Thermostat Switch"}, {"id": 29, "topic": "Topic 4: Energy Transformations", "topicCode": "T4", "title": "The Piezoelectric Effect & Quartz Crystals", "question": "Describe the direct and reverse piezoelectric effects with real-world examples.", "answer": ["<strong>Direct Piezoelectric Effect:</strong><br>&bull; <em>Transformation:</em> <strong>Mechanical Stress (Pressure) &rarr; Electrical Energy</strong>.<br>&bull; <em>Mechanism:</em> Compressing or deforming certain non-symmetric crystals (like quartz or Rochelle salt) shifts crystal ions, generating a surface voltage.<br>&bull; <em>Examples:</em> Push-button BBQ lighters (striking quartz produces a high-voltage spark), guitar pickups, phonograph needles.", "<strong>Reverse Piezoelectric Effect:</strong><br>&bull; <em>Transformation:</em> <strong>Electrical Energy &rarr; Mechanical Vibration</strong>.<br>&bull; <em>Mechanism:</em> Applying an alternating voltage causes quartz to vibrate at an ultra-precise frequency.<br>&bull; <em>Examples:</em> Quartz watch timing crystals, ultrasound transducers, sonar, piezoelectric buzzers."], "examTip": "Piezo = Pressure (Greek 'piezein' = to squeeze or press).", "keywords": "Piezoelectric, Quartz, BBQ Lighter, Pressure to Voltage, Ultrasound"}, {"id": 30, "topic": "Topic 4: Energy Transformations", "topicCode": "T4", "title": "Photovoltaic (PV) Solar Cells", "question": "What energy transformation occurs in a photovoltaic cell, and how does it generate direct current (DC)?", "answer": ["<strong>Energy Transformation:</strong> <strong>Radiant / Light Energy &rarr; Electrical Energy</strong>.", "<strong>Structure:</strong> Thin wafers of crystalline silicon semiconductor doped with trace elements to create a <strong>p-n junction</strong> (p-type has positive holes, n-type has excess electrons).", "<strong>Working Principle:</strong> Photons of sunlight strike valence electrons in the silicon, knocking them loose (photoelectric excitation). An internal electric field at the p-n junction sweeps these free electrons toward the metal contacts, creating a continuous flow of <strong>Direct Current (DC)</strong>.", "<strong>Applications:</strong> Rooftop solar panels, solar calculators, satellites, Alberta utility-scale solar farms."], "examTip": "PV cells output DC electricity. An <strong>inverter</strong> is required to convert this DC power into AC for household wall plugs and the electrical grid.", "keywords": "Photovoltaic, Solar Cell, Light to Electrical, Silicon Semiconductor, DC Output"}, {"id": 31, "topic": "Topic 4: Energy Transformations", "topicCode": "T4", "title": "Light Emitting Diodes (LEDs)", "question": "How do LEDs produce light, and why are they vastly superior to incandescent bulbs?", "answer": ["<strong>Energy Transformation:</strong> <strong>Electrical Energy &rarr; Light Energy</strong>.", "<strong>Working Principle:</strong> An LED is a specialized semiconductor p-n diode. When current passes through the diode in the forward direction, electrons recombine with electron holes, releasing energy directly as discrete photons of light (electroluminescence).", "<strong>Why LEDs are Superior to Incandescents:</strong><br>&bull; <em>Efficiency:</em> LEDs convert ~80-90% of electricity into useful light, whereas incandescent bulbs waste over 95% of energy as useless thermal heat (infrared).<br>&bull; <em>Lifespan:</em> LEDs last 25,000 to 50,000+ hours (vs 1,000 hours for incandescent filaments).<br>&bull; <em>Durability:</em> Solid-state construction with no fragile vacuum glass or brittle wire filaments."], "examTip": "Remember: Incandescent = Heat that happens to glow (5% efficient). LED = Direct semiconductor electroluminescence (85%+ efficient).", "keywords": "LED, Diode, Electroluminescence, Semiconductor, 90% Efficient"}, {"id": 32, "topic": "Topic 5: Portable Power", "topicCode": "T5", "title": "Electrochemical Reactions: Oxidation vs Reduction", "question": "Define oxidation and reduction in an electrochemical cell using standard memory mnemonics.", "answer": ["<strong>Oxidation:</strong> The loss of electrons by a chemical species.<br>&bull; Occurs at the <strong>ANODE</strong>.<br>&bull; Example: $\\text{Zn}(s) \\rightarrow \\text{Zn}^{2+}(aq) + 2e^-$ (Zinc dissolves, releasing electrons).", "<strong>Reduction:</strong> The gain of electrons by a chemical species.<br>&bull; Occurs at the <strong>CATHODE</strong>.<br>&bull; Example: $\\text{Cu}^{2+}(aq) + 2e^- \\rightarrow \\text{Cu}(s)$ (Copper ions deposit solid copper).", "<strong>Popular Mnemonics:</strong><br>&bull; <strong>LEO says GER:</strong> <strong>L</strong>ose <strong>E</strong>lectrons = <strong>O</strong>xidation | <strong>G</strong>ain <strong>E</strong>lectrons = <strong>R</strong>eduction.<br>&bull; <strong>OIL RIG:</strong> <strong>O</strong>xidation <strong>I</strong>s <strong>L</strong>oss | <strong>R</strong>eduction <strong>I</strong>s <strong>G</strong>ain.<br>&bull; <strong>AN OX and RED CAT:</strong> <strong>An</strong>ode = <strong>Ox</strong>idation | <strong>Red</strong>uction = <strong>Cat</strong>hode."], "examTip": "Electrons always flow through the external wire from the Anode (where electrons are lost) to the Cathode (where electrons are gained).", "keywords": "Oxidation, Reduction, LEO GER, OIL RIG, AN OX, RED CAT"}, {"id": 33, "topic": "Topic 5: Portable Power", "topicCode": "T5", "title": "The Zinc-Copper Cell Chemistry", "question": "Explain the chemical operation of a classic zinc-copper electrochemical cell.", "answer": ["<strong>1. Anode (Zinc Strip):</strong> Zinc is more chemically reactive than copper. Zinc atoms lose 2 electrons each (oxidation): $\\text{Zn} \\rightarrow \\text{Zn}^{2+} + 2e^-$. The zinc plate slowly corrodes and loses mass.", "<strong>2. External Circuit:</strong> Electrons flow through the wire from zinc to copper, powering a lightbulb or motor.", "<strong>3. Cathode (Copper Strip):</strong> Copper ions from the electrolyte gain 2 electrons each at the copper electrode surface (reduction): $\\text{Cu}^{2+} + 2e^- \\rightarrow \\text{Cu}$. Copper metal plates out onto the cathode.", "<strong>4. Voltage Produced:</strong> Produces a steady potential difference of approximately <strong>1.10 Volts</strong>."], "examTip": "Zinc gives up electrons more easily than copper. The greater the difference in chemical activity between the two metals, the higher the voltage generated.", "keywords": "Zinc-Copper Cell, Daniell Cell, Anode Corrodes, 1.10 Volts"}, {"id": 34, "topic": "Topic 5: Portable Power", "topicCode": "T5", "title": "Rechargeable Batteries (Lithium-ion & NiCad)", "question": "How does recharging a secondary battery reverse its chemical state?", "answer": ["<strong>Discharge Cycle:</strong> Spontaneous redox reactions convert chemical potential energy into electrical energy; electrons flow from anode to cathode.", "<strong>Recharge Cycle:</strong> An external power supply (charger) applies a higher opposing voltage, forcing electrons to flow in the <strong>opposite direction</strong>.", "<strong>Chemistry Reversed:</strong> The forced reverse current converts oxidation products back into original metal/chemical reactants at the electrodes.", "<strong>Lithium-ion Dominance:</strong> Lithium is the lightest metallic element and has the highest electrochemical reduction potential, yielding batteries with unmatched energy density (watt-hours per kg), ideal for electric cars and laptops."], "examTip": "Rechargeable batteries do not last forever: repeating charge cycles causes dendrite growth and microscopic degradation of electrode crystal lattices.", "keywords": "Secondary Cell, Lithium-ion, Reversed Current, Energy Density"}, {"id": 35, "topic": "Topic 5: Portable Power", "topicCode": "T5", "title": "Fuel Cells & Hydrogen Clean Power", "question": "What is a hydrogen fuel cell, and why is it considered the cleanest portable electrochemical device?", "answer": ["<strong>Definition:</strong> An electrochemical energy converter that continuously consumes an external fuel source (hydrogen gas) and an oxidant (oxygen from air) to generate electricity without burning.", "<strong>Chemical Reaction:</strong> $2\\text{H}_2 + \\text{O}_2 \\rightarrow 2\\text{H}_2\\text{O} + \\text{Electrical Energy} + \\text{Waste Heat}$.", "<strong>Zero Harmful Emissions:</strong> The ONLY exhaust byproduct is pure water vapor ($\\text{H}_2\\text{O}$).", "<strong>Difference from Normal Batteries:</strong> Standard batteries run out of stored reactants and must be recharged or discarded; a fuel cell runs continuously as long as fuel (hydrogen) is supplied."], "examTip": "Fuel cells are ~60% electrically efficient (twice as efficient as gasoline combustion engines) and produce zero smog or CO2 at point of use.", "keywords": "Fuel Cell, Hydrogen, Oxygen, Water Byproduct, Zero Emissions"}, {"id": 36, "topic": "Topic 5: Portable Power", "topicCode": "T5", "title": "Environmental Hazards of Battery Disposal", "question": "Why is throwing batteries into municipal garbage dumps dangerous to ecosystems and human health?", "answer": ["<strong>Heavy Metal Contamination:</strong> Batteries contain toxic heavy metals including <strong>Lead (Pb), Cadmium (Cd), Mercury (Hg), Nickel (Ni), and Lithium (Li)</strong>.", "<strong>Landfill Leaching:</strong> Over time, acid and moisture in landfills corrode battery casings. Toxic metals leach into soil, contaminate groundwater aquifers, and enter rivers/lakes.", "<strong>Bioaccumulation:</strong> Heavy metals cannot be broken down by biological processes; they accumulate up the food chain (bioamplification), causing severe neurological damage, kidney failure, and cancer in wildlife and humans.", "<strong>Fire Risk:</strong> Crushed lithium-ion batteries ignite volatile fires when compacted in garbage trucks and landfill facilities."], "examTip": "Always recycle batteries at designated hazardous waste depots (Call2Recycle) so heavy metals are extracted and reused in closed loops.", "keywords": "Heavy Metals, Lead, Cadmium, Leaching, Groundwater, Bioaccumulation"}, {"id": 37, "topic": "Topic 6: Motors & Generators", "topicCode": "T6", "title": "Oersted's Discovery (1820): Electromagnetism", "question": "What historic discovery did Hans Christian Oersted make, and what does it prove about electricity and magnetism?", "answer": ["<strong>The Experiment:</strong> In 1820, Danish physicist Hans Christian Oersted placed a magnetic compass needle near a copper wire connected to a voltaic battery. When current flowed through the wire, the compass needle deflected at right angles to the wire.", "<strong>The Core Principle:</strong> <strong>An electric current creates a circular magnetic field around the conductor.</strong>", "<strong>Significance:</strong> It unified electricity and magnetism for the first time in human history, proving they are manifestations of a single fundamental force (electromagnetism).", "<strong>Right-Hand Rule:</strong> Thumb points in direction of conventional current; curled fingers point in direction of concentric magnetic field lines."], "examTip": "Oersted proved: <strong>Electricity &rarr; Magnetism</strong> (the foundation of electromagnets and electric motors).", "keywords": "Oersted, Compass Deflection, Electricity creates Magnetism, 1820"}, {"id": 38, "topic": "Topic 6: Motors & Generators", "topicCode": "T6", "title": "Electromagnets & Ways to Increase Strength", "question": "What is an electromagnet, and what three changes make it significantly stronger?", "answer": ["<strong>Definition:</strong> A temporary magnet created by winding insulated conducting wire into a cylindrical coil (solenoid) around a ferromagnetic core.", "<strong>Three Ways to Increase Strength:</strong><br>&bull; <strong>1. Increase Current ($I$):</strong> Increase voltage or reduce resistance so more Amperes flow through the coil.<br>&bull; <strong>2. Increase Number of Wire Turns ($N$):</strong> Tightly winding more coils concentrates more magnetic field lines in the same volume.<br>&bull; <strong>3. Add a Ferromagnetic Core:</strong> Insert a soft iron core inside the coil; the iron atoms align into magnetic domains, amplifying the magnetic field by hundreds of times.", "<strong>Key Advantage:</strong> Electromagnets can be turned on, off, and reversed instantly by switching the electric current."], "examTip": "Aluminum, copper, and wood cores do NOT strengthen electromagnets! Only ferromagnetic materials (Iron, Nickel, Cobalt) align magnetic domains.", "keywords": "Electromagnet, Solenoid, Iron Core, More Turns, More Current"}, {"id": 39, "topic": "Topic 6: Motors & Generators", "topicCode": "T6", "title": "Faraday's Electromagnetic Induction (1831)", "question": "What is Faraday's law of electromagnetic induction, and how does it reverse Oersted's discovery?", "answer": ["<strong>The Discovery:</strong> In 1831, Michael Faraday discovered that moving a permanent bar magnet in and out of a coil of wire caused an electric current to flow through the wire (detected by a galvanometer).", "<strong>The Core Principle:</strong> <strong>A changing magnetic field through a conductor INDUCES an electric voltage and current.</strong>", "<strong>Reversing Oersted:</strong><br>&bull; Oersted (1820): Electricity &rarr; creates Magnetism.<br>&bull; Faraday (1831): Magnetism in motion &rarr; creates Electricity.", "<strong>To Increase Induced Current:</strong> Move magnet faster, use a stronger magnet, or wind more loops into the wire coil."], "examTip": "If the magnet and coil are BOTH stationary, NO current is induced! Relative motion (a <em>changing</em> magnetic field) is mandatory.", "keywords": "Faraday, Electromagnetic Induction, Relative Motion, Galvanometer, 1831"}, {"id": 40, "topic": "Topic 6: Motors & Generators", "topicCode": "T6", "title": "The Electric Motor: Operating Principle & Components", "question": "What is the primary function of an electric motor, and what are its four essential parts?", "answer": ["<strong>Primary Function:</strong> Converts <strong>Electrical Energy &rarr; Mechanical Energy (rotational motion)</strong>.", "<strong>Operating Principle:</strong> An electromagnet inside an external magnetic field experiences magnetic attraction and repulsion forces, causing it to spin.", "<strong>Four Essential Components:</strong><br>&bull; <strong>1. Field Magnets (Stator):</strong> Permanent magnets providing a stationary magnetic field.<br>&bull; <strong>2. Armature / Rotor:</strong> A rotating electromagnet (coil of wire wrapped on an iron core).<br>&bull; <strong>3. Split-Ring Commutator:</strong> Two half-circle copper rings mounted on the rotating shaft.<br>&bull; <strong>4. Brushes:</strong> Carbon or metal contacts that ride against the spinning commutator to deliver DC current."], "examTip": "Remember the input and output: Motor takes IN electricity and produces OUT mechanical spinning. (Generators do the exact reverse!).", "keywords": "Electric Motor, Electrical to Mechanical, Armature, Stator, Brushes"}, {"id": 41, "topic": "Topic 6: Motors & Generators", "topicCode": "T6", "title": "The Split-Ring Commutator: Why It Is Crucial", "question": "Why would a DC electric motor stop after half a turn without a split-ring commutator?", "answer": ["<strong>The Dilemma:</strong> As the armature spins, its North pole is attracted toward the external South field magnet. Once the armature aligns with the field magnets (at $180^\\circ$), opposite poles lock together in equilibrium, and the motor stops spinning dead.", "<strong>The Solution (Split-Ring Commutator):</strong><br>&bull; The commutator ring has a physical gap split in two halves.<br>&bull; As the armature rotates past alignment, the commutator halves switch contact between positive and negative brushes.<br>&bull; This <strong>reverses the direction of electric current in the armature coil every half-turn ($180^\\circ$)</strong>.<br>&bull; Reversing current inverts the magnetic poles of the armature! Like poles now repel, pushing the armature onward in continuous, smooth, unidirectional rotation."], "examTip": "THIS IS A GUARANTEED EXAM QUESTION! The split-ring commutator reverses current in the armature every 180 degrees so the motor keeps spinning in the same direction.", "keywords": "Split-Ring Commutator, Reverses Current, Every Half Turn, Continuous Rotation"}, {"id": 42, "topic": "Topic 6: Motors & Generators", "topicCode": "T6", "title": "Electric Generators: Transforming Motion to Electricity", "question": "How does an electric generator work, and how does its energy transformation compare to an electric motor?", "answer": ["<strong>Energy Transformation:</strong> Converts <strong>Mechanical Kinetic Energy &rarr; Electrical Energy</strong> (the exact opposite of a motor).", "<strong>Operating Principle:</strong> Based entirely on <strong>Faraday's electromagnetic induction</strong>. A turbine (turned by expanding steam, falling water, or blowing wind) spins coils of wire inside a powerful magnetic field.", "<strong>Induction:</strong> As the spinning coils cut through magnetic flux lines, electrons are pushed along the wire, generating a strong voltage and electric current that is transmitted to the power grid.", "<strong>Symmetry:</strong> If you manually turn the shaft of a DC motor, it acts as a DC generator!"], "examTip": "Motors: In = Volts, Out = RPM.<br>Generators: In = RPM, Out = Volts.", "keywords": "Electric Generator, Mechanical to Electrical, Faraday Induction, Turbine"}, {"id": 43, "topic": "Topic 6: Motors & Generators", "topicCode": "T6", "title": "AC Generator (Slip Rings) vs DC Generator (Split-Ring)", "question": "Compare how slip rings and split-ring commutators determine whether a generator outputs AC or DC.", "answer": ["<strong>AC Generator (Alternator):</strong><br>&bull; Uses <strong>two continuous SLIP RINGS</strong>.<br>&bull; Each end of the rotating coil remains permanently attached to its own dedicated ring.<br>&bull; As the coil rotates through the magnetic poles, induced voltage naturally alternates direction each half-turn.<br>&bull; <em>Output:</em> Smooth <strong>Alternating Current (AC)</strong> sine wave.", "<strong>DC Generator (Dynamo):</strong><br>&bull; Uses a <strong>SPLIT-RING COMMUTATOR</strong>.<br>&bull; Mechanically flips the electrical contact connections every half-turn.<br>&bull; Reversing contacts rectifies the negative half of the cycle.<br>&bull; <em>Output:</em> Pulsating <strong>Direct Current (DC)</strong> that flows in one continuous direction."], "examTip": "Slip rings = Smooth Alternating Current (AC).<br>Split-ring = Direct Current (DC).", "keywords": "Slip Rings, Split-Ring, AC Generator, DC Generator, Rectification"}, {"id": 44, "topic": "Topic 6: Motors & Generators", "topicCode": "T6", "title": "Alternating Current (AC) vs Direct Current (DC)", "question": "Why did AC win the 'War of the Currents' for large-scale electrical power grids over DC?", "answer": ["<strong>Direct Current (DC):</strong> Charges flow steadily in one direction (produced by batteries, PV solar cells). Cannot be easily or efficiently stepped up or down in voltage.", "<strong>Alternating Current (AC):</strong> Charges oscillate back and forth at 60 Hz (60 cycles per second in North America).", "<strong>Why AC Dominates Power Grids:</strong><br>&bull; AC voltage can be effortlessly <strong>stepped up</strong> to ultra-high voltages (e.g., 240,000 V to 500,000 V) using magnetic <strong>transformers</strong>.<br>&bull; High voltage means extremely low current ($P=IV$), drastically slashing energy lost as heat in long-distance transmission lines ($P_{\\text{loss}} = I^2R$).<br>&bull; Near cities and homes, transformers safely step AC back down to 240 V and 120 V."], "examTip": "War of Currents: Thomas Edison championed DC; Nikola Tesla and George Westinghouse proved AC was superior for long-distance power grids.", "keywords": "AC vs DC, Transformers, Step-Up, Transmission Loss, Tesla vs Edison"}, {"id": 45, "topic": "Topic 7: Power, Energy & Safety", "topicCode": "T7", "title": "Electrical Power ($P = IV$)", "question": "Define electrical power, write its formula, and state the relationship between Watts, Volts, and Amperes.", "answer": ["<strong>Definition:</strong> The rate at which electrical energy is converted into other forms of energy (such as light, heat, or mechanical work) per unit of time.", "<strong>Formula:</strong> $P = I \\times V$", "<strong>Where:</strong><br>&bull; $P$ = Power in <strong>Watts (W)</strong><br>&bull; $I$ = Current in <strong>Amperes (A)</strong><br>&bull; $V$ = Potential difference in <strong>Volts (V)</strong>", "<strong>Units:</strong> $1.0\\text{ Watt} = 1.0\\text{ Joule per second} = 1.0\\text{ Volt} \\times 1.0\\text{ Ampere}$.", "<strong>Derived Formulas (using Ohm's Law $V=IR$):</strong><br>&bull; $P = I^2R$<br>&bull; $P = \\frac{V^2}{R}$"], "examTip": "To find current drawn by a household appliance: $I = P/V$. (In North America, standard wall outlets are 120 V).", "keywords": "Electrical Power, P=IV, Watts, Joules per Second, P=I^2R"}, {"id": 46, "topic": "Topic 7: Power, Energy & Safety", "topicCode": "T7", "title": "Electrical Energy in Joules ($E = Pt$)", "question": "How do you calculate electrical energy in Joules, and what is the critical rule for the unit of time?", "answer": ["<strong>Formula:</strong> $E = P \\times t$", "<strong>Where:</strong><br>&bull; $E$ = Energy in <strong>Joules (J)</strong><br>&bull; $P$ = Power in <strong>Watts (W)</strong><br>&bull; $t$ = Time in <strong>SECONDS (s)</strong>", "<strong>Crucial Unit Conversion:</strong><br>&bull; If time is given in minutes, multiply by 60 seconds.<br>&bull; If time is given in hours, multiply by 3,600 seconds ($60 \\times 60$).", "<strong>Example:</strong> A 1000 W microwave running for 2 minutes ($120\\text{ s}$):<br>$E = 1000\\text{ W} \\times 120\\text{ s} = 120,000\\text{ Joules} = 120\\text{ kJ}$."], "examTip": "The #1 student mistake on exams is forgetting to convert minutes or hours into seconds when calculating Joules!", "keywords": "Energy in Joules, E=Pt, Seconds, 3600 seconds, Kilojoules"}, {"id": 47, "topic": "Topic 7: Power, Energy & Safety", "topicCode": "T7", "title": "The Kilowatt-Hour (kWh) & Energy Conversion", "question": "What is a Kilowatt-hour (kWh), why do utility companies use it instead of Joules, and how many Joules equal 1 kWh?", "answer": ["<strong>Definition:</strong> The quantity of electrical energy consumed by a load of 1.0 Kilowatt (1000 Watts) operating continuously for 1.0 hour.", "<strong>Formula:</strong> $E(\\text{kWh}) = P(\\text{kW}) \\times t(\\text{hours})$, where $P(\\text{kW}) = \\frac{\\text{Watts}}{1000}$.", "<strong>Why Utility Companies Use kWh:</strong> A Joule is an extremely tiny unit of energy. A typical household consumes billions of Joules per month. Kilowatt-hours keep utility bills readable.", "<strong>Exact Conversion Proof:</strong><br>$1\\text{ kWh} = 1000\\text{ W} \\times 3600\\text{ s} = 3,600,000\\text{ Joules} = 3.6\\text{ MegaJoules (MJ)}$."], "examTip": "Memorize: <strong>$1\\text{ kWh} = 3.6 \\times 10^6\\text{ J} = 3.6\\text{ MJ}$</strong>.", "keywords": "Kilowatt-Hour, kWh, 3.6 Million Joules, Utility Meter, Power Bill"}, {"id": 48, "topic": "Topic 7: Power, Energy & Safety", "topicCode": "T7", "title": "Calculating Household Power Bills", "question": "Walk through the exact 3-step method to calculate the cost of operating an electrical device.", "answer": ["<strong>Step 1: Convert Power to Kilowatts:</strong><br>$P(\\text{kW}) = \\frac{\\text{Power in Watts}}{1000}$", "<strong>Step 2: Calculate Energy in Kilowatt-Hours:</strong><br>$E(\\text{kWh}) = P(\\text{kW}) \\times \\text{Time in hours}$", "<strong>Step 3: Multiply Energy by the Utility Rate:</strong><br>$\\text{Cost} = E(\\text{kWh}) \\times \\text{Electricity Rate (\\$/kWh)}$", "<strong>Worked Example:</strong> A 1500 W space heater runs 4 hours daily for 30 days ($120\\text{ hrs}$) at 12&cent;/kWh (\\$0.12):<br>&bull; $P = 1500 / 1000 = 1.5\\text{ kW}$<br>&bull; $E = 1.5\\text{ kW} \\times 120\\text{ h} = 180\\text{ kWh}$<br>&bull; $\\text{Cost} = 180\\text{ kWh} \\times \\$0.12 = \\mathbf{\\$21.60}$."], "examTip": "Watch the units of rate! If the rate is given as '15&cent;', convert to dollars: $\\$0.15/\\text{kWh}$.", "keywords": "Power Bill, Cost, Rate, Steps, kWh to Dollars"}, {"id": 49, "topic": "Topic 7: Power, Energy & Safety", "topicCode": "T7", "title": "Percentage Efficiency Calculations", "question": "State the percentage efficiency formula and explain why no electrical machine can ever be 100% efficient.", "answer": ["<strong>Formula:</strong><br>$\\text{Efficiency (\\%)} = \\frac{\\text{Useful Energy Output}}{\\text{Total Energy Input}} \\times 100\\%$<br>*(or equivalently using power: $\\frac{P_{\\text{out}}}{P_{\\text{in}}} \\times 100\\%$)*", "<strong>Law of Conservation of Energy:</strong> Energy cannot be created or destroyed, only transformed.", "<strong>Why Not 100%:</strong> In any real-world device, some input energy is inevitably degraded into useless forms, primarily <strong>waste thermal energy (heat)</strong> caused by electrical resistance, mechanical friction in bearings, acoustic noise, or unwanted vibrations."], "examTip": "Useful output is ALWAYS smaller than total input! Efficiency must always be less than 100%.", "keywords": "Efficiency, Useful Output, Total Input, Conservation of Energy, Waste Heat"}, {"id": 50, "topic": "Topic 7: Power, Energy & Safety", "topicCode": "T7", "title": "EnerGuide Labels vs ENERGY STAR Certification", "question": "What is the difference between an EnerGuide label and the ENERGY STAR logo on home appliances?", "answer": ["<strong>EnerGuide Label:</strong><br>&bull; Mandatory Government of Canada energy label affixed to major household appliances.<br>&bull; Displays the appliance's <strong>estimated annual energy consumption in kWh/year</strong>.<br>&bull; Features a comparison bar showing how this model compares to the most efficient and least efficient models in its class.", "<strong>ENERGY STAR Logo:</strong><br>&bull; A voluntary international certification symbol awarded only to premium high-efficiency products.<br>&bull; Certifies that the appliance meets or exceeds strict high-efficiency criteria (typically <strong>10% to 25% more efficient</strong> than standard minimum energy performance standards)."], "examTip": "EnerGuide gives the exact number (kWh/year); ENERGY STAR is the badge of honor for the top-tier efficient appliances.", "keywords": "EnerGuide, ENERGY STAR, kWh per Year, Comparison Scale"}, {"id": 51, "topic": "Topic 7: Power, Energy & Safety", "topicCode": "T7", "title": "Household Safety: Fuses vs Circuit Breakers", "question": "Compare fuses and circuit breakers: How do they protect homes from electrical fires, and how do they differ?", "answer": ["<strong>Shared Purpose:</strong> Both are overcurrent protection devices wired in <strong>series</strong> with household circuits to cut off electrical power if current exceeds safe wire limits (e.g., 15 A or 20 A), preventing wire overheating and electrical fires.", "<strong>Fuse:</strong><br>&bull; Contains a short strip of metal with a calibrated low melting point.<br>&bull; Excessive current causes resistive heating that <strong>melts ('blows')</strong> the strip, permanently breaking the circuit.<br>&bull; <em>Sacrificial:</em> Must be discarded and replaced with a new fuse of the correct rating.", "<strong>Circuit Breaker:</strong><br>&bull; Uses a <strong>bimetallic strip</strong> that bends when heated or an <strong>electromagnet</strong> that trips a mechanical latch.<br>&bull; Breaks the circuit without melting any component.<br>&bull; <em>Resettable:</em> Simply flipped back to the 'ON' position once the overload is removed."], "examTip": "Never replace a 15 Amp fuse with a 30 Amp fuse! The wire in the wall will overheat and catch fire before the fuse blows.", "keywords": "Fuse, Circuit Breaker, Bimetallic, Melts, Resettable, Fire Protection"}, {"id": 52, "topic": "Topic 7: Power, Energy & Safety", "topicCode": "T7", "title": "Ground Fault Circuit Interrupters (GFCI / GFI)", "question": "How does a GFCI outlet work, and why is it mandatory near bathrooms, kitchens, and outdoors?", "answer": ["<strong>Where Used:</strong> Mandatory in areas near water (bathrooms, kitchen sinks, outdoors, garages) where wet hands or puddles drastically lower human skin resistance.", "<strong>Working Principle:</strong> The GFCI constantly monitors and compares the current flowing out through the <strong>Hot wire</strong> and returning through the <strong>Neutral wire</strong>.", "<strong>Detection:</strong> Under normal conditions, $I_{\\text{hot}} = I_{\\text{neutral}}$. If there is a discrepancy of as little as <strong>4 to 5 milliamperes (0.005 A)</strong>, it indicates current is leaking through an unintended path (e.g., passing through a human body into a puddle to ground!).", "<strong>Action:</strong> The GFCI trips and breaks the circuit in less than <strong>30 milliseconds (0.03 s)</strong>, stopping lethal ventricular fibrillation before fatal electrocution occurs."], "examTip": "A standard 15 A circuit breaker will NOT save you from electrocution because 0.1 A is enough to kill a human! GFCIs detect tiny 0.005 A leaks to protect human life.", "keywords": "GFCI, Ground Fault, Current Imbalance, 5 mA, 30 Milliseconds, Wet Areas"}, {"id": 53, "topic": "Topic 7: Power, Energy & Safety", "topicCode": "T7", "title": "Three-Prong Plugs & Grounding Pins", "question": "What is the function of the third round prong on power cords, and how does it prevent fatal electric shocks?", "answer": ["<strong>The Three Prongs:</strong><br>&bull; Small Flat Blade: <strong>Hot Wire</strong> (120 V alternating potential).<br>&bull; Large Flat Blade: <strong>Neutral Wire</strong> (completes the circuit back to panel).<br>&bull; Round Bottom Pin: <strong>Ground Wire</strong> (connected to metal appliance casing).", "<strong>Protection Mechanism:</strong><br>&bull; The ground pin connects the exterior metal chassis of the appliance directly to a copper rod driven deep into the Earth.<br>&bull; If a live Hot wire inside becomes loose and touches the metal casing, current immediately rushes through the low-resistance ground wire rather than waiting to shock an unsuspecting person.<br>&bull; This huge rush of current instantaneously trips the circuit breaker, cutting off all power."], "examTip": "Never break off the third round grounding prong to force a 3-prong plug into a 2-prong outlet! That destroys the safety ground.", "keywords": "Three-Prong Plug, Ground Pin, Hot, Neutral, Metal Chassis Protection"}, {"id": 54, "topic": "Topic 8: Electricity in Alberta", "topicCode": "T8", "title": "Alberta's Electrical Grid & Coal Phase-Out", "question": "How has Alberta's electricity generation mix changed dramatically in recent years?", "answer": ["<strong>Historical Baseline:</strong> Historically, Alberta generated over 60-70% of its electricity from burning sub-bituminous <strong>coal</strong>, making Alberta's grid the most carbon-intensive in Canada.", "<strong>The Coal Phase-Out:</strong> Alberta committed to phasing out coal-fired power by 2030, but accomplished the complete phase-out in early <strong>2024</strong> (six years ahead of schedule!).", "<strong>Current Transition:</strong> Most decommissioned coal plants were converted to burn <strong>natural gas</strong> (combined-cycle and simple-cycle turbines), while renewable generation (wind and solar) expanded at record rates in southern Alberta.", "<strong>Grid Reality:</strong> Today, natural gas provides over 70-80% of Alberta's dispatchable baseload electricity."], "examTip": "Alberta no longer burns coal for electricity! Natural gas is now the primary transition fuel and baseload provider.", "keywords": "Coal Phase-Out, 2024, Natural Gas, Grid Transition, AESO"}, {"id": 55, "topic": "Topic 8: Electricity in Alberta", "topicCode": "T8", "title": "Natural Gas Thermal Generation & Combined Cycle", "question": "How do combined-cycle natural gas power plants generate electricity, and what are their pros and cons?", "answer": ["<strong>Energy Transformations:</strong> Chemical Energy (gas) &rarr; Thermal Energy (combustion) &rarr; Kinetic Energy (hot gas expands & turns gas turbine) &rarr; Mechanical Energy &rarr; Electrical Energy (generator). In combined cycle, waste exhaust heat boils water into steam to turn a second steam turbine!", "<strong>Pros:</strong><br>&bull; Provides reliable, dispatchable <strong>baseload power</strong> 24/7/365 regardless of weather.<br>&bull; Emits ~50% less $\\text{CO}_2$ than coal and virtually zero sulfur dioxide ($\\text{SO}_2$), eliminating acid rain.<br>&bull; Can ramp output up or down rapidly to stabilize the grid.", "<strong>Cons:</strong><br>&bull; Non-renewable fossil fuel.<br>&bull; Produces significant greenhouse gas emissions ($\\text{CO}_2$ and fugitive methane $\\text{CH}_4$ leaks) driving climate change."], "examTip": "Natural gas is dispatchable (can be turned on/off on demand). Solar and wind are non-dispatchable (intermittent).", "keywords": "Natural Gas, Combined Cycle, Baseload, Dispatchable, 50% Less CO2"}, {"id": 56, "topic": "Topic 8: Electricity in Alberta", "topicCode": "T8", "title": "Cogeneration (Combined Heat & Power / CHP)", "question": "What is cogeneration, where is it heavily utilized in Alberta, and why is it extraordinarily efficient?", "answer": ["<strong>Definition:</strong> The simultaneous production of both <strong>electricity</strong> and <strong>useful thermal heat (steam)</strong> from a single fuel source.", "<strong>The Problem with Conventional Power:</strong> Standard thermal power plants dump ~50-60% of their fuel heat into cooling towers or rivers as wasted thermal pollution.", "<strong>How Cogeneration Solves It:</strong> High-temperature exhaust steam exiting the electrical turbine is captured and piped directly to heat industrial processes or buildings.", "<strong>Alberta Oil Sands Application:</strong> Alberta's oil sands mining and in-situ SAGD operations require vast quantities of high-pressure steam to extract bitumen from sand. Cogeneration units burn natural gas to generate electricity for the provincial grid while supplying process steam, boosting overall fuel efficiency to <strong>over 80%</strong>!"], "examTip": "Cogeneration is one of the highest-yield efficiency topics for Alberta science exams. Remember: Electricity + Industrial Steam = >80% efficiency.", "keywords": "Cogeneration, Combined Heat and Power, Oil Sands, SAGD, 80% Efficiency"}, {"id": 57, "topic": "Topic 8: Electricity in Alberta", "topicCode": "T8", "title": "Wind Energy in Alberta: Pros, Cons & Grid Realities", "question": "Analyze wind energy generation in Alberta, evaluating its technology, benefits, and engineering challenges.", "answer": ["<strong>Energy Transformations:</strong> Solar heating of atmosphere &rarr; Kinetic Energy (wind) &rarr; Aerodynamic Lift turns rotor blades &rarr; Gearbox steps up RPM &rarr; Electrical Energy (induction generator).", "<strong>Pros:</strong><br>&bull; Zero greenhouse gas emissions or air pollutants during operation.<br>&bull; 100% renewable energy with zero fuel costs.<br>&bull; Southern Alberta's open windy topography is a premier wind resource in Canada.", "<strong>Cons:</strong><br>&bull; <strong>Intermittency:</strong> Generates power only when the wind blows (between cut-in speed ~12 km/h and cut-out speed ~90 km/h). During dead calm winter freezes (-35&deg;C), wind output drops near 0%.<br>&bull; Wildlife impact: Collisions with migrating birds and bats.<br>&bull; Requires paired dispatchable backup (gas or storage)."], "examTip": "During Alberta's severe winter cold snaps (when electricity demand peaks), a stable high-pressure system often brings calm air, causing wind generation to drop drastically.", "keywords": "Wind Energy, Kinetic to Electrical, Intermittency, Southern Alberta, Wildlife"}, {"id": 58, "topic": "Topic 8: Electricity in Alberta", "topicCode": "T8", "title": "Solar Energy in Alberta: Pros, Cons & Grid Realities", "question": "Analyze solar energy in Alberta, highlighting its geographic advantage and seasonal limitations.", "answer": ["<strong>Energy Transformations:</strong> Nuclear Fusion in Sun &rarr; Radiant / Light Energy &rarr; Photovoltaic p-n junction excitement &rarr; Electrical Energy (Direct Current, DC) &rarr; Inverter (Alternating Current, AC).", "<strong>Alberta's Geographic Advantage:</strong> Southern Alberta (Medicine Hat, Brooks, Calgary) has one of the highest solar irradiance levels in Canada, boasting over 2,300+ hours of sunshine per year.", "<strong>Pros:</strong><br>&bull; Zero operational greenhouse gas emissions, zero air pollutants, zero water consumption.<br>&bull; Excellent match for hot summer afternoon air conditioning demand spikes.", "<strong>Cons:</strong><br>&bull; <strong>Zero output at night</strong> and drastically reduced output in winter due to short daylight hours, low solar angle, and snow coverage.<br>&bull; Alberta's peak electricity demand occurs on dark, freezing winter evenings (5 PM - 8 PM), exactly when solar generation is 0%!"], "examTip": "Remember that solar panels produce DC electricity and require an <strong>inverter</strong> to feed into the AC grid.", "keywords": "Solar Energy, Photovoltaic, Inverter, High Irradiance, Winter Peak Mismatch"}, {"id": 59, "topic": "Topic 8: Electricity in Alberta", "topicCode": "T8", "title": "Hydroelectricity in Alberta: Capacity & Constraints", "question": "How does hydroelectricity work, and why does Alberta have far less hydro capacity than BC or Quebec?", "answer": ["<strong>Energy Transformations:</strong> Gravitational Potential Energy of reservoir water &rarr; Kinetic Energy of rushing water in penstock &rarr; Mechanical Energy of water turbine &rarr; Electrical Energy (generator).", "<strong>Alberta's Existing Hydro:</strong> TransAlta operates hydroelectric plants on the Bow River system (Ghost Dam, Bearspaw) and the Brazeau River reservoir, providing valuable dispatchable peaking power.", "<strong>Why Alberta Has Limited Hydro:</strong><br>&bull; <em>Topography:</em> BC and Quebec possess mountainous terrain with enormous elevation drops (hydraulic head) and massive river flows; Alberta's plains lack these steep drops.<br>&bull; <em>Environmental Impacts:</em> Large dams flood vast river valleys, displace wildlife, alter water temperatures, disrupt fish spawning (bull trout), and release methane from submerged decaying organic matter."], "examTip": "Hydro is dispatchable (operators can open flood gates in minutes during peak demand), but Alberta has few suitable remaining rivers for large dams.", "keywords": "Hydroelectricity, Gravitational Potential, Bow River, Ghost Dam, Topography Limits"}, {"id": 60, "topic": "Topic 8: Electricity in Alberta", "topicCode": "T8", "title": "Small Modular Reactors (SMRs) & Nuclear in Alberta", "question": "What are Small Modular Reactors (SMRs), and why is Alberta investigating nuclear energy?", "answer": ["<strong>What is an SMR:</strong> Advanced nuclear fission reactors that produce up to 300 MW(e) per unit. They are compact, modular (factory-fabricated and transported by truck/rail), and feature passive safety systems that shut down safely without operator intervention or electric pumps.", "<strong>Energy Transformations:</strong> Nuclear Energy (Uranium-235 fission) &rarr; Thermal Energy (heat) &rarr; Kinetic Energy (steam) &rarr; Mechanical (turbine) &rarr; Electrical Energy (generator).", "<strong>Pros:</strong><br>&bull; Produces massive, completely <strong>zero-carbon baseload electricity</strong> 24/7/365.<br>&bull; Extremely small land footprint compared to wind and solar farms.<br>&bull; High-temperature steam can directly power oil sands bitumen extraction, replacing fossil gas.", "<strong>Cons:</strong> High capital construction costs, complex regulatory timelines, and long-term political controversy surrounding deep geological disposal of spent radioactive fuel rods."], "examTip": "Nuclear fission produces ZERO greenhouse gas emissions ($\text{CO}_2$); the white plumes rising from cooling towers are 100% clean water vapor!", "keywords": "Nuclear Fission, SMR, Small Modular Reactor, Zero Carbon Baseload, Uranium"}, {"id": 61, "topic": "Topic 8: Electricity in Alberta", "topicCode": "T8", "title": "Baseload vs Intermittent vs Dispatchable Power", "question": "Define and contrast baseload power, intermittent power, and dispatchable peaking power.", "answer": ["<strong>1. Baseload Power:</strong> The minimum amount of continuous, non-stop electrical power that a utility grid must supply 24 hours a day to keep cities running (refrigerators, hospitals, water treatment, streetlights). Requires stable plants that run continuously (natural gas, nuclear, hydro).", "<strong>2. Intermittent (Variable) Power:</strong> Electrical generation that fluctuates with uncontrollable environmental conditions (sunlight, wind speed). Cannot be dialed up on command.", "<strong>3. Dispatchable Power:</strong> Generation sources that grid operators can turn on, turn off, or ramp up and down in minutes to meet sudden spikes in consumer electricity demand (e.g., natural gas peaking plants, hydro dams)."], "examTip": "A modern resilient grid requires dispatchable baseload to support and balance intermittent renewables.", "keywords": "Baseload, Intermittent, Dispatchable, Peaking Power, Grid Balance"}, {"id": 62, "topic": "Topic 8: Electricity in Alberta", "topicCode": "T8", "title": "Environmental Emissions: Greenhouse Gases vs Acid Rain", "question": "Distinguish between the causes and consequences of Greenhouse Gases (CO2) versus Acid Rain (SO2 / NOx).", "answer": ["<strong>Greenhouse Gases (Global Warming / Climate Change):</strong><br>&bull; <em>Main Gas:</em> Carbon Dioxide ($\\text{CO}_2$) from burning fossil fuels (coal, gas, oil).<br>&bull; <em>Consequence:</em> Traps infrared thermal radiation in Earth's atmosphere, driving global temperature rise, melting glaciers, severe droughts, and extreme weather.", "<strong>Acid Rain (Local / Regional Ecosystem Acidification):</strong><br>&bull; <em>Main Gases:</em> Sulfur Dioxide ($\\text{SO}_2$) from coal combustion and Nitrogen Oxides ($\\text{NO}_x$) from high-temp combustion.<br>&bull; <em>Reaction:</em> Gases react with water vapor in clouds to form sulfuric and nitric acids ($\\text{H}_2\\text{SO}_4$, $\\text{HNO}_3$).<br>&bull; <em>Consequence:</em> Lowers pH of lakes killing fish, leaches toxic aluminum from soils, strips waxy coatings from forest foliage."], "examTip": "Do not mix these up! Natural gas emits $\\text{CO}_2$ (greenhouse gas), but virtually NO $\\text{SO}_2$ (does NOT cause acid rain). Coal causes both.", "keywords": "Greenhouse Gases, CO2, Acid Rain, SO2, NOx, Global Warming"}, {"id": 63, "topic": "Topic 8: Electricity in Alberta", "topicCode": "T8", "title": "Grid-Scale Energy Storage: Batteries & Pumped Hydro", "question": "Why is grid-scale energy storage essential for high renewable adoption, and how does pumped hydro work?", "answer": ["<strong>The Necessity:</strong> Renewable wind and solar produce peak electricity when the weather dictates, not when human demand peaks. Grid storage stores excess daytime energy for release during nighttime or calm spells.", "<strong>Battery Energy Storage Systems (BESS):</strong> Utility-scale lithium-ion or flow batteries that charge from excess solar/wind and discharge within milliseconds during grid frequency drops.", "<strong>Pumped Hydroelectric Storage:</strong><br>&bull; <em>Charging:</em> When electricity is abundant and cheap, water is pumped from a lower reservoir uphill to an elevated upper reservoir.<br>&bull; <em>Discharging:</em> When grid demand peaks or renewables drop, water flows downhill through turbines to generate immediate hydroelectricity.<br>&bull; Acts like a giant, rechargeable mechanical water battery with ~80% round-trip efficiency."], "examTip": "Pumped hydro is the largest form of grid-scale energy storage in the world today.", "keywords": "Energy Storage, BESS, Pumped Hydro, Round-trip Efficiency, Water Battery"}, {"id": 64, "topic": "Topic 8: Electricity in Alberta", "topicCode": "T8", "title": "Written Response Blueprint: Slide 28 Test Question", "question": "What are the 4 mandatory elements required to achieve 10/10 on the Topic 8 Long Answer Question?", "answer": ["<strong>The Slide 28 Question:</strong> 'Choose a method of generating electricity in Alberta. Explain the technology, evaluate two pros and two cons, and discuss its future role in Alberta's energy transition.'", "<strong>The 4-Part Scoring Formula:</strong><br>&bull; <strong>1. Technology & Transformations (3 pts):</strong> State the energy chain step-by-step (e.g., Chemical &rarr; Thermal &rarr; Steam Kinetic &rarr; Mechanical &rarr; Electrical). Name the turbine and electromagnetic generator (Faraday induction).<br>&bull; <strong>2. Two Distinct Pros (2 pts):</strong> Cite 2 specific advantages (e.g., dispatchable baseload, zero operational $\\text{CO}_2$, cogeneration efficiency >80%).<br>&bull; <strong>3. Two Distinct Cons (2 pts):</strong> Cite 2 specific engineering/environmental trade-offs (e.g., intermittency, night generation 0%, toxic mining/waste disposal).<br>&bull; <strong>4. Alberta Grid Transition Context (3 pts):</strong> Explain how it replaces coal and its future paired with baseload/storage in Alberta."], "examTip": "Never give vague pros/cons like 'it is good for nature' or 'it is bad'. Always use precise scientific vocabulary: 'intermittency', 'greenhouse gas emissions', 'dispatchable baseload', 'Faraday induction'.", "keywords": "Written Response, Rubric, 4 Parts, Transformations, Pros and Cons, Alberta Context"}];
+
+    // Application State
+    let filteredCards = [...ALL_CARDS];
+    let currentIndex = 0;
+    let isFlipped = false;
+    let currentTopicFilter = 'ALL';
+    let currentStatusFilter = 'ALL';
+    let currentSearchTerm = '';
+    let currentViewMode = 'single'; // 'single' | 'grid'
+
+    // Storage Keys
+    const STORAGE_KEY = 'sci9_unit_d_flashcard_state_v1';
+    let userState = {
+      mastered: {},
+      review: {},
+      starred: {},
+      theme: 'dark'
+    };
+
+    function loadState() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          userState = Object.assign(userState, JSON.parse(saved));
+        }
+      } catch (e) {
+        console.warn('Could not load localStorage', e);
+      }
+      applyTheme(userState.theme || 'dark');
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(userState));
+      } catch (e) {
+        console.warn('Could not save to localStorage', e);
+      }
+      updateStats();
+    }
+
+    function applyTheme(theme) {
+      userState.theme = theme;
+      document.documentElement.setAttribute('data-theme', theme);
+      document.getElementById('themeToggle').innerText = theme === 'dark' ? '☀️' : '🌙';
+    }
+
+    function toggleTheme() {
+      applyTheme(userState.theme === 'dark' ? 'light' : 'dark');
+      saveState();
+    }
+
+    // Filter Logic
+    function applyFilters() {
+      filteredCards = ALL_CARDS.filter(card => {
+        // Topic filter
+        if (currentTopicFilter !== 'ALL' && card.topicCode !== currentTopicFilter) {
+          return false;
+        }
+
+        // Status filter
+        if (currentStatusFilter === 'STARRED' && !userState.starred[card.id]) {
+          return false;
+        }
+        if (currentStatusFilter === 'MASTERED' && !userState.mastered[card.id]) {
+          return false;
+        }
+        if (currentStatusFilter === 'REVIEW' && !userState.review[card.id]) {
+          return false;
+        }
+        if (currentStatusFilter === 'UNSTUDIED' && (userState.mastered[card.id] || userState.review[card.id])) {
+          return false;
+        }
+
+        // Search Term
+        if (currentSearchTerm) {
+          const term = currentSearchTerm.toLowerCase();
+          const matchTitle = card.title.toLowerCase().includes(term);
+          const matchQ = card.question.toLowerCase().includes(term);
+          const matchTopic = card.topic.toLowerCase().includes(term);
+          const matchKw = card.keywords.toLowerCase().includes(term);
+          const matchAns = card.answer.some(a => a.toLowerCase().includes(term));
+          if (!matchTitle && !matchQ && !matchTopic && !matchKw && !matchAns) {
+            return false;
+          }
+        }
+
+        return true;
+      });
+
+      if (currentIndex >= filteredCards.length) {
+        currentIndex = 0;
+      }
+
+      document.getElementById('gridMatchCount').innerText = filteredCards.length;
+      updateStats();
+
+      if (currentViewMode === 'single') {
+        renderCurrentCard();
+      } else {
+        renderGrid();
+      }
+    }
+
+    // Render Current Card in Flashcard Mode
+    function renderCurrentCard() {
+      const flipper = document.getElementById('cardFlipper');
+      isFlipped = false;
+      flipper.classList.remove('flipped');
+
+      const card = filteredCards[currentIndex];
+      if (!card) {
+        document.getElementById('frontTitle').innerText = 'No Cards Found';
+        document.getElementById('frontQuestion').innerText = 'No flashcards match your current filter settings. Try selecting "All Topics" or clearing the search.';
+        document.getElementById('cardCounterText').innerText = '0 of 0';
+        document.getElementById('frontTopicTag').innerText = 'Filter Empty';
+        document.getElementById('frontTopicTag').className = 'topic-tag';
+        return;
+      }
+
+      // Front Face
+      const fTopic = document.getElementById('frontTopicTag');
+      fTopic.innerText = card.topic;
+      fTopic.className = 'topic-tag tag-' + card.topicCode;
+
+      document.getElementById('frontTitle').innerText = card.title;
+      document.getElementById('frontQuestion').innerHTML = card.question;
+      document.getElementById('cardCounterText').innerText = `Card ${currentIndex + 1} of ${filteredCards.length}`;
+
+      const starBtn = document.getElementById('starBtn');
+      const isStarred = !!userState.starred[card.id];
+      starBtn.classList.toggle('starred', isStarred);
+      document.getElementById('backStarBtn').classList.toggle('starred', isStarred);
+
+      // Back Face
+      const bTopic = document.getElementById('backTopicTag');
+      bTopic.innerText = card.topic;
+      bTopic.className = 'topic-tag tag-' + card.topicCode;
+
+      document.getElementById('backTitle').innerText = card.title;
+
+      const ansList = document.getElementById('backAnswerList');
+      ansList.innerHTML = card.answer.map(item => `<li>${item}</li>`).join('');
+
+      const tipBox = document.getElementById('backExamTip');
+      if (card.examTip) {
+        tipBox.style.display = 'block';
+        tipBox.innerHTML = `<strong>💡 Exam Alert:</strong> ${card.examTip}`;
+      } else {
+        tipBox.style.display = 'none';
+      }
+
+      const kwBox = document.getElementById('backKeywords');
+      if (card.keywords) {
+        const kws = card.keywords.split(',').map(k => k.trim());
+        kwBox.innerHTML = kws.map(k => `<span class="keyword-badge"># ${k}</span>`).join('');
+      } else {
+        kwBox.innerHTML = '';
+      }
+    }
+
+    function flipCard() {
+      if (filteredCards.length === 0) return;
+      isFlipped = !isFlipped;
+      document.getElementById('cardFlipper').classList.toggle('flipped', isFlipped);
+    }
+
+    function nextCard() {
+      if (filteredCards.length === 0) return;
+      currentIndex = (currentIndex + 1) % filteredCards.length;
+      renderCurrentCard();
+    }
+
+    function prevCard() {
+      if (filteredCards.length === 0) return;
+      currentIndex = (currentIndex - 1 + filteredCards.length) % filteredCards.length;
+      renderCurrentCard();
+    }
+
+    function toggleStarCurrent() {
+      const card = filteredCards[currentIndex];
+      if (!card) return;
+      if (userState.starred[card.id]) {
+        delete userState.starred[card.id];
+      } else {
+        userState.starred[card.id] = true;
+      }
+      saveState();
+      renderCurrentCard();
+    }
+
+    function markCurrentMastered() {
+      const card = filteredCards[currentIndex];
+      if (!card) return;
+      userState.mastered[card.id] = true;
+      delete userState.review[card.id];
+      saveState();
+      nextCard();
+    }
+
+    function markCurrentReview() {
+      const card = filteredCards[currentIndex];
+      if (!card) return;
+      userState.review[card.id] = true;
+      delete userState.mastered[card.id];
+      saveState();
+      nextCard();
+    }
+
+    function shuffleCards() {
+      for (let i = filteredCards.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [filteredCards[i], filteredCards[j]] = [filteredCards[j], filteredCards[i]];
+      }
+      currentIndex = 0;
+      renderCurrentCard();
+    }
+
+    // Stats calculation
+    function updateStats() {
+      const total = ALL_CARDS.length;
+      const mastered = Object.keys(userState.mastered).length;
+      const review = Object.keys(userState.review).length;
+      const starred = Object.keys(userState.starred).length;
+
+      document.getElementById('totalCardsCount').innerText = total;
+      document.getElementById('masteredCount').innerText = mastered;
+      document.getElementById('reviewCount').innerText = review;
+      document.getElementById('starredCount').innerText = starred;
+
+      const pct = Math.round((mastered / total) * 100);
+      document.getElementById('masteryPercent').innerText = `${pct}% Mastered (${mastered}/${total})`;
+      document.getElementById('progressBar').style.width = `${pct}%`;
+    }
+
+    // Audio TTS
+    function speakText(text) {
+      if (!('speechSynthesis' in window)) {
+        alert('Text-to-speech is not supported in this browser.');
+        return;
+      }
+      window.speechSynthesis.cancel();
+      // Strip HTML tags for clean voice reading
+      const clean = text.replace(/<[^>]*>?/gm, '').replace(/&rarr;/g, 'produces').replace(/&Omega;/g, 'ohms');
+      const utter = new SpeechSynthesisUtterance(clean);
+      utter.rate = 1.0;
+      utter.pitch = 1.0;
+      window.speechSynthesis.speak(utter);
+    }
+
+    // Grid View Rendering
+    function renderGrid() {
+      const grid = document.getElementById('cardsGrid');
+      if (filteredCards.length === 0) {
+        grid.innerHTML = '<div class="empty-state"><p>No flashcards found matching your filters.</p></div>';
+        return;
+      }
+
+      grid.innerHTML = filteredCards.map((card, idx) => {
+        const isM = !!userState.mastered[card.id];
+        const isR = !!userState.review[card.id];
+        const isS = !!userState.starred[card.id];
+
+        return `
+          <div class="grid-card" data-id="${card.id}">
+            <div>
+              <div class="grid-card-header">
+                <span class="topic-tag tag-${card.topicCode}">${card.topicCode}</span>
+                <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">#${card.id} ${isS ? '⭐' : ''} ${isM ? '✅' : (isR ? '🔄' : '')}</span>
+              </div>
+              <div class="grid-card-title" style="margin-top: 0.6rem;">${card.title}</div>
+              <div class="grid-card-question" style="margin-top: 0.4rem;">${card.question}</div>
+            </div>
+
+            <div class="grid-card-details">
+              <ul style="padding-left: 1.1rem; margin-bottom: 0.5rem;">
+                ${card.answer.map(a => `<li>${a}</li>`).join('')}
+              </ul>
+              ${card.examTip ? `<div style="font-size: 0.8rem; color: #fbbf24; margin-top: 0.4rem;">💡 ${card.examTip}</div>` : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Set View Mode
+    function setViewMode(mode) {
+      currentViewMode = mode;
+      const sView = document.getElementById('singleCardView');
+      const gView = document.getElementById('gridCardView');
+      const btnS = document.getElementById('modeSingle');
+      const btnG = document.getElementById('modeGrid');
+
+      if (mode === 'single') {
+        sView.style.display = 'flex';
+        gView.style.display = 'none';
+        btnS.classList.add('active');
+        btnG.classList.remove('active');
+        renderCurrentCard();
+      } else {
+        sView.style.display = 'none';
+        gView.style.display = 'block';
+        btnG.classList.add('active');
+        btnS.classList.remove('active');
+        renderGrid();
+      }
+    }
+
+    // Setup Event Listeners
+    function setupEvents() {
+      // Flip on clicking scene
+      document.getElementById('cardScene').addEventListener('click', (e) => {
+        // Ignore if clicking an action button inside the card face
+        if (e.target.closest('.icon-btn')) return;
+        flipCard();
+      });
+
+      document.getElementById('flipBtn').addEventListener('click', flipCard);
+      document.getElementById('nextBtn').addEventListener('click', nextCard);
+      document.getElementById('prevBtn').addEventListener('click', prevCard);
+
+      document.getElementById('starBtn').addEventListener('click', (e) => { e.stopPropagation(); toggleStarCurrent(); });
+      document.getElementById('backStarBtn').addEventListener('click', (e) => { e.stopPropagation(); toggleStarCurrent(); });
+
+      document.getElementById('ttsBtn').addEventListener('click', (e) => {
+        e.stopPropagation();
+        const card = filteredCards[currentIndex];
+        if (card) speakText(card.question);
+      });
+
+      document.getElementById('backTtsBtn').addEventListener('click', (e) => {
+        e.stopPropagation();
+        const card = filteredCards[currentIndex];
+        if (card) speakText(card.answer.join('. ') + '. ' + (card.examTip || ''));
+      });
+
+      document.getElementById('markMasterBtn').addEventListener('click', markCurrentMastered);
+      document.getElementById('markReviewBtn').addEventListener('click', markCurrentReview);
+      document.getElementById('shuffleBtn').addEventListener('click', shuffleCards);
+
+      document.getElementById('resetProgressBtn').addEventListener('click', () => {
+        if (confirm('Are you sure you want to reset your mastered and review progress? (Starred cards will remain).')) {
+          userState.mastered = {};
+          userState.review = {};
+          saveState();
+          applyFilters();
+        }
+      });
+
+      document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+
+      // View Mode buttons
+      document.getElementById('modeSingle').addEventListener('click', () => setViewMode('single'));
+      document.getElementById('modeGrid').addEventListener('click', () => setViewMode('grid'));
+
+      // Topic Filter Chips
+      document.querySelectorAll('#topicFilterWrap .filter-chip').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('#topicFilterWrap .filter-chip').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentTopicFilter = btn.dataset.topic;
+          applyFilters();
+        });
+      });
+
+      // Status Filter Chips
+      document.querySelectorAll('.filter-status-row .status-chip').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-status-row .status-chip').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentStatusFilter = btn.dataset.status;
+          applyFilters();
+        });
+      });
+
+      // Search input
+      const sInput = document.getElementById('searchInput');
+      let debounceTimer;
+      sInput.addEventListener('input', (e) => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+          currentSearchTerm = e.target.value.trim();
+          applyFilters();
+        }, 150);
+      });
+
+      // Keyboard navigation
+      window.addEventListener('keydown', (e) => {
+        // If typing in search input, do not trigger shortcuts
+        if (document.activeElement === sInput) return;
+
+        if (e.code === 'Space' || e.key === 'Enter') {
+          e.preventDefault();
+          flipCard();
+        } else if (e.key === 'ArrowRight' || e.key.toLowerCase() === 'j') {
+          e.preventDefault();
+          nextCard();
+        } else if (e.key === 'ArrowLeft' || e.key.toLowerCase() === 'k') {
+          e.preventDefault();
+          prevCard();
+        } else if (e.key === '1' || e.key.toLowerCase() === 'm') {
+          markCurrentMastered();
+        } else if (e.key === '2' || e.key.toLowerCase() === 'r') {
+          markCurrentReview();
+        } else if (e.key.toLowerCase() === 's') {
+          toggleStarCurrent();
+        } else if (e.key.toLowerCase() === 'a') {
+          const card = filteredCards[currentIndex];
+          if (card) {
+            if (isFlipped) speakText(card.answer.join('. '));
+            else speakText(card.question);
+          }
+        }
+      });
+    }
+
+    // Initialize Application
+    window.addEventListener('DOMContentLoaded', () => {
+      loadState();
+      // Adjust guide link for GitHub Pages vs Local
+      if (window.location.hostname.includes('github.io')) {
+        const gl = document.getElementById('guideLink');
+        if (gl) gl.href = 'index.html';
+      }
+
+      setupEvents();
+      applyFilters();
+    });
+  </script>
+</body>
+</html>

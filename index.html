@@ -779,6 +779,9 @@ h1 {
     <button class="tab-btn" onclick="switchTab('calcToolTab')">
       ⚙️ <span>Formula Tools</span>
     </button>
+    <a id="flashcardsNavBtn" href="Flashcards_Unit_D.html" target="_blank" class="tab-btn" style="background: linear-gradient(135deg, #f59e0b, #ef4444); color: white; border-color: transparent; text-decoration: none; font-weight: 700; margin-left: auto;">
+      🗂️ <span>Master Flashcards (64)</span> ➔
+    </a>
   </div>
 </div>
 
@@ -2207,6 +2210,11 @@ window.addEventListener('DOMContentLoaded', () => {
   showExemplar();
   loadSavedState();
   updateDashboard();
+
+  if (window.location.hostname.includes('github.io')) {
+    const fcBtn = document.getElementById('flashcardsNavBtn');
+    if (fcBtn) fcBtn.href = 'flashcards.html';
+  }
 
   const essayBox = document.getElementById('studentEssay');
   if (essayBox) {
